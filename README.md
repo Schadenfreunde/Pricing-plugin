@@ -120,19 +120,6 @@ The checker and evaluation fixtures are not included in the runtime ZIP. This ch
 
 The sample HTML report illustrates presentation and arithmetic for one synthetic case. PDF export and page-by-page PDF inspection remain unverified. Numerical outputs and business recommendations depend on the evidence supplied and require review before commercial action.
 
-## Runtime package
-
-Each folder under `skills/` is independently installable. It contains `SKILL.md`, an MIT license, and its supporting references. The six skills that use pricing methods bundle the nine curated notes and their index under `references/knowledge/`. Report guidance is included in each skill that uses it.
-
-The combined runtime ZIP contains 83 files: the root manifest, README, and license plus the complete seven skill folders. Examples, evaluation fixtures, authoring sources, and repository artwork are separate development resources.
-
-For maintainers, edit the canonical notes in `knowledge/` and the report guidance in `skills/pricing-analyze/references/html-reporting.md`, then synchronize and validate the bundles:
-
-```sh
-python3 evals/sync_skill_references.py
-python3 evals/check_package.py
-```
-
 ## License
 
 This project is licensed under the [MIT License](LICENSE). Include the copyright and license notice when redistributing copies or substantial portions of the plugin.
