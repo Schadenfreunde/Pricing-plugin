@@ -23,7 +23,7 @@ GitHub recommends covering purpose, value, getting started, help, and maintenanc
 3. **License selected: MIT.** The user selected MIT on 2026-10-02. The root `LICENSE` carries the copyright notice `2026 Schadenfreunde`, the manifest declares `MIT`, and runtime packaging includes the notice. Retain the license when distributing the package.
 4. **Set GitHub About description and topics.** Use the copy below. These fields are GitHub settings; adding keywords to `plugin.json` does not update them.
 5. **Create a versioned release once acceptance is complete.** Include the 22-file runtime package, concise release notes, exact installation requirements, and known limitations. Keep the release version consistent with `plugin.json`.
-6. **Add a readable social preview.** Show the project name, industrial/spare-parts audience, and one synthetic report excerpt. This helps people assess shared links; it is not a ranking guarantee.
+6. **Apply the selected social preview when GitHub permits upload.** The user selected A2 (price waterfall) with the exact title “B2B Pricing Companion” and no subtitle. The prepared [social-preview PNG](../assets/social-preview.png) is 1280 × 640 pixels and 971,178 bytes, below GitHub's 1 MB limit. It is illustrative artwork, not a measured report. GitHub permits a first preview upload to a public repository; a private repository must already have had an image uploaded. Upload remains pending, and visibility remains private. [GitHub social-preview guidance](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/customizing-your-repositorys-social-media-preview)
 
 ### Suggested GitHub About description
 
