@@ -1,5 +1,7 @@
 # Pricing Plugin: public-release discoverability
 
+Updated packaging: 2026-10-02. Skills now bundle their own knowledge and license notices; the current runtime contains 83 files. README installation uses the GitHub skill installer without local-pilot setup. Earlier inventory counts below record historical checks.
+
 Reviewed: 2026-10-02. Scope: pre-public-release repository content, reviewed on `codex/core-pricing-skills` and prepared for delivery directly on `main`. The repository is private, as confirmed by its owner. This is a content and release-readiness review, not an assessment of live indexing, rankings, traffic, or installed-host performance.
 
 ## Findings and content changes
@@ -22,7 +24,7 @@ GitHub recommends covering purpose, value, getting started, help, and maintenanc
 2. **Complete fresh installation acceptance.** Verify all seven skills appear and their references load in a supported host. Replace the README's pending status only after documenting that evidence. Do not add “works with Claude” or other host claims without checking them.
 3. **License selected: MIT.** The user selected MIT on 2026-10-02. The root `LICENSE` carries the copyright notice `2026 Schadenfreunde`, the manifest declares `MIT`, and runtime packaging includes the notice. Retain the license when distributing the package.
 4. **Set GitHub About description and topics.** Use the copy below. These fields are GitHub settings; adding keywords to `plugin.json` does not update them.
-5. **Create a versioned release once acceptance is complete.** Include the 22-file runtime package, concise release notes, exact installation requirements, and known limitations. Keep the release version consistent with `plugin.json`.
+5. **Create a versioned release once acceptance is complete.** Include the self-contained runtime package, concise release notes, exact installation requirements, and known limitations. Keep the release version consistent with `plugin.json`.
 6. **Apply the selected social preview when GitHub permits upload.** The user selected A2 (price waterfall) with the exact title “B2B Pricing Companion” and no subtitle. The prepared [social-preview PNG](../assets/social-preview.png) is 1280 × 640 pixels and 971,178 bytes, below GitHub's 1 MB limit. It is illustrative artwork, not a measured report. GitHub permits a first preview upload to a public repository; a private repository must already have had an image uploaded. Upload remains pending, and visibility remains private. [GitHub social-preview guidance](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/customizing-your-repositorys-social-media-preview)
 
 ### Suggested GitHub About description

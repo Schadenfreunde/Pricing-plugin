@@ -4,9 +4,9 @@ Pricing Plugin provides reusable AI skills for B2B pricing professionals working
 
 The plugin combines seven skills with nine curated pricing references. It checks calculations and comparison assumptions, separates observed changes from unproven business causes, and saves company context only after you validate it. Calculation and report creation use tools available in your AI host.
 
-**Version:** `0.2.0` · **Installation path:** local Codex pilot in the ChatGPT desktop app · **Acceptance status:** fresh installed-host validation of this version is pending.
+**Version:** `0.2.0`
 
-[Install the local pilot](#install-the-local-codex-pilot) · [Explore the skills](#pricing-skills-and-example-questions) · [See the worked example](#gross-margin-analysis-example) · [Read the FAQ](#frequently-asked-questions)
+[Install the skills](#install-the-skills-in-codex) · [Explore the skills](#pricing-skills-and-example-questions) · [See the worked example](#gross-margin-analysis-example) · [Read the FAQ](#frequently-asked-questions)
 
 ## What you can use it for
 
@@ -25,35 +25,28 @@ The report reconciles the movement to lower realized prices, a shift toward the 
 
 Browse the [example explanation and input data](https://github.com/Schadenfreunde/Pricing-plugin/blob/c46965c769edb82084fd43843d01e6f433f19ff2/examples/README.md), or download the [HTML margin report](https://github.com/Schadenfreunde/Pricing-plugin/blob/c46965c769edb82084fd43843d01e6f433f19ff2/examples/margin-analysis.html) and open it in your browser. GitHub's file view displays HTML source rather than a hosted report. This is a synthetic illustration, not a customer result or a performance benchmark.
 
-## Install the local Codex pilot
+## Install the skills in Codex
 
-This repository provides a local pilot setup, following the [official OpenAI plugin packaging guide](https://developers.openai.com/plugins/build/plugins). Public directory availability and compatibility with other AI hosts have not been established for this package.
+Paste this into Codex to install all seven skills from GitHub:
 
-1. If you have the `pricing-plugin-v0.2.0.zip` release asset, extract it to obtain a `pricing-plugin/` folder, then place that folder at `plugins/pricing-plugin/` in your working repository. Alternatively, copy the files listed in [Runtime package](#runtime-package) into that location. Preserve their relative directory structure.
-2. Add the following marketplace entry to `.agents/plugins/marketplace.json` in that working repository. If the file already exists, merge the entry into its `plugins` array. The source path is relative to the working repository root.
-
-```json
-{
-  "name": "pricing-local",
-  "plugins": [
-    {
-      "name": "pricing-plugin",
-      "source": { "source": "local", "path": "./plugins/pricing-plugin" },
-      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
-      "category": "Productivity"
-    }
-  ]
-}
+```text
+$skill-installer Install these skills from https://github.com/Schadenfreunde/Pricing-plugin:
+- skills/pricing-intake
+- skills/pricing-analyze
+- skills/pricing-scan
+- skills/pricing-recommend
+- skills/pricing-design
+- skills/pricing-execute
+- skills/pricing-triage
 ```
 
-3. Restart the ChatGPT desktop app. Open the Plugins Directory, select the `pricing-local` marketplace, and install `pricing-plugin`.
-4. Test all seven skills and their reference loading in a fresh supported local session. Repository checks do not establish installed behavior.
+To install only one skill, keep just its path in the request. Each skill includes its own references and MIT license; no separate knowledge folder or marketplace configuration is needed. If the skills do not appear, restart Codex. See the [official skill installation guidance](https://learn.chatgpt.com/docs/build-skills#install-curated-skills-for-local-use).
 
-For a first question, supply your own transaction data and ask:
+For a first analysis, attach your transaction data and ask:
 
-> Analyze gross margin across these two periods. Verify the change before explaining it, reconcile the drivers supported by the data, and state what remains unknown.
+> $pricing-analyze Analyze gross margin across these two periods. Verify the change before explaining it, reconcile the drivers supported by the data, and state what remains unknown.
 
-Keep company facts in `.pricing/context.md` in your **working project**, outside the installed plugin. The intake skill proposes context and saves only the facts you validate. Keep evaluation answer keys out of the working project used for a trial.
+Keep validated company facts in `.pricing/context.md` in your working project. The intake skill proposes context and saves only facts you validate.
 
 ## Pricing skills and example questions
 
@@ -69,19 +62,19 @@ Keep company facts in `.pricing/context.md` in your **working project**, outside
 
 ## Pricing methods and knowledge base
 
-The skills select relevant references through the [pricing knowledge index](knowledge/index.md).
+The skills select relevant references through the [bundled pricing knowledge index](skills/pricing-analyze/references/knowledge/index.md).
 
 | Reference | What it supports |
 | --- | --- |
-| [Metric verification](knowledge/metric-verification.md) | Check metric definitions, comparable populations, periods, and calculations before explaining a reported change. |
-| [Margin drivers](knowledge/margin-drivers.md) | Quantify and reconcile supported price, cost, and mix effects; separate shared effects, residuals, and commercial causes. |
-| [Price waterfall](knowledge/price-waterfall.md) | Interpret defined list, invoice, net, and pocket price steps and the policies or exceptions governing adjustments. |
-| [Value estimation](knowledge/methods/value-estimation.md) | Assess differentiated customer value against a credible alternative, with uncertainty, negative effects, and overlapping benefits made explicit. |
-| [Segmentation](knowledge/methods/segmentation.md) | Identify economically meaningful customer/product differences and workable, enforceable pricing boundaries. |
-| [Peer comparisons](knowledge/methods/peer-comparisons.md) | Assess comparable price differences without treating an observed peer gap as an attainable target or guaranteed opportunity. |
-| [Price realization](knowledge/methods/price-realization.md) | Measure comparable realized-price changes while controlling the basket mix and distinguishing list changes from net or pocket outcomes. |
-| [Discount governance](knowledge/methods/discount-governance.md) | Apply scoped guidance, approval rules, and exceptions; assess deviations without assuming that every discount is leakage. |
-| [Price-change economics](knowledge/methods/price-change-economics.md) | Calculate conditional revenue and contribution scenarios, separate cost effects, and state the limits of unknown demand response. |
+| [Metric verification](skills/pricing-analyze/references/knowledge/metric-verification.md) | Check metric definitions, comparable populations, periods, and calculations before explaining a reported change. |
+| [Margin drivers](skills/pricing-analyze/references/knowledge/margin-drivers.md) | Quantify and reconcile supported price, cost, and mix effects; separate shared effects, residuals, and commercial causes. |
+| [Price waterfall](skills/pricing-analyze/references/knowledge/price-waterfall.md) | Interpret defined list, invoice, net, and pocket price steps and the policies or exceptions governing adjustments. |
+| [Value estimation](skills/pricing-analyze/references/knowledge/methods/value-estimation.md) | Assess differentiated customer value against a credible alternative, with uncertainty, negative effects, and overlapping benefits made explicit. |
+| [Segmentation](skills/pricing-analyze/references/knowledge/methods/segmentation.md) | Identify economically meaningful customer/product differences and workable, enforceable pricing boundaries. |
+| [Peer comparisons](skills/pricing-analyze/references/knowledge/methods/peer-comparisons.md) | Assess comparable price differences without treating an observed peer gap as an attainable target or guaranteed opportunity. |
+| [Price realization](skills/pricing-analyze/references/knowledge/methods/price-realization.md) | Measure comparable realized-price changes while controlling the basket mix and distinguishing list changes from net or pocket outcomes. |
+| [Discount governance](skills/pricing-analyze/references/knowledge/methods/discount-governance.md) | Apply scoped guidance, approval rules, and exceptions; assess deviations without assuming that every discount is leakage. |
+| [Price-change economics](skills/pricing-analyze/references/knowledge/methods/price-change-economics.md) | Calculate conditional revenue and contribution scenarios, separate cost effects, and state the limits of unknown demand response. |
 
 ## Frequently asked questions
 
@@ -99,11 +92,11 @@ Start with comparable periods, sales, and cost of goods sold, together with your
 
 ### How does it measure price realization?
 
-It compares defined realized prices on a comparable basis. Under the project's fixed-basket convention, prior-period item quantities are held constant on both sides so that changes in volume and product mix do not masquerade as price changes. See the [price-realization method](knowledge/methods/price-realization.md) for formulas, coverage rules, and limitations.
+It compares defined realized prices on a comparable basis. Under the project's fixed-basket convention, prior-period item quantities are held constant on both sides so that changes in volume and product mix do not masquerade as price changes. See the [price-realization method](skills/pricing-analyze/references/knowledge/methods/price-realization.md) for formulas, coverage rules, and limitations.
 
 ### Can it predict the revenue benefit of a price increase?
 
-When demand response is unknown, it can calculate a conditional fixed-volume scenario using prior-period item quantities and explicit proposed-price assumptions. That scenario is not a demand forecast or a guaranteed benefit. Contribution analysis also requires supported costs; see [price-change economics](knowledge/methods/price-change-economics.md).
+When demand response is unknown, it can calculate a conditional fixed-volume scenario using prior-period item quantities and explicit proposed-price assumptions. That scenario is not a demand forecast or a guaranteed benefit. Contribution analysis also requires supported costs; see [price-change economics](skills/pricing-analyze/references/knowledge/methods/price-change-economics.md).
 
 ### Does it automatically update prices or approve discounts?
 
@@ -112,10 +105,6 @@ The included skills analyze evidence and draft recommendations or implementation
 ### Does it keep company data local?
 
 The plugin stores validated context in your working project's `.pricing/context.md`; it does not bundle a separate data service. How supplied files and prompts are processed depends on your AI host, connected tools, account settings, and provider terms. Local context storage alone does not establish local-only processing.
-
-### Which AI hosts are supported?
-
-The documented setup is a local Codex pilot in the ChatGPT desktop app. Fresh installation, automatic skill discovery, and reference loading for version `0.2.0` still require host acceptance. This repository does not claim tested compatibility with other hosts.
 
 ## Validation and limitations
 
@@ -133,37 +122,16 @@ The sample HTML report illustrates presentation and arithmetic for one synthetic
 
 ## Runtime package
 
-The runtime contains 22 files. Copy only these files for the pilot; examples and evaluation fixtures are separate repository resources.
+Each folder under `skills/` is independently installable. It contains `SKILL.md`, an MIT license, and its supporting references. The six skills that use pricing methods bundle the nine curated notes and their index under `references/knowledge/`. Report guidance is included in each skill that uses it.
 
-<details>
-<summary>Show the 22 runtime files</summary>
+The combined runtime ZIP contains 83 files: the root manifest, README, and license plus the complete seven skill folders. Examples, evaluation fixtures, authoring sources, and repository artwork are separate development resources.
 
-- `plugin.json`
-- `LICENSE`
-- `README.md`
-- `skills/pricing-intake/SKILL.md`
-- `skills/pricing-intake/references/context-outline.md`
-- `skills/pricing-analyze/SKILL.md`
-- `skills/pricing-analyze/references/html-reporting.md`
-- `skills/pricing-scan/SKILL.md`
-- `skills/pricing-recommend/SKILL.md`
-- `skills/pricing-design/SKILL.md`
-- `skills/pricing-execute/SKILL.md`
-- `skills/pricing-triage/SKILL.md`
-- `knowledge/index.md`
-- `knowledge/metric-verification.md`
-- `knowledge/margin-drivers.md`
-- `knowledge/price-waterfall.md`
-- `knowledge/methods/value-estimation.md`
-- `knowledge/methods/segmentation.md`
-- `knowledge/methods/peer-comparisons.md`
-- `knowledge/methods/price-realization.md`
-- `knowledge/methods/discount-governance.md`
-- `knowledge/methods/price-change-economics.md`
+For maintainers, edit the canonical notes in `knowledge/` and the report guidance in `skills/pricing-analyze/references/html-reporting.md`, then synchronize and validate the bundles:
 
-</details>
-
-Keep their relative directory structure when packaging the plugin.
+```sh
+python3 evals/sync_skill_references.py
+python3 evals/check_package.py
+```
 
 ## License
 
