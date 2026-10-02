@@ -27,6 +27,7 @@ RUNTIME_PATHS = (
     "plugin.json", "README.md", "LICENSE",
     *(f"skills/{name}/SKILL.md" for name in SKILLS),
     *(f"skills/{name}/LICENSE" for name in SKILLS),
+    *(f"skills/knowledge/{path}" for path in KNOWLEDGE_PATHS),
     "skills/pricing-intake/references/context-outline.md",
     *(f"skills/{name}/references/html-reporting.md" for name in REPORT_SKILLS),
     *(f"skills/{name}/references/knowledge/{path}"
@@ -108,8 +109,8 @@ def check_package(root):
         if not fields.get("description", "").strip().strip("\'\""):
             raise ValueError(f"Missing description: {name}")
 
-    if len(RUNTIME_PATHS) != 83 or len(set(RUNTIME_PATHS)) != 83:
-        raise ValueError("Runtime inventory must contain 83 distinct paths")
+    if len(RUNTIME_PATHS) != 93 or len(set(RUNTIME_PATHS)) != 93:
+        raise ValueError("Runtime inventory must contain 93 distinct paths")
     allowed = {root / path for path in RUNTIME_PATHS}
     actual_files = {path for path in (root / "skills").rglob("*") if path.is_file()}
     expected_files = {path for path in allowed if path.is_relative_to(root / "skills")}
@@ -147,18 +148,18 @@ def check_package(root):
         check_skill(root / "skills" / name)
         if (root / "skills" / name / "LICENSE").read_bytes() != (root / "LICENSE").read_bytes():
             raise ValueError(f"Skill license differs from root MIT license: {name}")
-    # Authoring sources are deliberately absent from the runtime ZIP.
-    if (root / "knowledge").is_dir():
+    # Maintained knowledge and each skill-local bundle travel together in the plugin.
+    if (root / "skills/knowledge").is_dir():
         for name in KNOWLEDGE_SKILLS:
             for relative in KNOWLEDGE_PATHS:
-                if ((root / "knowledge" / relative).read_bytes()
+                if ((root / "skills/knowledge" / relative).read_bytes()
                         != (root / "skills" / name / "references/knowledge" / relative).read_bytes()):
                     raise ValueError(f"Stale bundled knowledge: {name}/{relative}; run sync_skill_references.py")
     source = root / "skills/pricing-analyze/references/html-reporting.md"
     for name in REPORT_SKILLS:
         if (root / "skills" / name / "references/html-reporting.md").read_bytes() != source.read_bytes():
             raise ValueError(f"Stale report guidance: {name}; run sync_skill_references.py")
-    return f"PASS: seven standalone skills, version 0.2.0, 83 runtime files, {checked} Markdown reference closures"
+    return f"PASS: seven standalone skills, version 0.2.0, 93 runtime files, {checked} Markdown reference closures"
 
 
 if __name__ == "__main__":

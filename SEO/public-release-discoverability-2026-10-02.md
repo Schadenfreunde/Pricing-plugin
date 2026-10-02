@@ -1,6 +1,6 @@
 # Pricing Plugin: public-release discoverability
 
-Updated packaging: 2026-10-02. Skills now bundle their own knowledge and license notices; the current runtime contains 83 files. README installation uses the GitHub skill installer without local-pilot setup. Earlier inventory counts below record historical checks.
+Updated packaging: 2026-10-02. Skills now bundle their own knowledge and license notices; the current runtime contains 93 files, including the maintained `skills/knowledge/` directory. README installation uses an agent-neutral Git-based plugin workflow without local-pilot setup. Earlier inventory counts below record historical checks.
 
 Reviewed: 2026-10-02. Scope: pre-public-release repository content, reviewed on `codex/core-pricing-skills` and prepared for delivery directly on `main`. The repository is private, as confirmed by its owner. This is a content and release-readiness review, not an assessment of live indexing, rankings, traffic, or installed-host performance.
 

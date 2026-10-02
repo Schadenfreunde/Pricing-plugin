@@ -6,7 +6,7 @@ The plugin combines seven skills with nine curated pricing references. It checks
 
 **Version:** `0.2.0`
 
-[Install the skills](#install-the-skills-in-codex) · [Explore the skills](#pricing-skills-and-example-questions) · [See the worked example](#gross-margin-analysis-example) · [Read the FAQ](#frequently-asked-questions)
+[Install the plugin](#install-the-plugin) · [Explore the skills](#pricing-skills-and-example-questions) · [See the worked example](#gross-margin-analysis-example) · [Read the FAQ](#frequently-asked-questions)
 
 ## What you can use it for
 
@@ -25,26 +25,21 @@ The report reconciles the movement to lower realized prices, a shift toward the 
 
 Browse the [example explanation and input data](https://github.com/Schadenfreunde/Pricing-plugin/blob/c46965c769edb82084fd43843d01e6f433f19ff2/examples/README.md), or download the [HTML margin report](https://github.com/Schadenfreunde/Pricing-plugin/blob/c46965c769edb82084fd43843d01e6f433f19ff2/examples/margin-analysis.html) and open it in your browser. GitHub's file view displays HTML source rather than a hosted report. This is a synthetic illustration, not a customer result or a performance benchmark.
 
-## Install the skills in Codex
+## Install the plugin
 
-Paste this into Codex to install all seven skills from GitHub:
+Use your coding agent's Git-based plugin installation workflow with this repository:
 
 ```text
-$skill-installer Install these skills from https://github.com/Schadenfreunde/Pricing-plugin:
-- skills/pricing-intake
-- skills/pricing-analyze
-- skills/pricing-scan
-- skills/pricing-recommend
-- skills/pricing-design
-- skills/pricing-execute
-- skills/pricing-triage
+https://github.com/Schadenfreunde/Pricing-plugin
 ```
 
-To install only one skill, keep just its path in the request. Each skill includes its own references and MIT license; no separate knowledge folder or marketplace configuration is needed. If the skills do not appear, restart Codex. See the [official skill installation guidance](https://learn.chatgpt.com/docs/build-skills#install-curated-skills-for-local-use).
+You can also ask your agent:
 
-For a first analysis, attach your transaction data and ask:
+> Install this repository as a plugin: https://github.com/Schadenfreunde/Pricing-plugin. Enable its seven pricing skills and bundled references.
 
-> $pricing-analyze Analyze gross margin across these two periods. Verify the change before explaining it, reconcile the drivers supported by the data, and state what remains unknown.
+Start a new session after installation. For a first analysis, attach your transaction data and ask:
+
+> Use pricing-analyze to analyze gross margin across these two periods. Verify the change before explaining it, reconcile the drivers supported by the data, and state what remains unknown.
 
 Keep validated company facts in `.pricing/context.md` in your working project. The intake skill proposes context and saves only facts you validate.
 
@@ -62,19 +57,19 @@ Keep validated company facts in `.pricing/context.md` in your working project. T
 
 ## Pricing methods and knowledge base
 
-The skills select relevant references through the [bundled pricing knowledge index](skills/pricing-analyze/references/knowledge/index.md).
+The skills select relevant references through the [bundled pricing knowledge index](skills/knowledge/index.md).
 
 | Reference | What it supports |
 | --- | --- |
-| [Metric verification](skills/pricing-analyze/references/knowledge/metric-verification.md) | Check metric definitions, comparable populations, periods, and calculations before explaining a reported change. |
-| [Margin drivers](skills/pricing-analyze/references/knowledge/margin-drivers.md) | Quantify and reconcile supported price, cost, and mix effects; separate shared effects, residuals, and commercial causes. |
-| [Price waterfall](skills/pricing-analyze/references/knowledge/price-waterfall.md) | Interpret defined list, invoice, net, and pocket price steps and the policies or exceptions governing adjustments. |
-| [Value estimation](skills/pricing-analyze/references/knowledge/methods/value-estimation.md) | Assess differentiated customer value against a credible alternative, with uncertainty, negative effects, and overlapping benefits made explicit. |
-| [Segmentation](skills/pricing-analyze/references/knowledge/methods/segmentation.md) | Identify economically meaningful customer/product differences and workable, enforceable pricing boundaries. |
-| [Peer comparisons](skills/pricing-analyze/references/knowledge/methods/peer-comparisons.md) | Assess comparable price differences without treating an observed peer gap as an attainable target or guaranteed opportunity. |
-| [Price realization](skills/pricing-analyze/references/knowledge/methods/price-realization.md) | Measure comparable realized-price changes while controlling the basket mix and distinguishing list changes from net or pocket outcomes. |
-| [Discount governance](skills/pricing-analyze/references/knowledge/methods/discount-governance.md) | Apply scoped guidance, approval rules, and exceptions; assess deviations without assuming that every discount is leakage. |
-| [Price-change economics](skills/pricing-analyze/references/knowledge/methods/price-change-economics.md) | Calculate conditional revenue and contribution scenarios, separate cost effects, and state the limits of unknown demand response. |
+| [Metric verification](skills/knowledge/metric-verification.md) | Check metric definitions, comparable populations, periods, and calculations before explaining a reported change. |
+| [Margin drivers](skills/knowledge/margin-drivers.md) | Quantify and reconcile supported price, cost, and mix effects; separate shared effects, residuals, and commercial causes. |
+| [Price waterfall](skills/knowledge/price-waterfall.md) | Interpret defined list, invoice, net, and pocket price steps and the policies or exceptions governing adjustments. |
+| [Value estimation](skills/knowledge/methods/value-estimation.md) | Assess differentiated customer value against a credible alternative, with uncertainty, negative effects, and overlapping benefits made explicit. |
+| [Segmentation](skills/knowledge/methods/segmentation.md) | Identify economically meaningful customer/product differences and workable, enforceable pricing boundaries. |
+| [Peer comparisons](skills/knowledge/methods/peer-comparisons.md) | Assess comparable price differences without treating an observed peer gap as an attainable target or guaranteed opportunity. |
+| [Price realization](skills/knowledge/methods/price-realization.md) | Measure comparable realized-price changes while controlling the basket mix and distinguishing list changes from net or pocket outcomes. |
+| [Discount governance](skills/knowledge/methods/discount-governance.md) | Apply scoped guidance, approval rules, and exceptions; assess deviations without assuming that every discount is leakage. |
+| [Price-change economics](skills/knowledge/methods/price-change-economics.md) | Calculate conditional revenue and contribution scenarios, separate cost effects, and state the limits of unknown demand response. |
 
 ## Frequently asked questions
 
@@ -92,11 +87,11 @@ Start with comparable periods, sales, and cost of goods sold, together with your
 
 ### How does it measure price realization?
 
-It compares defined realized prices on a comparable basis. Under the project's fixed-basket convention, prior-period item quantities are held constant on both sides so that changes in volume and product mix do not masquerade as price changes. See the [price-realization method](skills/pricing-analyze/references/knowledge/methods/price-realization.md) for formulas, coverage rules, and limitations.
+It compares defined realized prices on a comparable basis. Under the project's fixed-basket convention, prior-period item quantities are held constant on both sides so that changes in volume and product mix do not masquerade as price changes. See the [price-realization method](skills/knowledge/methods/price-realization.md) for formulas, coverage rules, and limitations.
 
 ### Can it predict the revenue benefit of a price increase?
 
-When demand response is unknown, it can calculate a conditional fixed-volume scenario using prior-period item quantities and explicit proposed-price assumptions. That scenario is not a demand forecast or a guaranteed benefit. Contribution analysis also requires supported costs; see [price-change economics](skills/pricing-analyze/references/knowledge/methods/price-change-economics.md).
+When demand response is unknown, it can calculate a conditional fixed-volume scenario using prior-period item quantities and explicit proposed-price assumptions. That scenario is not a demand forecast or a guaranteed benefit. Contribution analysis also requires supported costs; see [price-change economics](skills/knowledge/methods/price-change-economics.md).
 
 ### Does it automatically update prices or approve discounts?
 

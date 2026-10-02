@@ -51,11 +51,11 @@ class SkillPackagingTests(unittest.TestCase):
     def test_unsynchronized_knowledge_is_rejected(self):
         with tempfile.TemporaryDirectory() as temp:
             checkout = Path(temp)
-            for folder in ("skills", "knowledge"):
+            for folder in ("skills",):
                 shutil.copytree(ROOT / folder, checkout / folder)
             for name in ("plugin.json", "README.md", "LICENSE"):
                 shutil.copyfile(ROOT / name, checkout / name)
-            with (checkout / "knowledge/metric-verification.md").open("a") as source:
+            with (checkout / "skills/knowledge/metric-verification.md").open("a") as source:
                 source.write("\nChanged canonical note.\n")
             with self.assertRaisesRegex(ValueError, "Stale bundled knowledge"):
                 check_package(checkout)

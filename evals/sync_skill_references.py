@@ -13,7 +13,7 @@ def sync(root):
         for relative in KNOWLEDGE_PATHS:
             destination = root / "skills" / name / "references/knowledge" / relative
             destination.parent.mkdir(parents=True, exist_ok=True)
-            copyfile(root / "knowledge" / relative, destination)
+            copyfile(root / "skills/knowledge" / relative, destination)
     source = root / "skills/pricing-analyze/references/html-reporting.md"
     for name in REPORT_SKILLS:
         if name != "pricing-analyze":
