@@ -24,7 +24,7 @@ REPORT_SKILLS = (
     "pricing-analyze", "pricing-scan", "pricing-recommend", "pricing-design", "pricing-execute",
 )
 RUNTIME_PATHS = (
-    "plugin.json", "README.md", "LICENSE",
+    "plugin.json", "README.md", "INSTALL.md", "LICENSE",
     *(f"skills/{name}/SKILL.md" for name in SKILLS),
     *(f"skills/{name}/LICENSE" for name in SKILLS),
     *(f"skills/knowledge/{path}" for path in KNOWLEDGE_PATHS),
@@ -109,8 +109,8 @@ def check_package(root):
         if not fields.get("description", "").strip().strip("\'\""):
             raise ValueError(f"Missing description: {name}")
 
-    if len(RUNTIME_PATHS) != 93 or len(set(RUNTIME_PATHS)) != 93:
-        raise ValueError("Runtime inventory must contain 93 distinct paths")
+    if len(RUNTIME_PATHS) != 94 or len(set(RUNTIME_PATHS)) != 94:
+        raise ValueError("Runtime inventory must contain 94 distinct paths")
     allowed = {root / path for path in RUNTIME_PATHS}
     actual_files = {path for path in (root / "skills").rglob("*") if path.is_file()}
     expected_files = {path for path in allowed if path.is_relative_to(root / "skills")}
@@ -159,7 +159,7 @@ def check_package(root):
     for name in REPORT_SKILLS:
         if (root / "skills" / name / "references/html-reporting.md").read_bytes() != source.read_bytes():
             raise ValueError(f"Stale report guidance: {name}; run sync_skill_references.py")
-    return f"PASS: seven standalone skills, version 0.2.0, 93 runtime files, {checked} Markdown reference closures"
+    return f"PASS: seven standalone skills, version 0.2.0, 94 runtime files, {checked} Markdown reference closures"
 
 
 if __name__ == "__main__":

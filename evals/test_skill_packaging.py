@@ -53,7 +53,7 @@ class SkillPackagingTests(unittest.TestCase):
             checkout = Path(temp)
             for folder in ("skills",):
                 shutil.copytree(ROOT / folder, checkout / folder)
-            for name in ("plugin.json", "README.md", "LICENSE"):
+            for name in ("plugin.json", "README.md", "INSTALL.md", "LICENSE"):
                 shutil.copyfile(ROOT / name, checkout / name)
             with (checkout / "skills/knowledge/metric-verification.md").open("a") as source:
                 source.write("\nChanged canonical note.\n")

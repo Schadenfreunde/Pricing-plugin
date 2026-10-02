@@ -6,7 +6,7 @@ The plugin combines seven skills with nine curated pricing references. It checks
 
 **Version:** `0.2.0`
 
-[Install the plugin](#install-the-plugin) · [Explore the skills](#pricing-skills-and-example-questions) · [See the worked example](#gross-margin-analysis-example) · [Read the FAQ](#frequently-asked-questions)
+[Install the plugin](#install-the-plugin) · [Set up company context](#first-step-set-up-company-context) · [Explore the skills](#pricing-skills-and-example-questions) · [See the worked example](#gross-margin-analysis-example) · [Read the FAQ](#frequently-asked-questions)
 
 ## What you can use it for
 
@@ -15,7 +15,34 @@ The plugin combines seven skills with nine curated pricing references. It checks
 - **Pricing strategy:** compare segmentation, value-based pricing considerations, price structures, and list/discount approaches for new or existing offers.
 - **Price-increase planning:** evaluate conditional revenue and contribution scenarios, then plan rollout timing, responsibilities, exceptions, and monitoring.
 
-Start with your pricing question. Use a skill directly or combine skills when needed; there is no required sequence or full intake interview.
+Start with `pricing-intake` to establish your company context. Then use the skill that fits your pricing question, combining skills when useful.
+
+## Install the plugin
+
+Installation depends on your coding agent. Tell your agent:
+
+```text
+Fetch and follow the installation instructions from:
+https://raw.githubusercontent.com/Schadenfreunde/Pricing-plugin/refs/heads/main/INSTALL.md
+```
+
+Or install [Schadenfreunde/Pricing-plugin](https://github.com/Schadenfreunde/Pricing-plugin) through your agent's Git-based plugin installer. Start a new session after installation.
+
+## First step: set up company context
+
+**Run `pricing-intake` before your first pricing analysis or recommendation.** It establishes the company context that the other skills reuse: your products, customers, markets, pricing policies, metric definitions, and relevant exceptions.
+
+Tell your agent:
+
+```text
+Use pricing-intake to set up our company pricing context. Ask focused questions about our business and review the information I provide. Propose the facts to retain, then save the facts I confirm to .pricing/context.md in this working project.
+```
+
+Share a brief company overview and any relevant pricing policies or definitions. The skill asks for missing information, lets you confirm what to retain, and creates `.pricing/context.md` with the validated facts. You can update it through intake as your policies or understanding change.
+
+Once the context is saved, attach your data and ask the appropriate pricing question. For example:
+
+> Use pricing-analyze to analyze gross margin across these two periods. Verify the change before explaining it, reconcile the drivers supported by the data, and state what remains unknown.
 
 ## Gross margin analysis example
 
@@ -24,24 +51,6 @@ In the [synthetic worked example](https://github.com/Schadenfreunde/Pricing-plug
 The report reconciles the movement to lower realized prices, a shift toward the higher-cost product, and a shared price/mix effect. Unit costs are unchanged. It explains what changed without inventing why prices fell: the data contains no discount records or contract evidence.
 
 Browse the [example explanation and input data](https://github.com/Schadenfreunde/Pricing-plugin/blob/c46965c769edb82084fd43843d01e6f433f19ff2/examples/README.md), or download the [HTML margin report](https://github.com/Schadenfreunde/Pricing-plugin/blob/c46965c769edb82084fd43843d01e6f433f19ff2/examples/margin-analysis.html) and open it in your browser. GitHub's file view displays HTML source rather than a hosted report. This is a synthetic illustration, not a customer result or a performance benchmark.
-
-## Install the plugin
-
-Use your coding agent's Git-based plugin installation workflow with this repository:
-
-```text
-https://github.com/Schadenfreunde/Pricing-plugin
-```
-
-You can also ask your agent:
-
-> Install this repository as a plugin: https://github.com/Schadenfreunde/Pricing-plugin. Enable its seven pricing skills and bundled references.
-
-Start a new session after installation. For a first analysis, attach your transaction data and ask:
-
-> Use pricing-analyze to analyze gross margin across these two periods. Verify the change before explaining it, reconcile the drivers supported by the data, and state what remains unknown.
-
-Keep validated company facts in `.pricing/context.md` in your working project. The intake skill proposes context and saves only facts you validate.
 
 ## Pricing skills and example questions
 
