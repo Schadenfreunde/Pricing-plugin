@@ -1,0 +1,5 @@
+customer,product,prior_qty,net_unit_price,currency,quantity_unit,observed_peer_price,peer_currency
+SupportedCo,P1,100,90,EUR,unit,,
+SpeculativeCo,P2,1000,50,EUR,unit,60,EUR
+ExceptionCo,P1,100,80,EUR,unit,,
+CurrencyCo,P1,50,80,USD,unit,,

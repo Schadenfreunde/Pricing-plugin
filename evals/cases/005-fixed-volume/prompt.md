@@ -1,0 +1,5 @@
+# Fixed-volume pricing scenario
+
+We are considering the proposed prices in `data.csv`. Customer demand response is unknown. Estimate the price-only revenue effect using the previous quarter's volumes, and the contribution effect if the supplied costs support it. Explain the methodology and material limits concisely.
+
+The prior quarter is 2026 Q2 and the current quarter is 2026 Q3. All quantities are units, all unit prices and costs are EUR/unit, and both quarters cover products A and B. Baseline prices are prior-quarter realized net prices; proposed prices are hypothetical realized net prices, not approved actions or predicted realization. Net price includes all invoice discounts and rebates and excludes VAT. There are no returns, credits, currency changes or other adjustments. Unit variable costs are the relevant contribution costs and are explicitly unchanged unless a variant supplies changed proposed costs. No incremental fixed implementation costs are supplied or assumed in this base scenario.
