@@ -2,5 +2,16 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "pricing-plugin",
   "version": "0.2.0",
-  "description": "Company context, pricing analysis, opportunity discovery, recommendations, strategy design and rollout planning for industrial products and spare parts."
+  "description": "AI-assisted B2B pricing analysis, gross margin analysis, opportunity assessment, pricing strategy and price-increase planning for industrial products and spare parts.",
+  "repository": "https://github.com/Schadenfreunde/Pricing-plugin",
+  "keywords": [
+    "pricing",
+    "pricing-strategy",
+    "gross-margin",
+    "price-realization",
+    "industrial-pricing",
+    "spare-parts",
+    "b2b",
+    "agent-skills"
+  ]
 }
