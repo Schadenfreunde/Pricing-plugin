@@ -1,18 +1,38 @@
 # Pricing Plugin
 
-A plugin for pricing professionals working with industrial products and spare parts. Version `0.2.0` provides seven directly usable workflows. Start with the user's decision; there is no required sequence or full intake interview.
+A plugin for pricing professionals working with industrial products and spare parts. Version `0.2.0` includes seven skills and nine pricing knowledge references. It expands the original intake and analysis skills with opportunity scanning, recommendations, strategy design, execution planning, and lightweight triage.
 
-| Skill | Purpose |
+## Skills and uses
+
+Start with your pricing question. Each skill can be used directly, and skills can work together when the task needs it. There is no required sequence or full intake interview.
+
+| Skill name | Description | Example use |
+| --- | --- | --- |
+| [pricing-intake](skills/pricing-intake/SKILL.md) | Establish or update reusable company context: metric definitions, commercial policies, and scoped exceptions. Save only facts you validate, preserving existing context. | “Review these pricing policies and propose what to retain as company context.” |
+| [pricing-analyze](skills/pricing-analyze/SKILL.md) | Analyze pricing and margin performance. Verify reported movements, reconcile supported price/cost/mix effects, and distinguish calculations from unproven business causes. | “Why did gross margin fall?” or “Compare price realization across these periods.” |
+| [pricing-scan](skills/pricing-scan/SKILL.md) | Explore commercial data for data issues, unusual pricing, structural differences, exceptions, and opportunities. Rank opportunities by evidence confidence before considering their monetary scale. | “Find pricing opportunities in this transaction export.” |
+| [pricing-recommend](skills/pricing-recommend/SKILL.md) | Choose and prioritize actions from pricing evidence. Assess how value could be captured, with profitability, feasibility, and customer risk shown separately. | “Which of these opportunities should we act on first, and why?” |
+| [pricing-design](skills/pricing-design/SKILL.md) | Develop a strategy for a new offer or redesign existing pricing. Compare alternatives for segmentation, price structure, list/discount logic, and governance, with a practical validation or transition path. | “Design pricing for our new pump” or “Redesign our regional lists and discounts.” |
+| [pricing-execute](skills/pricing-execute/SKILL.md) | Draft a high-level implementation plan covering eligibility, contract timing, channel constraints, responsibilities, sales readiness, communication, exceptions, and realized-price monitoring. | “Plan the rollout of our agreed price increase.” |
+| [pricing-triage](skills/pricing-triage/SKILL.md) | Frame an unclear or mixed request and select the smallest useful workflow. Keep small factual questions concise and ask only material clarifying questions. | “We have lower margins and a possible price increase; where should we start?” |
+
+## Pricing knowledge base
+
+The skills select relevant references through the [knowledge index](knowledge/index.md). Version `0.2.0` adds six methods to the original metric-verification, margin-driver, and price-waterfall guidance.
+
+| Reference | What it supports |
 | --- | --- |
-| [pricing-intake](skills/pricing-intake/SKILL.md) | Establish or update reusable company facts, saving only what the user validates. |
-| [pricing-analyze](skills/pricing-analyze/SKILL.md) | Answer pricing and margin questions; verify a reported change and separate calculated effects from unproven causes. |
-| [pricing-scan](skills/pricing-scan/SKILL.md) | Find data issues, unusual pricing and opportunities, ordered by evidence confidence. |
-| [pricing-recommend](skills/pricing-recommend/SKILL.md) | Choose actions from evidence, with profitability, feasibility and risk shown separately. |
-| [pricing-design](skills/pricing-design/SKILL.md) | Develop a new strategy or redesign pricing structures and policies. |
-| [pricing-execute](skills/pricing-execute/SKILL.md) | Draft a high-level rollout plan covering eligibility, timing, responsibilities and measurement. |
-| [pricing-triage](skills/pricing-triage/SKILL.md) | Frame an unclear or mixed request and choose the smallest useful workflow. |
+| [Metric verification](knowledge/metric-verification.md) | Check metric definitions, comparable populations, periods, and calculations before explaining a reported change. |
+| [Margin drivers](knowledge/margin-drivers.md) | Quantify and reconcile supported price, cost, and mix effects; separate shared effects, residuals, and commercial causes. |
+| [Price waterfall](knowledge/price-waterfall.md) | Interpret defined list, invoice, net, and pocket price steps and the policies or exceptions governing adjustments. |
+| [Value estimation](knowledge/methods/value-estimation.md) | Assess differentiated customer value against a credible alternative, with uncertainty, negative effects, and overlapping benefits made explicit. |
+| [Segmentation](knowledge/methods/segmentation.md) | Identify economically meaningful customer/product differences and workable, enforceable pricing boundaries. |
+| [Peer comparisons](knowledge/methods/peer-comparisons.md) | Assess comparable price differences without treating an observed peer gap as an attainable target or guaranteed opportunity. |
+| [Price realization](knowledge/methods/price-realization.md) | Measure comparable realized-price changes while controlling the basket mix and distinguishing list changes from net or pocket outcomes. |
+| [Discount governance](knowledge/methods/discount-governance.md) | Apply scoped guidance, approval rules, and exceptions; assess deviations without assuming that every discount is leakage. |
+| [Price-change economics](knowledge/methods/price-change-economics.md) | Calculate conditional revenue and contribution scenarios, separate cost effects, and state the limits of unknown demand response. |
 
-The [knowledge index](knowledge/index.md) selects focused guidance on metric verification, margin drivers, price waterfalls, value, segmentation, peers, realization, discount governance and price-change economics. When demand response is unknown, price scenarios hold prior-period item quantities and basket mix constant on both sides and state their assumptions. Conditional revenue or contribution changes are distinct from forecasts and guaranteed benefits. Execution starts at a high level; detailed account/product targets and negotiation support are deferred.
+When demand response is unknown, price scenarios hold prior-period item quantities and basket mix constant on both sides and state their assumptions. Conditional revenue or contribution changes are distinct from forecasts and guaranteed benefits. Execution starts at a high level; detailed account/product targets and negotiation support are deferred.
 
 The skills use the host's available tools for calculation and report creation. There is no bundled calculation script or MCP server. A company's validated facts belong in `.pricing/context.md` in its **working project**, outside the installed plugin.
 
