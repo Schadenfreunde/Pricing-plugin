@@ -19,17 +19,17 @@ Start with your pricing question. Use a skill directly or combine skills when ne
 
 ## Gross margin analysis example
 
-In the [synthetic worked example](examples/README.md), the question reports a 300 basis point margin decline. The supplied product data instead shows gross margin falling from **30.00% to 26.53%**, a **346.94 basis point decline**.
+In the [synthetic worked example](https://github.com/Schadenfreunde/Pricing-plugin/blob/c46965c769edb82084fd43843d01e6f433f19ff2/examples/README.md), the question reports a 300 basis point margin decline. The supplied product data instead shows gross margin falling from **30.00% to 26.53%**, a **346.94 basis point decline**.
 
 The report reconciles the movement to lower realized prices, a shift toward the higher-cost product, and a shared price/mix effect. Unit costs are unchanged. It explains what changed without inventing why prices fell: the data contains no discount records or contract evidence.
 
-Browse the [example explanation and input data](examples/README.md), or download the [HTML margin report](examples/margin-analysis.html) and open it in your browser. GitHub's file view displays HTML source rather than a hosted report. This is a synthetic illustration, not a customer result or a performance benchmark.
+Browse the [example explanation and input data](https://github.com/Schadenfreunde/Pricing-plugin/blob/c46965c769edb82084fd43843d01e6f433f19ff2/examples/README.md), or download the [HTML margin report](https://github.com/Schadenfreunde/Pricing-plugin/blob/c46965c769edb82084fd43843d01e6f433f19ff2/examples/margin-analysis.html) and open it in your browser. GitHub's file view displays HTML source rather than a hosted report. This is a synthetic illustration, not a customer result or a performance benchmark.
 
 ## Install the local Codex pilot
 
 This repository provides a local pilot setup, following the [official OpenAI plugin packaging guide](https://developers.openai.com/plugins/build/plugins). Public directory availability and compatibility with other AI hosts have not been established for this package.
 
-1. Copy the files listed in [Runtime package](#runtime-package) into `plugins/pricing-plugin/` in your working repository. Preserve their relative directory structure.
+1. If you have the `pricing-plugin-v0.2.0.zip` release asset, extract it to obtain a `pricing-plugin/` folder, then place that folder at `plugins/pricing-plugin/` in your working repository. Alternatively, copy the files listed in [Runtime package](#runtime-package) into that location. Preserve their relative directory structure.
 2. Add the following marketplace entry to `.agents/plugins/marketplace.json` in that working repository. If the file already exists, merge the entry into its `plugins` array. The source path is relative to the working repository root.
 
 ```json
@@ -119,15 +119,15 @@ The documented setup is a local Codex pilot in the ChatGPT desktop app. Fresh in
 
 ## Validation and limitations
 
-The [synthetic evaluation fixtures](evals/README.md) cover margin analysis, company context, evidence ranking, fixed-volume economics, strategy, rollout, and routing. They define expected behavior; their presence alone does not show that an installed plugin passes them.
+The [synthetic evaluation fixtures](https://github.com/Schadenfreunde/Pricing-plugin/blob/c46965c769edb82084fd43843d01e6f433f19ff2/evals/README.md) cover margin analysis, company context, evidence ranking, fixed-volume economics, strategy, rollout, and routing. They define expected behavior; their presence alone does not show that an installed plugin passes them.
 
-Run the development-only package check:
+For development validation, use a full repository checkout and run:
 
 ```sh
 python3 evals/check_package.py
 ```
 
-This checks metadata, file presence, and runtime reference closure. It does not test model behavior. Evaluation inputs are in `evals/cases/`; independent evaluator keys are in `evals/expected/` and must stay out of an evaluated assistant's workspace. Keep trial outputs and context separate between runs.
+The checker and evaluation fixtures are not included in the runtime ZIP. This checks metadata, file presence, and runtime reference closure. It does not test model behavior. Evaluation inputs are in `evals/cases/`; independent evaluator keys are in `evals/expected/` and must stay out of an evaluated assistant's workspace. Keep trial outputs and context separate between runs.
 
 The sample HTML report illustrates presentation and arithmetic for one synthetic case. PDF export and page-by-page PDF inspection remain unverified. Numerical outputs and business recommendations depend on the evidence supplied and require review before commercial action.
 
