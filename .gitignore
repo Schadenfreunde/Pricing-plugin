@@ -12,6 +12,7 @@
 /evals/reports/
 /evals/examples/
 /evals/results.md
+/evals/core-expansion-results.md
 
 # Local environment and operating-system files
 .DS_Store
@@ -19,3 +20,4 @@
 .env.*
 !.env.example
 .venv/
+__pycache__/

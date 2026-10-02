@@ -1,0 +1,3 @@
+product,prior_qty,current_qty,baseline_unit_price,proposed_unit_price,baseline_unit_cost,proposed_unit_cost,currency,quantity_unit
+A,10,100,100,110,60,60,EUR,unit
+B,20,1,50,55,30,30,EUR,unit
