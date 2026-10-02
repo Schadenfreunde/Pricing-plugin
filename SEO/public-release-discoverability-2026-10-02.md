@@ -12,7 +12,7 @@ Reviewed: 2026-10-02. Scope: pre-public-release repository content, reviewed on 
 | Common capability questions were scattered across implementation prose. | README FAQ covers data requirements, price realization, scenarios, execution boundaries, privacy, and host status. | Answers help readers determine fit without interpreting skill instructions. This is a usability recommendation, not a special AI-ranking requirement. |
 | The manifest lacked repository identification and discovery keywords. | Added the canonical repository URL and eight supported subject keywords; clarified the description. | Package readers receive consistent identity and scope. Manifest metadata does not replace GitHub About settings or public web content. |
 
-The underlying skills, analytical conventions, version number, and 21-file runtime inventory are unchanged.
+The discoverability pass preserved the skills, analytical conventions, version number, and original 21-file runtime inventory. The subsequent MIT license addition increases the runtime inventory to 22 files, including `LICENSE`.
 
 GitHub recommends covering purpose, value, getting started, help, and maintenance in the README. [GitHub README guidance](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes)
 
@@ -20,9 +20,9 @@ GitHub recommends covering purpose, value, getting started, help, and maintenanc
 
 1. **Keep the intended release content on the default branch.** Remote verification confirmed that [pull request #1](https://github.com/Schadenfreunde/Pricing-plugin/pull/1) merged the seven-skill version into `main` on 2026-10-02 at 15:07:06 UTC (`ec63568`). The earlier observation used a stale local reference. This content pass supplies the README, example, and metadata improvements for the same default branch; its delivery is recorded in Git history.
 2. **Complete fresh installation acceptance.** Verify all seven skills appear and their references load in a supported host. Replace the README's pending status only after documenting that evidence. Do not add “works with Claude” or other host claims without checking them.
-3. **Choose and add a license.** The repository has no tracked `LICENSE` file. Make the intended reuse terms clear before inviting downloads or contributions; update the manifest's license field to match the chosen license. No license has been selected by this review.
+3. **License selected: MIT.** The user selected MIT on 2026-10-02. The root `LICENSE` carries the copyright notice `2026 Schadenfreunde`, the manifest declares `MIT`, and runtime packaging includes the notice. Retain the license when distributing the package.
 4. **Set GitHub About description and topics.** Use the copy below. These fields are GitHub settings; adding keywords to `plugin.json` does not update them.
-5. **Create a versioned release once acceptance is complete.** Include the 21-file runtime package, concise release notes, exact installation requirements, and known limitations. Keep the release version consistent with `plugin.json`.
+5. **Create a versioned release once acceptance is complete.** Include the 22-file runtime package, concise release notes, exact installation requirements, and known limitations. Keep the release version consistent with `plugin.json`.
 6. **Add a readable social preview.** Show the project name, industrial/spare-parts audience, and one synthetic report excerpt. This helps people assess shared links; it is not a ranking guarantee.
 
 ### Suggested GitHub About description
@@ -75,7 +75,7 @@ Google does not require special AEO markup or a particular writing style, and ex
 
 Candidate questions for those spot checks are “AI pricing analysis for industrial spare parts,” “Codex pricing plugin,” and “gross margin price mix analysis example.” These are audience hypotheses, not measured high-volume keywords. No ranking or AI-citation guarantee is implied.
 
-For current crawler and measurement details, see the [primary-source research note](discoverability-sources-2026-10-02.md). GitHub metadata settings, licensing, release creation, site deployment, and external promotion remain separate release actions; this content pass has not performed them.
+For current crawler and measurement details, see the [primary-source research note](discoverability-sources-2026-10-02.md). GitHub metadata settings, release creation, site deployment, and external promotion remain separate release actions; this content pass has not performed them.
 
 ## Verification of this content pass
 
@@ -86,3 +86,7 @@ For current crawler and measurement details, see the [primary-source research no
 - HTML description parsed successfully; the report body is unchanged. `git diff --check` passed.
 
 These are local content/package checks, not a live crawl, ranking assessment, hosted-page performance test, or behavioral acceptance result.
+
+## License update
+
+2026-10-02: Added the user-selected MIT license, manifest declaration, README license link, and runtime inclusion. Updated the package checker and current inventory documentation from 21 to 22 files. Installation acceptance remains deferred.

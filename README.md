@@ -133,12 +133,13 @@ The sample HTML report illustrates presentation and arithmetic for one synthetic
 
 ## Runtime package
 
-The runtime contains 21 files. Copy only these files for the pilot; examples and evaluation fixtures are separate repository resources.
+The runtime contains 22 files. Copy only these files for the pilot; examples and evaluation fixtures are separate repository resources.
 
 <details>
-<summary>Show the 21 runtime files</summary>
+<summary>Show the 22 runtime files</summary>
 
 - `plugin.json`
+- `LICENSE`
 - `README.md`
 - `skills/pricing-intake/SKILL.md`
 - `skills/pricing-intake/references/context-outline.md`
@@ -163,6 +164,10 @@ The runtime contains 21 files. Copy only these files for the pilot; examples and
 </details>
 
 Keep their relative directory structure when packaging the plugin.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE). Include the copyright and license notice when redistributing copies or substantial portions of the plugin.
 
 ## Project and feedback
 

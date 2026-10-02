@@ -13,5 +13,6 @@
     "spare-parts",
     "b2b",
     "agent-skills"
-  ]
+  ],
+  "license": "MIT"
 }

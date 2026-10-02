@@ -13,7 +13,7 @@ SKILLS = (
     "pricing-design", "pricing-execute", "pricing-triage",
 )
 RUNTIME_PATHS = (
-    "plugin.json", "README.md",
+    "plugin.json", "README.md", "LICENSE",
     *(f"skills/{name}/SKILL.md" for name in SKILLS),
     "skills/pricing-intake/references/context-outline.md",
     "skills/pricing-analyze/references/html-reporting.md",
@@ -63,6 +63,9 @@ def check_package(root):
         raise ValueError("Manifest must name pricing-plugin at version 0.2.0 "
                          f"(found {manifest.get('name')} / {manifest.get('version')})")
 
+    if manifest.get("license") != "MIT":
+        raise ValueError("Manifest must declare the MIT license")
+
     actual_skills = {path.parent.name for path in (root / "skills").glob("*/SKILL.md")}
     if actual_skills != set(SKILLS):
         raise ValueError(f"Expected exactly seven skill names; found {sorted(actual_skills)}")
@@ -77,8 +80,8 @@ def check_package(root):
         if not fields.get("description", "").strip().strip("\'\""):
             raise ValueError(f"Missing description: {name}")
 
-    if len(RUNTIME_PATHS) != 21 or len(set(RUNTIME_PATHS)) != 21:
-        raise ValueError("Runtime inventory must contain 21 distinct paths")
+    if len(RUNTIME_PATHS) != 22 or len(set(RUNTIME_PATHS)) != 22:
+        raise ValueError("Runtime inventory must contain 22 distinct paths")
     allowed = {root / path for path in RUNTIME_PATHS}
     for relative in RUNTIME_PATHS:
         path = root / relative
@@ -106,7 +109,7 @@ def check_package(root):
             if resolved not in allowed or not resolved.is_file():
                 raise ValueError(f"Reference outside runtime inventory in {relative}: {target}")
         checked += 1
-    return f"PASS: seven skills, version 0.2.0, 21 runtime files, {checked} Markdown reference closures"
+    return f"PASS: seven skills, version 0.2.0, 22 runtime files, {checked} Markdown reference closures"
 
 
 if __name__ == "__main__":
