@@ -26,5 +26,3 @@ Fixing quantities by item also fixes composition. This isolates price in a const
 State the prior period, covered population, price level, quantities, currency/units and assumptions in a brief method note. Disclose unmatched items, missing prior quantities, new/discontinued products and exclusions. Use a supported subset when useful; missing quantity is not zero and current quantity is not a substitute. Flag an unrepresentative prior period; do not automatically annualize it. Obtain supported adjustment mappings before converting a list-price proposal into net realization.
 
 For contribution, changed costs, breakeven and separately assumed downside scenarios, consult [price-change economics](price-change-economics.md).
-
-**Source locator:** *CPM Training 2026 Spring Amsterdam Module 5 Execution.pdf*, physical PDF p. 40, “Price monitoring around price increase is important,” supports tracking pocket versus list prices and using indices to eliminate mix changes. The specific prior-period basket formula and coverage rules above are project guidance, not a formula asserted from that slide.
