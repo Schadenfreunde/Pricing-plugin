@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Product-group gross margin | Landscape review</title>
+  <style>
+    :root { --ink:#172434; --muted:#526477; --line:#d7e0e8; --pale:#f3f7fa; --blue:#126a8a; --red:#a83d34; --red-pale:#fff0ed; }
+    * { box-sizing:border-box; }
+    html { background:#e7edf2; }
+    body { margin:0; color:var(--ink); font:17px/1.42 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif; }
+    .sheet { max-width:1120px; min-height:760px; margin:28px auto; padding:44px 56px 42px; background:#fff; box-shadow:0 8px 28px #132c4222; }
+    .eyebrow { color:var(--blue); font-size:13px; font-weight:750; letter-spacing:.09em; text-transform:uppercase; }
+    h1,h2,h3 { line-height:1.16; letter-spacing:-.025em; }
+    h1 { font-size:38px; margin:10px 0 14px; }
+    h2 { font-size:27px; margin:13px 0 17px; }
+    h3 { font-size:19px; margin:24px 0 8px; }
+    p { margin:10px 0; }
+    .lead { font-size:21px; max-width:850px; }
+    .alert { border-left:6px solid var(--red); background:var(--red-pale); padding:12px 18px; margin:22px 0; }
+    .alert strong { color:var(--red); }
+    .metrics { display:grid; grid-template-columns:repeat(3,1fr); gap:13px; margin:20px 0 27px; }
+    .metric { background:var(--pale); border:1px solid var(--line); border-radius:8px; padding:12px 17px; }
+    .metric b { display:block; font-size:29px; line-height:1.2; font-variant-numeric:tabular-nums; }
+    .metric span { color:var(--muted); font-size:14px; }
+    .metric.delta b,.negative { color:var(--red); }
+    .table-wrap { overflow-x:auto; }
+    table { width:100%; border-collapse:collapse; font-variant-numeric:tabular-nums; }
+    th,td { padding:9px 11px; border-bottom:1px solid var(--line); text-align:right; vertical-align:top; }
+    th:first-child,td:first-child { text-align:left; }
+    thead th { color:var(--muted); font-size:14px; font-weight:700; background:var(--pale); }
+    tbody tr:last-child td { border-bottom:2px solid var(--ink); font-weight:750; }
+    .bridge { border:1px solid var(--line); border-radius:8px; padding:20px 22px 16px; margin:22px 0 10px; }
+    .bridge-row { display:grid; grid-template-columns:205px minmax(100px,1fr) 115px; align-items:center; gap:18px; margin:14px 0; font-variant-numeric:tabular-nums; }
+    .bridge-row .label { font-size:17px; }
+    .bridge-row .track { height:22px; background:var(--pale); border-radius:4px; overflow:hidden; }
+    .bridge-row .fill { display:block; height:100%; background:var(--red); }
+    .bridge-row .value { text-align:right; font-size:17px; font-weight:750; }
+    .bridge-note,.small { color:var(--muted); font-size:15px; }
+    .rates { max-width:720px; margin-top:21px; }
+    .choices { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin:18px 0 25px; }
+    .choice { border:1px solid var(--line); border-left:5px solid var(--blue); border-radius:6px; padding:13px 17px; background:var(--pale); }
+    .choice h3 { margin:0 0 7px; }
+    .choice p { margin:0; }
+    .formula { background:var(--pale); border:1px solid var(--line); border-radius:6px; padding:12px 16px; font:15px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace; overflow-wrap:anywhere; }
+    .source { border-top:1px solid var(--line); color:var(--muted); font-size:13px; margin-top:24px; padding-top:10px; }
+    @media (max-width:760px) {
+      .sheet { min-height:0; margin:0 0 16px; padding:27px 20px; }
+      h1 { font-size:30px; } h2 { font-size:24px; }
+      .metrics,.choices { grid-template-columns:1fr; }
+      .bridge-row { grid-template-columns:120px minmax(60px,1fr) 83px; gap:8px; }
+      .bridge-row .label,.bridge-row .value { font-size:13px; }
+      th,td { padding:7px 5px; font-size:13px; }
+    }
+    @page { size:A4 landscape; margin:11mm 12mm; }
+    @media print {
+      html { background:white; }
+      body { color:#111; font-size:12pt; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      .sheet { max-width:none; min-height:0; margin:0; padding:0; box-shadow:none; break-after:page; page-break-after:always; }
+      .sheet:last-child { break-after:auto; page-break-after:auto; }
+      .eyebrow { font-size:10pt; }
+      h1 { font-size:27pt; } h2 { font-size:20pt; } h3 { font-size:14pt; }
+      .lead { font-size:15pt; }
+      .metric b { font-size:22pt; } .metric span { font-size:10pt; }
+      .bridge-row { grid-template-columns:45mm 1fr 27mm; gap:4mm; margin:3mm 0; }
+      .bridge-row .label,.bridge-row .value { font-size:12pt; }
+      .bridge-row .track { height:5mm; }
+      .bridge-note,.small { font-size:10.5pt; }
+      .formula { font-size:10.5pt; }
+      .source { font-size:9.5pt; }
+      .alert,.metrics,.bridge,.bridge-row,.choice,table,.formula { break-inside:avoid; page-break-inside:avoid; }
+      .table-wrap { overflow:visible; }
+      h1,h2,h3 { break-after:avoid; page-break-after:avoid; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <section class="sheet" aria-labelledby="overview-heading">
+    <div class="eyebrow">Quarter comparison · Product group A + B · 01 / 03</div>
+    <h1 id="overview-heading">Gross margin declined by 346.94 bp</h1>
+    <p class="lead">Lower realized prices and a shift toward higher-cost product B explain the change in the supplied figures.</p>
+    <div class="alert"><strong>The stated 300 bp does not reconcile.</strong> Calculated group margin fell from 30.00% to 26.53%, a 346.94 bp decline: 46.94 bp beyond the amount in the question.</div>
+    <div class="metrics" aria-label="Key results">
+      <div class="metric"><b>30.00%</b><span>Previous quarter margin</span></div>
+      <div class="metric"><b>26.53%</b><span>Current quarter margin</span></div>
+      <div class="metric delta"><b>−346.94 bp</b><span>Calculated movement</span></div>
+    </div>
+    <h2>What changed in the group totals</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>EUR unless noted</th><th>Previous</th><th>Current</th><th>Change</th></tr></thead>
+      <tbody>
+        <tr><td>Units, A / B</td><td>50 / 50</td><td>40 / 60</td><td>Total 100 in both</td></tr>
+        <tr><td>Realized unit price, A / B</td><td>100 / 100</td><td>98 / 98</td><td>−2 each</td></tr>
+        <tr><td>Sales</td><td>10,000</td><td>9,800</td><td>−200</td></tr>
+        <tr><td>COGS</td><td>7,000</td><td>7,200</td><td>+200</td></tr>
+        <tr><td>Gross profit</td><td>3,000</td><td>2,600</td><td>−400</td></tr>
+        <tr><td>Gross margin</td><td>30.00%</td><td>26.53%</td><td class="negative">−346.94 bp</td></tr>
+      </tbody>
+    </table></div>
+    <p>Unit COGS stayed at €60 for A and €80 for B. Selling 10 fewer A units and 10 more B units raised total COGS by €200, with no change in total units.</p>
+  </section>
+
+  <section class="sheet" aria-labelledby="bridge-heading">
+    <div class="eyebrow">Reconciliation · Product group A + B · 02 / 03</div>
+    <h2 id="bridge-heading">Reconciled margin bridge</h2>
+    <p>The bars show the size of each contribution to the 346.94 bp decline. They are accounting attributions under the stated counterfactual method.</p>
+    <div class="bridge" role="img" aria-label="Realized price minus 142.86 basis points, product mix and quantity minus 200 basis points, shared price-mix effect minus 4.08 basis points; together minus 346.94 basis points.">
+      <div class="bridge-row"><span class="label">Realized price</span><span class="track"><span class="fill" style="width:71.43%"></span></span><span class="value">−142.86 bp</span></div>
+      <div class="bridge-row"><span class="label">Product mix / quantity</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="value">−200.00 bp</span></div>
+      <div class="bridge-row"><span class="label">Shared effect</span><span class="track"><span class="fill" style="width:2.04%"></span></span><span class="value">−4.08 bp</span></div>
+    </div>
+    <p class="bridge-note">Scale: the longest bar is 200 bp. The shared effect is a calculated overlap, not an unexplained residual. Unrounded contributions sum to −346.9387755 bp; residual is zero.</p>
+    <h3>Counterfactual rates</h3>
+    <div class="table-wrap rates"><table>
+      <thead><tr><th>Counterfactual rate</th><th>Gross margin</th></tr></thead>
+      <tbody>
+        <tr><td>Old prices, old quantities</td><td>30.00000%</td></tr>
+        <tr><td>New prices, old quantities</td><td>28.57143%</td></tr>
+        <tr><td>Old prices, new quantities</td><td>28.00000%</td></tr>
+        <tr><td>New prices, new quantities</td><td>26.53061%</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="sheet" aria-labelledby="meaning-heading">
+    <div class="eyebrow">Interpretation and next steps · Product group A + B · 03 / 03</div>
+    <h2 id="meaning-heading">What the data can and cannot explain</h2>
+    <p>The supplied figures show <em>what</em> changed: realized price fell for both products, and the sales mix moved toward B. They do not show <em>why</em> realized prices fell. No list prices, discount records, contracts, or policy evidence were supplied, so a claim about discounting or a pricing decision would be speculation.</p>
+    <p>The supplied totals also do not explain why the product mix changed. The bridge measures contributions to the margin movement; it does not identify commercial causes.</p>
+    <h3>Choose the next investigation</h3>
+    <div class="choices">
+      <div class="choice"><h3>Reconcile the reported 300 bp</h3><p>If it came from another report or definition, compare that source, its population and adjustments with the supplied figures to explain the 46.94 bp difference.</p></div>
+      <div class="choice"><h3>Investigate realized prices</h3><p>Review transaction prices, discount/rebate records or contracts to learn why realized prices fell for A and B.</p></div>
+    </div>
+    <h3>Method and scope</h3>
+    <p>Sales = quantity × realized unit price; COGS = quantity × unit COGS; group margin = (total sales − total COGS) / total sales. Product margins are sales-weighted through group totals.</p>
+    <div class="formula">G(p,q) = 1 − Σ(qᵢcᵢ) / Σ(qᵢpᵢ)<br>Price = G(p₁,q₀) − G(p₀,q₀)<br>Mix / quantity = G(p₀,q₁) − G(p₀,q₀)<br>Shared = G(p₁,q₁) − G(p₁,q₀) − G(p₀,q₁) + G(p₀,q₀)</div>
+    <p class="small">The two-factor method uses the supplied unchanged unit costs. The calculation order does not represent the order of business events. Supplied facts describe this synthetic case; they are not validated company policy.</p>
+    <div class="source">Sources: attached data.csv and supplied-facts.md only · Product-group margin analysis · 2 October 2026</div>
+  </section>
+</main>
+</body>
+</html>

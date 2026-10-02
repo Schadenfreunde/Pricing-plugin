@@ -1,0 +1,21 @@
+# Local project history, source material, and company context
+/docs/
+/references/
+/curriculum-repository/
+/PROJECT_GUIDE.md
+/.local/
+/.pricing/
+/.superpowers/
+
+# Local evaluation evidence and design history
+/evals/runs/
+/evals/reports/
+/evals/examples/
+/evals/results.md
+
+# Local environment and operating-system files
+.DS_Store
+.env
+.env.*
+!.env.example
+.venv/

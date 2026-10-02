@@ -1,0 +1,6 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "pricing-plugin",
+  "version": "0.1.0",
+  "description": "Pricing intake and ad hoc analysis for industrial products and spare parts."
+}
