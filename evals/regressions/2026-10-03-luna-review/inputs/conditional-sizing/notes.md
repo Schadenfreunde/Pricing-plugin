@@ -1,0 +1,1 @@
+The peer match for T1 and T2 controls product, period, unit, geography, channel, service and contract type. T2's current price may reflect the confirmed scoped exception. No exception record in a quote extract does not prove that an exception is absent. T3 and T4 lack comparable controls. No volume response or realization evidence is supplied.

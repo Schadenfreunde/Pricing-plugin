@@ -1,0 +1,5 @@
+quote,customer,product,region,channel,date,controlled_net_eur,policy_floor_eur,approval_threshold_eur
+K1,Oriole,Sensor-R,DE,direct,2026-09-12,91,90,95
+K2,Pine,Sensor-R,DE,direct,2026-09-12,88,90,95
+K3,Quartz,Sensor-R,DE,direct,2026-09-12,92,90,95
+K4,Oriole,Sensor-S,DE,direct,2026-09-12,89,90,95

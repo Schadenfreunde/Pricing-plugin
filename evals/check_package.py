@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check the development checkout's runtime inventory; does not test model behavior."""
+"""Validate the complete plugin's shared resources and local documentation links."""
 
 import json
 import re
@@ -15,28 +15,21 @@ SKILLS = (
 KNOWLEDGE_PATHS = (
     "index.md", "metric-verification.md", "margin-drivers.md", "price-waterfall.md",
     *(f"methods/{name}.md" for name in (
-        "value-estimation", "segmentation", "peer-comparisons",
-        "price-realization", "discount-governance", "price-change-economics",
+        "value-estimation", "segmentation", "peer-comparisons", "price-realization",
+        "discount-governance", "price-change-economics", "evidence-ranking",
     )),
-)
-KNOWLEDGE_SKILLS = tuple(name for name in SKILLS if name != "pricing-intake")
-REPORT_SKILLS = (
-    "pricing-analyze", "pricing-scan", "pricing-recommend", "pricing-design", "pricing-execute",
 )
 RUNTIME_PATHS = (
     "plugin.json", "README.md", "INSTALL.md", "LICENSE",
     *(f"skills/{name}/SKILL.md" for name in SKILLS),
-    *(f"skills/{name}/LICENSE" for name in SKILLS),
     *(f"skills/knowledge/{path}" for path in KNOWLEDGE_PATHS),
     "skills/pricing-intake/references/context-outline.md",
-    *(f"skills/{name}/references/html-reporting.md" for name in REPORT_SKILLS),
-    *(f"skills/{name}/references/knowledge/{path}"
-      for name in KNOWLEDGE_SKILLS for path in KNOWLEDGE_PATHS),
+    *(f"skills/references/{name}.md" for name in ("html-reporting", "pdf-export", "handoff")),
 )
 
 
 def prose(markdown):
-    """Omit fenced code, including tilde fences and longer closing fences."""
+    """Omit fenced examples, including tilde fences and longer closing fences."""
     lines = []
     fence_char, fence_length = None, 0
     for line in markdown.splitlines():
@@ -45,8 +38,7 @@ def prose(markdown):
             if (marker and marker[1][0] == fence_char
                     and len(marker[1]) >= fence_length and not marker[2].strip()):
                 fence_char = None
-            continue
-        if marker:
+        elif marker:
             fence_char, fence_length = marker[1][0], len(marker[1])
         else:
             lines.append(line)
@@ -54,7 +46,6 @@ def prose(markdown):
 
 
 def link_targets(markdown):
-    # Inline links/images plus reference definitions. Titles are not paths.
     destination = r'(<[^>]+>|[^\s)]+)'
     yield from (match[1].strip("<>") for match in re.finditer(
         r'!?\[[^\]]*\]\(\s*' + destination + r'(?:\s+[\'\"][^\n]*?[\'\"])?\s*\)',
@@ -65,39 +56,94 @@ def link_targets(markdown):
     ))
 
 
-def check_skill(folder):
-    """Every installed skill must resolve its file links without sibling skills."""
-    folder = Path(folder).resolve()
+def anchors(path):
+    body = prose(path.read_text())
+    result = set(re.findall(r'\b(?:id|name)=["\']([^"\']+)["\']', body))
+    counts = {}
+    if path.suffix == ".md":
+        for title in re.findall(r"^ {0,3}#{1,6}\s+(.+?)\s*#*$", body, re.MULTILINE):
+            slug = re.sub(r"[^\w\s-]", "", title.lower()).replace(" ", "-")
+            count = counts.get(slug, 0)
+            counts[slug] = count + 1
+            result.add(f"{slug}-{count}" if count else slug)
+    return result
+
+
+def check_links(path, root, allowed=None):
+    for target in link_targets(prose(path.read_text())):
+        parsed = urlsplit(target)
+        if parsed.scheme or parsed.netloc:
+            continue
+        decoded = unquote(parsed.path)
+        resolved = (path.parent / decoded).resolve() if decoded else path
+        if (Path(decoded).is_absolute() or not resolved.is_relative_to(root)
+                or not resolved.is_file() or (allowed is not None and resolved not in allowed)):
+            raise ValueError(f"Missing or unsupported reference in {path.relative_to(root)}: {target}")
+        if parsed.fragment and unquote(parsed.fragment) not in anchors(resolved):
+            raise ValueError(f"Missing anchor in {path.relative_to(root)}: {target}")
+
+
+def check_layout(root):
+    if len(set(RUNTIME_PATHS)) != len(RUNTIME_PATHS):
+        raise ValueError("Duplicate runtime inventory path")
+    skills = root / "skills"
+    if skills.is_symlink() or any(path.is_symlink() for path in skills.rglob("*")):
+        raise ValueError("Symlink in plugin resources")
+    allowed = {root / path for path in RUNTIME_PATHS}
+    for path in allowed:
+        if not path.is_file() or path.resolve() != path:
+            raise ValueError(f"Missing complete-plugin resource: {path.relative_to(root)}")
+    expected = {path for path in allowed if path.is_relative_to(skills)}
+    actual = {path for path in skills.rglob("*") if path.is_file()}
+    if actual != expected:
+        raise ValueError("Skill inventory mismatch; unexpected: "
+                         f"{sorted(str(p.relative_to(root)) for p in actual - expected)}")
+    return allowed
+
+
+def check_runtime_links(root, allowed):
     checked = 0
-    for path in folder.rglob("*"):
-        if path.is_symlink():
-            raise ValueError(f"Symlink in standalone skill: {path.name}")
-    for path in folder.rglob("*.md"):
+    for path in sorted(allowed):
+        if not path.is_relative_to(root / "skills") or path.suffix != ".md":
+            continue
         body = prose(path.read_text())
-        for target in link_targets(body):
-            parsed = urlsplit(target)
-            if parsed.scheme or parsed.netloc or not parsed.path:
-                continue
-            resolved = (path.parent / unquote(parsed.path)).resolve()
-            if not resolved.is_relative_to(folder) or not resolved.is_file():
-                raise ValueError(f"Reference outside standalone skill in {path.name}: {target}")
+        if re.search(r"/(?:Users|home|private|tmp)/|[A-Za-z]:\\", body):
+            raise ValueError(f"Absolute developer path in {path.relative_to(root)}")
+        if "references/curriculum-repository" in body:
+            raise ValueError(f"Ignored curriculum dependency in {path.relative_to(root)}")
+        check_links(path, root, allowed)
         checked += 1
     return checked
 
 
+def check_skill(folder):
+    """Validate a skill in its complete installation, without repairing its source."""
+    folder = Path(folder).resolve()
+    if folder.name not in SKILLS or folder.parent.name != "skills":
+        raise ValueError("Install the complete plugin with all seven skills and shared resources")
+    root = folder.parent.parent
+    return check_runtime_links(root, check_layout(root))
+
+
+def check_documentation(root):
+    paths = [root / "README.md", root / "INSTALL.md"]
+    for directory in ("examples", "assets", "SEO"):
+        paths.extend(sorted((root / directory).glob("*.md")))
+    for path in paths:
+        check_links(path, root)
+    return len(paths)
+
+
 def check_package(root):
     root = Path(root).resolve()
+    allowed = check_layout(root)
     manifest = json.loads((root / "plugin.json").read_text())
-    if manifest.get("name") != "pricing-plugin" or manifest.get("version") != "0.2.0":
-        raise ValueError("Manifest must name pricing-plugin at version 0.2.0 "
-                         f"(found {manifest.get('name')} / {manifest.get('version')})")
-
+    version = manifest.get("version", "")
+    if manifest.get("name") != "pricing-plugin" or not re.fullmatch(
+            r"\d+\.\d+\.\d+(?:-[\w.-]+)?(?:\+[\w.-]+)?", version):
+        raise ValueError("Manifest must name pricing-plugin with a semantic version")
     if manifest.get("license") != "MIT":
         raise ValueError("Manifest must declare the MIT license")
-
-    actual_skills = {path.parent.name for path in (root / "skills").glob("*/SKILL.md")}
-    if actual_skills != set(SKILLS):
-        raise ValueError(f"Expected exactly seven skill names; found {sorted(actual_skills)}")
     for name in SKILLS:
         source = (root / "skills" / name / "SKILL.md").read_text()
         frontmatter = re.match(r"\A---\n(.*?)\n---(?:\n|$)", source, re.DOTALL)
@@ -108,58 +154,11 @@ def check_package(root):
             raise ValueError(f"Frontmatter name does not match folder: {name}")
         if not fields.get("description", "").strip().strip("\'\""):
             raise ValueError(f"Missing description: {name}")
-
-    if len(RUNTIME_PATHS) != 94 or len(set(RUNTIME_PATHS)) != 94:
-        raise ValueError("Runtime inventory must contain 94 distinct paths")
-    allowed = {root / path for path in RUNTIME_PATHS}
-    actual_files = {path for path in (root / "skills").rglob("*") if path.is_file()}
-    expected_files = {path for path in allowed if path.is_relative_to(root / "skills")}
-    if actual_files != expected_files:
-        raise ValueError("Skill folders must exactly match the runtime inventory; "
-                         f"unexpected: {sorted(str(p.relative_to(root)) for p in actual_files - expected_files)}; "
-                         f"missing: {sorted(str(p.relative_to(root)) for p in expected_files - actual_files)}")
-    for relative in RUNTIME_PATHS:
-        path = root / relative
-        if not path.is_file() or path.resolve() != path:
-            raise ValueError(f"Missing runtime file or symlink outside inventory: {relative}")
-
-    checked = 0
-    for relative in RUNTIME_PATHS:
-        if not relative.startswith("skills/") or not relative.endswith(".md"):
-            continue
-        path = root / relative
-        body = prose(path.read_text())
-        if re.search(r"/(?:Users|home|private|tmp)/|[A-Za-z]:\\", body):
-            raise ValueError(f"Absolute developer path in {relative}")
-        if "references/curriculum-repository" in body:
-            raise ValueError(f"Ignored curriculum dependency in {relative}")
-        for target in link_targets(body):
-            parsed = urlsplit(target)
-            if parsed.scheme or parsed.netloc or not parsed.path:
-                continue
-            decoded = unquote(parsed.path)
-            if Path(decoded).is_absolute():
-                raise ValueError(f"Absolute reference in {relative}: {target}")
-            resolved = (path.parent / decoded).resolve()
-            if resolved not in allowed or not resolved.is_file():
-                raise ValueError(f"Reference outside runtime inventory in {relative}: {target}")
-        checked += 1
-    for name in SKILLS:
-        check_skill(root / "skills" / name)
-        if (root / "skills" / name / "LICENSE").read_bytes() != (root / "LICENSE").read_bytes():
-            raise ValueError(f"Skill license differs from root MIT license: {name}")
-    # Maintained knowledge and each skill-local bundle travel together in the plugin.
-    if (root / "skills/knowledge").is_dir():
-        for name in KNOWLEDGE_SKILLS:
-            for relative in KNOWLEDGE_PATHS:
-                if ((root / "skills/knowledge" / relative).read_bytes()
-                        != (root / "skills" / name / "references/knowledge" / relative).read_bytes()):
-                    raise ValueError(f"Stale bundled knowledge: {name}/{relative}; run sync_skill_references.py")
-    source = root / "skills/pricing-analyze/references/html-reporting.md"
-    for name in REPORT_SKILLS:
-        if (root / "skills" / name / "references/html-reporting.md").read_bytes() != source.read_bytes():
-            raise ValueError(f"Stale report guidance: {name}; run sync_skill_references.py")
-    return f"PASS: seven standalone skills, version 0.2.0, 94 runtime files, {checked} Markdown reference closures"
+    checked = check_runtime_links(root, allowed)
+    docs = check_documentation(root)
+    return (f"PASS: {len(SKILLS)} interdependent skills, version {version}, "
+            f"{len(RUNTIME_PATHS)} runtime files, {checked} runtime Markdown files, "
+            f"{docs} documentation files")
 
 
 if __name__ == "__main__":

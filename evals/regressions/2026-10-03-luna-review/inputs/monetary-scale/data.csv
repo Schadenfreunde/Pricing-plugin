@@ -1,0 +1,6 @@
+period,sku,units,price_value,currency,price_basis
+Base,GLN,500,30,EUR,net_invoice
+Spring,GLN,500,33,EUR,net_invoice
+Base,HBR,120,50,USD,list
+Spring,HBR,180,56,EUR,net_invoice
+Spring,IVY,70,20,EUR,net_invoice

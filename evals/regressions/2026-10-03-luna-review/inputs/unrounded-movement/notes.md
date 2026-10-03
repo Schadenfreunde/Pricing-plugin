@@ -1,0 +1,1 @@
+Validated company context (user-confirmed, 2026-08-28): Invoice = list − invoice discount + invoice surcharge; net = invoice − off-invoice rebate; pocket price = net − freight. This mapping and EUR/unit basis apply to Dune and Elm. The reported gross-margin percentage definition is not in the approved glossary.

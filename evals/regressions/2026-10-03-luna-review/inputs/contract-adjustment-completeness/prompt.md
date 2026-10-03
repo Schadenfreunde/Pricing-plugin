@@ -1,0 +1,1 @@
+This fictional account's renewal pricing is disputed. Can you map the plausible readings and calculate the price range under the signed terms? It may affect quotes already sent, so tell me which event/date controls if the text does not settle it.

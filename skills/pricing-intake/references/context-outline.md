@@ -1,12 +1,12 @@
-# Optional company context outline
+# Optional context prompts
 
-Use these prompts selectively when the current task needs them. They are not a form to complete or a template to write to `.pricing/context.md`.
+Use only task-relevant prompts:
+- Company scope: products, customers, markets and channels.
+- Definitions: metrics/cost treatment, price levels and adjustments.
+- Conventions: fiscal calendar, periods, currency/FX basis and units.
+- Reusable data mappings: source/schema, row grain, identifiers and price/cost columns.
+- Scoped rules: region/business/product/channel differences, authority and contract/discount policies.
+- Exceptions: rule and applicable customers/products.
+- History: brief signposts of material structure changes.
 
-- Business scope: products, customers, markets, channels, and the population covered by the context.
-- Definitions: margin and other metrics, numerator/denominator, cost treatment, and the company's price waterfall or named price levels.
-- Conventions: fiscal calendar, comparison periods, currencies, units, and conversion rules.
-- Scoped differences: rules that vary by region, business unit, product group, or channel.
-- Exceptions: the exception and the specific customers/products it applies to; add other detail only if needed to interpret it.
-- Brief history: signposts such as a major segmentation change and when it happened, without reproducing old rulebooks.
-
-Optional when relevant: discount and contract policies, rebates, customer/product hierarchies, cost allocation, pricing authority, and strategy. For a particular data source, clarify schema, row meaning, mappings, and coverage as the task requires. Persist reusable answers only after user validation; task-specific unknowns can remain in the conversation.
+Validate reusable facts through intake. Each dataset still needs coverage, matching and adjustment checks; temporary gaps/findings belong with the analysis. This outline is optional, not a required form or stored template.

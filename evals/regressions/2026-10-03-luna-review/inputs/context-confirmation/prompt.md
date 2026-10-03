@@ -1,0 +1,1 @@
+Review the current policy memo and the signed addendum, then update our reusable pricing context with the confirmed parts. I’m correcting one detail: the exception ends on November 15, 2026, not November 30. Keep the unresolved statements separate.

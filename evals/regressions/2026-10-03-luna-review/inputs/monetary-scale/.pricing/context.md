@@ -1,0 +1,1 @@
+The validated business price metric is realized net-invoice price per shipped unit, in transaction currency. For this extract, only GLN has matching periods on that same basis and currency. HBR's basis/currency changes, and IVY has no baseline period. The supplied 5% pocket-price summary is unverified; no rebates, freight, or other pocket adjustments are in this extract.

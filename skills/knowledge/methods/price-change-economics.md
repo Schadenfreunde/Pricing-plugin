@@ -1,33 +1,37 @@
-# Economics of a price-change scenario
+# Economics of a proposed price change
 
-Use this reference to compare a pricing action's conditional revenue/contribution effects and the volume response needed to preserve contribution. Establish eligibility, effective period, comparable realized price level and relevant costs. A precise calculation does not establish that a proposed price can be captured.
+Establish eligibility, period, comparable realized-price basis and relevant costs. Proposed prices are assumptions; a precise scenario does not prove capture. List-to-net/pocket proposals need supported discount/rebate mappings. Missing quantities or realization evidence limit revenue sizing; missing relevant costs limit contribution/profit sizing.
 
 ## Fixed-volume base
 
-When demand response is unknown, use the previous relevant period's item quantities on both sides following [price realization](price-realization.md). The price-only revenue difference is `Σ q0_i × (p_prop_i − p_base_i)`. Identify the proposed prices as assumptions; explain the fixed period, coverage, volume and basket mix. This is a scenario, not guaranteed uplift or a demand forecast.
+When future demand response is unknown, use prior-period item quantities `q0_i` on both sides. Use prior realized baseline prices `p_base_i`, or a documented current effective baseline explicitly named against the same quantities. With assumed proposed realized prices `p_prop_i`:
 
-Use a supported net/pocket mapping when starting with list-price changes. Unknown discounts, eligibility or rebates prevent an unconditional realization estimate. Unknown quantities permit a qualitative answer or supported subset, not fabricated volumes or silent use of current quantities.
+```text
+Baseline revenue = Σ q0_i × p_base_i
+Proposed revenue = Σ q0_i × p_prop_i
+Price-only difference = Σ q0_i × (p_prop_i − p_base_i)
+```
 
-## Contribution and profit
+State period, coverage, units/currency and fixed volume/mix. Disclose unmatched/new items, missing history and exclusions; use supported subsets rather than zero/fabricated quantities or current-volume substitutions. Flag unrepresentative history and avoid automatic annualization. This is conditional, not guaranteed uplift or a demand forecast.
 
-Use costs relevant to the decision. Recorded COGS or arbitrary customer allocations are not automatically incremental/avoidable unit costs. With defined unit costs:
+## Contribution and response
+
+Recorded COGS/allocated overhead are not automatically relevant incremental/avoidable costs. With defined unit costs:
 
 ```text
 Baseline contribution = Σ q0_i × (p_base_i − c_base_i)
 Proposed contribution = Σ q0_i × (p_prop_i − c_prop_i)
-Contribution difference = price-only revenue difference − Σ q0_i × (c_prop_i − c_base_i)
+Contribution difference = price-only difference − Σ q0_i × (c_prop_i − c_base_i)
 ```
 
-If unit costs are explicitly unchanged, the price-only revenue and contribution differences are equal before incremental action costs. If this evidence is absent, show revenue and identify the cost condition rather than claim profit. Subtract supported incremental implementation costs when estimating profit and name the resulting measure. Explain price and cost effects separately. Recompute margin rates from scenario totals on the defined cost/sales basis; monetary uplift is not a percentage-point margin movement.
+Explicitly unchanged costs make revenue and contribution differences equal before incremental action costs. Otherwise separate price/cost effects. Subtract supported implementation costs for a defined profit measure; recompute margin rates from scenario totals.
 
-## Response uncertainty and breakeven
+Keep quantity-response sensitivities separate and explicit. Historical price/volume association does not identify elasticity; distributor shipments do not establish end-user demand.
 
-Offer a separately labelled sensitivity scenario when useful, using explicit quantity assumptions or supported response evidence. Historical price/volume association alone does not identify elasticity; other demand drivers, customer selection and channel stocking can affect the relationship. Do not infer end-user demand from distributor shipments.
-
-For a single comparable product with unchanged incremental fixed costs, baseline unit contribution `CM0 = p0 − c0`, absolute unit-price change `Δp`, and unit-cost change `Δc`, the unit-volume change preserving contribution is:
+For one product, unchanged incremental fixed costs, `CM0 = p0 − c0` and absolute unit-price/cost changes `Δp, Δc`:
 
 ```text
-Δq / q0 = −(Δp − Δc) / (CM0 + Δp − Δc)
+Contribution-preserving Δq / q0 = −(Δp − Δc) / (CM0 + Δp − Δc)
 ```
 
-Use consistent currency/unit amounts and positive proposed unit contribution. If it is zero/negative, or costs/capacity/fixed costs change beyond this model, state the limitation and use an appropriate scenario instead. Do not mechanically apply this single-product threshold to a changing portfolio. It is a breakeven threshold, not a predicted response. No automatic extrapolation from one prior period to an annual benefit.
+Require consistent units and positive proposed unit contribution. Changed capacity/fixed costs, nonpositive contribution or portfolio mix require another scenario. This describes breakeven; future response requires separate evidence.

@@ -1,20 +1,13 @@
 ---
 name: pricing-recommend
-description: Use when a user asks which pricing actions to take, how to prioritize pricing opportunities, or what decision follows from pricing evidence.
+description: Use when choosing or prioritizing actions from pricing evidence.
 ---
 
 # Pricing recommendations
 
-Use other pricing skills by name when they are installed and useful; they are optional. If one is unavailable, continue the supported task with these bundled references and state any material limits. For company-context updates, propose relevant facts, save only user-validated facts, and preserve unrelated existing facts and scoped exceptions. A clear direct user correction validates that fact without another approval request.
+Read confirmed `.pricing/context.md` in the working project. Caveat material reliance on unvalidated claims; use [intake](../pricing-intake/SKILL.md) for context changes.
 
-Help the user choose a commercially defensible action. Establish the decision and relevant constraints; reuse supplied analysis rather than automatically repeat a broad scan. A useful recommendation connects evidence to a plausible capture mechanism, feasible options and material tradeoffs. It can recommend validation, a limited trial or no immediate change when the evidence is weak.
-
-Read relevant company facts from `.pricing/context.md` in the working project and apply `pricing-intake` to proposed additions or disputes. Use document claims provisionally with material caveats; save only user-validated facts. Select the needed methods through the [knowledge index](references/knowledge/index.md), and use `pricing-analyze` when a missing calculation or explanation would change the decision.
-
-Rank opportunities primarily by confidence in evidence relevant to action: comparable price/metric definitions and populations, data reconciliation, peer controls, policy/exception scope and capture mechanism. Distinguish confidence in an observed price gap from confidence that correcting it is justified or the price can be realized. Explain qualitative confidence briefly rather than invent probabilities. Layer profitability, implementation effort and customer risk onto the evidence assessment; within similar confidence they help compare alternatives. Keep those dimensions visible rather than blend them into a score that lets large speculative upside dominate. Material risk can change the chosen action without changing the evidence order.
-
-For each material option, explain what would change, why it could capture value, eligibility/constraints, conditional impact if supported, and what could defeat it. A policy floor, historical peer price or value estimate is not automatically an optimal target. Consider contract timing, differentiated value/service, channel economics and alternatives to a blanket increase when relevant. Keep unvalidated leads and data corrections separate from actionable-opportunity totals.
-
-When demand response is unknown, use [price-change economics](references/knowledge/methods/price-change-economics.md): apply defined baseline and explicitly assumed proposed realized prices to the previous relevant period's item quantities on both sides. State the period, scope, fixed volume/mix and method. Unsupported quantities or realization mappings limit the calculation; absent costs permit revenue scenarios, not unconditional profit claims. Optional downside/sensitivity assumptions are separate scenarios, not estimated elasticity. Do not call a static benefit guaranteed or automatically annualize it.
-
-Lead with the recommended action and supporting reason, relevant alternatives, material qualifications and next evidence. Match requested depth and format; use the existing [report guidance](references/html-reporting.md) when an artifact helps. Offer the next step rather than expand into a detailed rollout. A recommendation does not itself authorize changing commercial systems or sending communications.
+1. Establish the decision and constraints; reuse supplied findings. Use [analysis](../pricing-analyze/SKILL.md) only for gaps that could change the choice.
+2. Order candidates with [evidence ranking](../knowledge/methods/evidence-ranking.md), keeping profitability, effort and customer risk visible. Material risk can change the chosen action while preserving the evidence order.
+3. Compare viable options: what changes, eligibility, value-capture mechanism, supported conditional impact, tradeoffs and what could defeat them. Consider contract timing, value/service, channels and alternatives to a blanket increase where relevant. Floors, peer prices and value estimates do not establish optimal targets. For useful sizing despite unknown response/capture, use [price-change economics](../knowledge/methods/price-change-economics.md).
+4. Lead with the chosen action and reason, relevant alternatives, material qualifications and next evidence. Weak evidence may justify validation, a trial or no immediate change. Use [design](../pricing-design/SKILL.md) for structure creation and [execute](../pricing-execute/SKILL.md) for requested rollout planning. Recommendations authorize neither system changes nor communications. Use [report guidance](../references/html-reporting.md) when an artifact helps and a [handoff](../references/handoff.md) for continued work.

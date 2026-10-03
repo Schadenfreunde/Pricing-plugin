@@ -1,44 +1,24 @@
-# Synthetic pricing evaluation fixtures
+# Validation
 
-The original three synthetic cases compare an ordinary assistant and the pricing plugin. Cases 004–008 extend acceptance for version 0.2.0. `cases/` contains model-visible inputs and explicitly marked controller instructions. `expected/` contains independent evaluator keys; never put those keys or this repository root in an evaluated assistant's workspace. For each run, use a fresh workspace containing only one case's selected inputs. Keep outputs and persistent company context outside the next run's workspace. Reviewers should open the keys only after saving the outputs.
+## Structural checks
 
-For the original Phase 1 comparison, run each of cases 001–003 once in each condition: six initial analyses. Re-run only if a result is unstable or a change warrants it. Use the case `prompt.md` verbatim as the user request and attach its other files. Give both conditions the same tool access and this instruction: “Use only the attached evidence for business claims; show calculations and caveats at a useful level of detail.” For case 001, also give both: “Create an HTML analysis and a printable PDF of it.” Do not add reviewer calculations to either prompt. Record each answer, artifacts, time, and token use when available. Supply equivalent confirmed facts to the baseline if plugin context is preloaded, and isolate runs so neither inherits a prior answer.
+From the full repository, run:
 
-Compare premise correction, arithmetic and reconciliation, evidence discipline, scope of confirmed context, handling of conflicts, and usefulness. Score HTML and PDF readability separately from analytical correctness. Check numerical differences against the stated calculation convention and display rounding, rather than an arbitrary tolerance. Case 001's selected presentation separates price, mix, and their shared effect; it does not prescribe a general multi-driver method.
+```sh
+python3 -B evals/check_package.py
+python3 -B evals/test_skill_packaging.py
+```
 
-## Intake: validate a proposed fact
+The standard-library checks validate the complete plugin as shipped: skill metadata, root MIT license, one shared knowledge tree, explicit runtime inventory, reference closure and local documentation file/heading links. Counts are derived from the inventory. Tests copy original sources without repairing them and reject incomplete installs, missing/undeclared resources, symlinks and duplicate knowledge. Canonical edits need no synchronization.
 
-In a fresh workspace, present the case 003 unvalidated note as a candidate company fact. Ask the assistant to review it, then have the evaluation user explicitly validate or reject a scoped statement. Inspect the proposed save before persistence. Save only the exact validated statement, reload it in a new session, and confirm the assistant distinguishes it from the original unvalidated note. Check the context files before and after; the note must not be saved automatically. Give the baseline condition the same validated fact when comparing later analysis.
+These are structural checks. Installed discovery/reference loading and model behavior require separate acceptance.
 
-## Intake: partial confirmation preserves existing context
+## Focused regressions
 
-In a fresh project workspace, seed `.pricing/context.md` with a confirmed exception for Customer C1 on Product P1. Supply a document proposing two new company facts: the fiscal calendar starts in April, and gross margin excludes freight. Ask the intake skill to review the document. It should show both as proposals in the conversation and save neither yet. The evaluation user then confirms only the April fiscal calendar. Inspect the proposed edit and saved file: the C1/P1 exception remains intact, the April fiscal calendar is added, and the freight claim is absent. Reload `.pricing/context.md` in a fresh session and verify that only the exception and fiscal calendar are treated as confirmed. This scenario defines expected behavior, not a completed installed-skill result.
+[`regressions/2026-10-03-luna-review/criteria.json`](regressions/2026-10-03-luna-review/criteria.json) records review points 1–6 with portable synthetic inputs. Keep criteria separate from solver inputs. Behavioral reruns are pending; the contract-adjustment case requires its unincorporated draft method. Local review outputs are not part of the package.
 
-## Supplementary analysis checks
+## Legacy fixtures
 
-- **Ambiguous comparison:** In a fresh workspace, ask, “How did gross margin change for this product group?” Supply comparable quarterly data across two years but no requested baseline. The assistant should ask which comparison matters and offer quarter-on-quarter and year-on-year without launching a full intake interview. Then have the evaluation user request **both**; the assistant should calculate and label both comparisons using the supplied data, verify any reported premise, and state material limits. A single forced comparison fails this check.
-- **Small factual answer:** In a fresh workspace, provide validated company context defining one price-waterfall term, then ask, “What does our net price include?” The assistant should answer concisely from that confirmed definition, cite its scope if relevant, and avoid a broad intake interview or unnecessary HTML. A missing definition should prompt one targeted clarification rather than an invented company rule.
+`cases/` and `expected/` contain historical synthetic inputs and independent keys. They are deprecated as the current acceptance suite; retain them for arithmetic and historical reference. A fresh end-to-end suite with data and cases is planned. No additional variants or token benchmarks are being added to the legacy cases.
 
-These are scenarios and outcome checks. Installed-host evaluation remains open; development-only manual trials do not establish that the installed plugin passes them.
-
-## Version 0.2.0 acceptance
-
-This increment adds focused acceptance cases, rather than repeating the six-run Phase 1 baseline benchmark. Historical local results in `evals/results.md` retain their original modes and limitations. Record new attempts in the ignored `evals/core-expansion-results.md`, with outputs under `evals/runs/2026-10-02-core-expansion/<case>/<variant>/`.
-
-| Case | Behavior under review | Inputs and isolated variants |
-| --- | --- | --- |
-| 004 — evidence ranking | Evidence confidence precedes commercial overlays; observed gaps differ from actionable capture; contract/currency scope is preserved. | `prompt.md`, `data.csv`, `notes.md`; seed `confirmed-context.md`. Controller constructs the quantity-free variant using `variants.md`. |
-| 005 — fixed volume | Prior-period item quantities on both sides hold volume/mix fixed; revenue differs from contribution and forecasts. | `prompt.md`, `data.csv`. Controller constructs five separate input variants from `variants.md`: missing costs, missing quantities, unmatched item, changed costs, and list-only proposal. |
-| 006 — design | Both new strategy and redesign give workable alternatives without inventing customer value or authority. | Run `greenfield-prompt.md` and `redesign-prompt.md` separately, each with `brief.md` and seeded `confirmed-context.md`. |
-| 007 — rollout | High-level sequencing, contract/channel constraints, roles to assign, readiness, exceptions and realized monitoring. | `prompt.md`, `brief.md`; seed `confirmed-context.md`. Missing inputs must not become numerical uplift or approved decisions. |
-| 008 — routing | Explicit tasks enter directly; mixed requests receive focused framing; small factual answers stay small. | Controller supplies one row at a time from `prompts.md`, constructing only that row's inputs. Run the missing-definition variant separately. |
-
-Controller instructions, variant recipes and evaluator keys must be withheld from the evaluated assistant. Seed only the explicitly validated synthetic facts in the working project's `.pricing/context.md`; unvalidated brief claims remain task evidence, not confirmed rules. Preserve exceptions and inspect context before/after where persistence matters. Each attempt uses only selected case inputs and the runtime plugin in a fresh workspace, without the repository root, design/plan, prior answers or reviewer reports.
-
-Use the matching key only after saving the output. Assess evidence ranking and capture confidence separately from numerical scale. For fixed-volume scenarios, assess period, coverage, units/currency, realized-price assumptions, constant basket/mix and limitations as well as arithmetic. Missing quantities are exclusions with disclosed coverage, not zero or current-volume substitutions. List-only changes do not prove realized net changes. A useful qualitative answer can pass without a number or artifact.
-
-Record each check as **passed**, **failed** or **pending**, naming its mode: static package validation, independent fixture arithmetic, instruction review, manual instruction trial, or installed-host behavior. A reviewer reading skills and keys is conducting instruction review; it is not a blind behavioral evaluation. An instruction trial does not prove automatic installed discovery or reference loading.
-
-Run `python3 evals/check_package.py` for the seven skill identities, version, MIT license, 94-file inventory, standalone skill reference closure, and synchronized reference copies. Run `python3 evals/test_skill_packaging.py` to test isolated skill folders and rejection of missing references, external links, symlinks, and stale knowledge copies. These checks use Python's standard library, belong only to development, and make no behavior or installed-host claim. Follow structural checks with supported fresh installed discovery of all seven skills and reference loading. Targeted Phase 1 regressions are case 001's verified endpoints/bridge, case 003's scoped exception/conflict, partial-confirmation intake save/reload, and the small factual answer. Inspect actual generated HTML/PDF artifacts under the existing report rules. If the host checks or artifacts are unavailable, leave those checks pending explicitly.
-
-Maintain the pricing notes under `skills/knowledge/`. After editing those notes or the reporting guidance in `skills/pricing-analyze/references/html-reporting.md`, run `python3 evals/sync_skill_references.py` before validation. Each skill retains its own reference bundle for independent installation.
+For future evaluated runs, isolate inputs and confirmed context from keys, previous outputs and reviewer reports. Keep actual numerical correctness, evidence use, context persistence and artifact quality distinct from static validation.

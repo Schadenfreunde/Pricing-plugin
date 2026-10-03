@@ -1,6 +1,6 @@
-# Pricing Plugin: public-release discoverability
+# Pricing Plugin: public discoverability
 
-Updated packaging: 2026-10-02. Skills now bundle their own knowledge and license notices; the current runtime contains 94 files, including the maintained `skills/knowledge/` directory. README installation uses an agent-neutral Git-based plugin workflow without local-pilot setup. Earlier inventory counts below record historical checks.
+Updated packaging: 2026-10-03. Install the complete plugin through Git. All seven skills share `skills/knowledge/`, reporting references and the root license; individual-skill bundles are no longer supported. The package checker derives the current inventory.
 
 Reviewed: 2026-10-02. Scope: pre-public-release repository content, reviewed on `codex/core-pricing-skills` and prepared for delivery directly on `main`. The repository is private, as confirmed by its owner. This is a content and release-readiness review, not an assessment of live indexing, rankings, traffic, or installed-host performance.
 
@@ -9,12 +9,12 @@ Reviewed: 2026-10-02. Scope: pre-public-release repository content, reviewed on 
 | Finding | Change prepared | Why it matters |
 | --- | --- | --- |
 | The generic “Pricing Plugin” title did not identify the type of pricing work. | README title and opening identify AI-assisted B2B pricing analysis for industrial products and spare parts. | Visitors can distinguish the project from ecommerce pricing-table plugins or model-token pricing tools. |
-| Package inventory appeared before installation and the practical demonstration. | README brings use cases, the worked example, and local installation forward; the inventory remains available in an expandable section. | A new visitor can assess usefulness and find the next step quickly. |
+| Package inventory appeared before installation and the practical demonstration. | README brings use cases, installation and the worked example forward. | A new visitor can assess usefulness and find the next step quickly. |
 | The HTML sample required reading source or downloading before seeing its result. | `examples/README.md` now explains inputs, verified results, reconciliation, and limitations in text; HTML title and description identify the example. | The demonstration is understandable in GitHub's normal Markdown view. The HTML metadata becomes useful if the report is later hosted. |
 | Common capability questions were scattered across implementation prose. | README FAQ covers data requirements, price realization, scenarios, execution boundaries, privacy, and host status. | Answers help readers determine fit without interpreting skill instructions. This is a usability recommendation, not a special AI-ranking requirement. |
 | The manifest lacked repository identification and discovery keywords. | Added the canonical repository URL and eight supported subject keywords; clarified the description. | Package readers receive consistent identity and scope. Manifest metadata does not replace GitHub About settings or public web content. |
 
-The discoverability pass preserved the skills, analytical conventions, version number, and original 21-file runtime inventory. The subsequent MIT license addition increases the runtime inventory to 22 files, including `LICENSE`.
+The original discoverability pass preserved the analytical conventions and version number. Subsequent changes added MIT licensing and consolidated shared resources.
 
 GitHub recommends covering purpose, value, getting started, help, and maintenance in the README. [GitHub README guidance](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes)
 
@@ -24,7 +24,7 @@ GitHub recommends covering purpose, value, getting started, help, and maintenanc
 2. **Complete fresh installation acceptance.** Verify all seven skills appear and their references load in a supported host. Replace the README's pending status only after documenting that evidence. Do not add “works with Claude” or other host claims without checking them.
 3. **License selected: MIT.** The user selected MIT on 2026-10-02. The root `LICENSE` carries the copyright notice `2026 Schadenfreunde`, the manifest declares `MIT`, and runtime packaging includes the notice. Retain the license when distributing the package.
 4. **Set GitHub About description and topics.** Use the copy below. These fields are GitHub settings; adding keywords to `plugin.json` does not update them.
-5. **Create a versioned release once acceptance is complete.** Include the self-contained runtime package, concise release notes, exact installation requirements, and known limitations. Keep the release version consistent with `plugin.json`.
+5. **Distribute the complete plugin through Git.** Keep installation requirements, verified host support and known limitations current. Document a revision when recording acceptance results.
 6. **Apply the selected social preview when GitHub permits upload.** The user selected A2 (price waterfall) with the exact title “B2B Pricing Companion” and no subtitle. The prepared [social-preview PNG](../assets/social-preview.png) is 1280 × 640 pixels and 971,178 bytes, below GitHub's 1 MB limit. It is illustrative artwork, not a measured report. GitHub permits a first preview upload to a public repository; a private repository must already have had an image uploaded. Upload remains pending, and visibility remains private. [GitHub social-preview guidance](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/customizing-your-repositorys-social-media-preview)
 
 ### Suggested GitHub About description
@@ -58,7 +58,7 @@ Start with these distinct reader needs rather than generating pages for every ke
 | Page | Reader's question | Content to use |
 | --- | --- | --- |
 | Overview | What does this plugin do, and who is it for? | README purpose, capabilities, supported host status, and next step. |
-| Installation | How do I install it and verify it works? | Tested installation procedure, release download, and verified troubleshooting. |
+| Installation | How do I install it and verify it works? | Tested Git-based installation procedure and verified troubleshooting. |
 | Gross margin worked example | How does it explain price and mix effects? | Existing synthetic inputs, arithmetic, report, and evidence limitations. |
 | Price-realization worked example | How do I compare prices without confusing mix changes? | A reviewed walkthrough of case 005 and the fixed-basket method, labeled as a scenario. |
 | Methods and limitations | Which methods are used, and when do they apply? | Concise explanations linked to curated method cards and sources; clearly identify project conventions. |
@@ -69,7 +69,7 @@ For answer-engine discovery on an owned site, check that public pages load witho
 
 Google does not require special AEO markup or a particular writing style, and explicitly says `llms.txt` does not improve its visibility or rankings. Prioritize original worked examples, accurate claims, and accessible documentation. [Google generative AI optimization guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)
 
-## After release: distribution and measurement
+## After publication: distribution and measurement
 
 - Publish one substantive walkthrough in a relevant pricing or industrial community, linking directly to installation and the example. Use synthetic data and identify the demonstrated limits.
 - Seek listings in relevant skill/plugin directories only when their package requirements and host compatibility are satisfied. Public GitHub availability alone does not establish marketplace listing.
@@ -77,11 +77,11 @@ Google does not require special AEO markup or a particular writing style, and ex
 
 Candidate questions for those spot checks are “AI pricing analysis for industrial spare parts,” “Codex pricing plugin,” and “gross margin price mix analysis example.” These are audience hypotheses, not measured high-volume keywords. No ranking or AI-citation guarantee is implied.
 
-For current crawler and measurement details, see the [primary-source research note](discoverability-sources-2026-10-02.md). GitHub metadata settings, release creation, site deployment, and external promotion remain separate release actions; this content pass has not performed them.
+For current crawler and measurement details, see the [primary-source research note](discoverability-sources-2026-10-02.md). GitHub metadata settings, site deployment and external promotion remain separate publication actions; this content pass has not performed them.
 
 ## Verification of this content pass
 
-- Package checker passed: seven skills, version `0.2.0`, 21 runtime files, and 19 runtime Markdown reference closures.
+- The package checker passed for the content pass. Use its current output for the inventory after subsequent packaging changes.
 - All 35 local Markdown links and heading anchors in the four edited/new Markdown documents resolved.
 - Manifest additions use fields/types supported by the published schema; README marketplace JSON parsed successfully. No installed-host metadata acceptance is claimed.
 - Independently recomputed the synthetic example's margin rates and all four displayed bridge values from its CSV; the unrounded contributions reconcile exactly.
@@ -91,4 +91,4 @@ These are local content/package checks, not a live crawl, ranking assessment, ho
 
 ## License update
 
-2026-10-02: Added the user-selected MIT license, manifest declaration, README license link, and runtime inclusion. Updated the package checker and current inventory documentation from 21 to 22 files. Installation acceptance remains deferred.
+2026-10-02: Added the user-selected MIT license, manifest declaration, README license link and runtime inclusion. Installation acceptance remains deferred.

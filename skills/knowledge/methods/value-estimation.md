@@ -1,19 +1,13 @@
 # Estimate differentiated customer value
 
-Use this reference to reason about value-informed pricing for a new offer or a redesign. Estimate value relative to the buyer's credible next-best alternative, not relative to having nothing. Buyer value, seller economics and competitive alternatives play different roles; none alone establishes an optimal selling price.
+Compare the offer with the buyer's credible next-best alternative, including existing equipment where relevant. Buyer value, seller economics and competition serve different purposes; none determines an optimal selling price alone.
 
-## Establish the comparison and evidence
+Establish buyer/use case, actual alternative, product/service scope and supported price basis. Do not invent competitor quotes or assume one alternative fits every segment.
 
-Identify the relevant buyer/use case, actual alternative, included product/service scope and price basis. An alternative can be a competitor offer, continuing with existing equipment or another way to solve the problem. Its relevance and current price need evidence; do not invent a quote or assume one alternative applies to every segment.
+Assess supported positive/negative differences: operating savings, output/quality, downtime, installation, integration, training, maintenance and adoption risk. Separate measured inputs, estimates and hypotheses; a few credible drivers beat elaborate fabricated inputs.
 
-Identify supported positive and negative differences: operating cost savings, output/quality gains, reduced downtime, installation/integration/training, maintenance and adoption risk where relevant. Distinguish measured inputs from estimates and hypotheses. A small number of recognizable, decision-relevant drivers is more useful than an elaborate model with fabricated inputs.
+Align currency, unit, utilization and time horizon/timing. Annual savings cannot be added to a one-time equipment price without that treatment. Avoid overlaps such as downtime counted again in maintenance savings. Missing costs or uncertain realization are not zero. Use supported conditional ranges or qualitative direction when inputs are incomplete.
 
-Quantify benefits on a comparable currency, unit, utilization and time basis. Annual savings cannot be added directly to a one-time equipment price without a declared horizon/timing treatment and relevant costs. Avoid double counting, such as counting avoided downtime in both maintenance savings and an uptime benefit. Missing costs and uncertain benefit realization are not zero. Show conditional ranges/scenarios when supported; if material inputs are absent, offer a qualitative direction and identify what would enable quantification.
+Value creation differs from willingness to pay and captured price; adoption effort, purchasing constraints, risk and timing matter. Credible usable differences may justify [segmentation](segmentation.md).
 
-## Interpret value before choosing a price
-
-Economic value creation differs from willingness to pay and value captured in price. Customers may discount technical benefits because of adoption effort, purchasing constraints, risk, timing or uncertainty. Different uses/utilization can produce different value, motivating [segmentation](segmentation.md) when the differences are credible and operationally usable.
-
-A supported value estimate informs price options and communication; it is not a formula compelling the customer to pay that amount. Avoid a universal “capture X% of value” rule. Compare plausible price/structure choices with competitive alternatives, relevant seller economics, feasibility and evidence about customer acceptance. Recommendations need a credible capture mechanism and proportionate validation rather than just a numerical benefit.
-
-Validate important assumptions with the appropriate customer/internal evidence before treating the estimate as established. Document-extracted claims may inform the current task provisionally but require user validation before entering reusable company context. A useful first strategy can remain qualitative.
+Compare price/structure options against alternatives, seller economics, feasibility and customer acceptance. A value estimate neither compels payment nor supports a universal capture percentage. Validate important assumptions before treating an estimate as established; recommendations need a plausible capture mechanism.

@@ -1,0 +1,4 @@
+period,sku,units,list_per_unit,invoice_discount_per_unit,invoice_surcharge_per_unit,off_invoice_rebate_per_unit,freight_per_unit,pocket_cost_per_unit,reported_gross_margin_pct
+Q1,Dune,60,200,10,0,5,8,140,29
+Q2,Dune,60,200,10,0,5,12,140,26
+Q2,Elm,30,150,18,0,0,NA,98,24

@@ -1,0 +1,5 @@
+lead,product,region,channel,customer,net_eur_per_unit,peer_net_eur_per_unit,peer_match,adjustments_reconciled,annual_units,contract_status,exception_recorded
+T1,Arc-3,Italy,direct,Northstar,74,79,yes,yes,1500,renewal_due_2026-12-01,none found in extract
+T2,Arc-3,Italy,direct,Vale,76,79,yes,yes,700,active through 2026-10-31,yes
+T3,Arc-3,Spain,direct,Westbay,68,82,no,no,5000,unknown,none found in extract
+T4,Arc-3,Italy,reseller,Eastline,76,79,no,no,2400,channel agreement,none found in extract

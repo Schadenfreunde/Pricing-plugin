@@ -1,133 +1,110 @@
 # Pricing Plugin: AI-assisted pricing analysis for industrial products
 
-Pricing Plugin provides reusable AI skills for B2B pricing professionals working with industrial products and spare parts. Use it to analyze gross margin changes, compare realized prices, investigate pricing opportunities, design pricing strategies, and plan price-increase rollouts.
+Pricing Plugin provides seven connected AI skills for B2B industrial-products and spare-parts pricing: analyze margins and realized prices, discover opportunities, choose actions, design structures and plan rollouts.
 
-The plugin combines seven skills with nine curated pricing references. It checks calculations and comparison assumptions, separates observed changes from unproven business causes, and saves company context only after you validate it. Calculation and report creation use tools available in your AI host.
+The skills share curated pricing knowledge, check comparison assumptions and retain company facts only after validation. Calculation and artifacts use the tools available in your AI host.
 
 **Version:** `0.2.0`
 
-[Install the plugin](#install-the-plugin) · [Set up company context](#first-step-set-up-company-context) · [Explore the skills](#pricing-skills-and-example-questions) · [See the worked example](#gross-margin-analysis-example) · [Read the FAQ](#frequently-asked-questions)
-
-## What you can use it for
-
-- **Gross margin analysis:** verify a reported movement and reconcile supported price, cost, and mix effects.
-- **Pricing opportunity analysis:** investigate comparable price differences, commercial exceptions, and data issues before recommending actions.
-- **Pricing strategy:** compare segmentation, value-based pricing considerations, price structures, and list/discount approaches for new or existing offers.
-- **Price-increase planning:** evaluate conditional revenue and contribution scenarios, then plan rollout timing, responsibilities, exceptions, and monitoring.
-
-Start with `pricing-intake` to establish your company context. Then use the skill that fits your pricing question, combining skills when useful.
+[Install](#install-the-plugin) · [Company context](#recommended-first-step-company-context) · [Skills](#pricing-skills-and-example-questions) · [Worked example](#gross-margin-analysis-example) · [FAQ](#frequently-asked-questions)
 
 ## Install the plugin
 
-Installation depends on your coding agent. Tell your agent:
+Install the complete plugin so all seven skills and shared references are available together. Tell your coding agent:
 
 ```text
 Fetch and follow the installation instructions from:
 https://raw.githubusercontent.com/Schadenfreunde/Pricing-plugin/refs/heads/main/INSTALL.md
 ```
 
-Or install [Schadenfreunde/Pricing-plugin](https://github.com/Schadenfreunde/Pricing-plugin) through your agent's Git-based plugin installer. Start a new session after installation.
+Or use your agent's Git-based plugin installer for [Schadenfreunde/Pricing-plugin](https://github.com/Schadenfreunde/Pricing-plugin). Start a fresh session if required. Skills load only the instructions and methods needed for the task.
 
-## First step: set up company context
+## Recommended first step: company context
 
-**Run `pricing-intake` before your first pricing analysis or recommendation.** It establishes the company context that the other skills reuse: your products, customers, markets, pricing policies, metric definitions, and relevant exceptions.
-
-Tell your agent:
+Use `pricing-intake` to establish reusable context, or start directly with your pricing question when enough information is available.
 
 ```text
-Use pricing-intake to set up our company pricing context. Ask focused questions about our business and review the information I provide. Propose the facts to retain, then save the facts I confirm to .pricing/context.md in this working project.
+Use pricing-intake to review our company pricing context. Propose relevant facts and save only those I confirm to .pricing/context.md in this working project.
 ```
 
-Share a brief company overview and any relevant pricing policies or definitions. The skill asks for missing information, lets you confirm what to retain, and creates `.pricing/context.md` with the validated facts. You can update it through intake as your policies or understanding change.
+In a new directory, you can supply a `context.md` from another project. Intake checks its company/scope and applicability, reuses previously validated facts and clarifies changes. Otherwise share a brief overview and relevant definitions or policies; no complete intake interview is required.
 
-Once the context is saved, attach your data and ask the appropriate pricing question. For example:
+Context can retain validated price/metric definitions, calendar, units/currencies, reusable data mappings, policies and scoped exceptions. Each new dataset still needs coverage and comparison checks. Analysis findings and proposals stay with the answer/report; a separate handoff brief is saved only when requested.
 
-> Use pricing-analyze to analyze gross margin across these two periods. Verify the change before explaining it, reconcile the drivers supported by the data, and state what remains unknown.
+Attach data and ask the relevant skill, for example:
+
+> Use pricing-analyze to explain the gross margin movement. Verify the change, reconcile supported drivers and state what remains unknown.
 
 ## Gross margin analysis example
 
-In the [synthetic worked example](https://github.com/Schadenfreunde/Pricing-plugin/blob/c46965c769edb82084fd43843d01e6f433f19ff2/examples/README.md), the question reports a 300 basis point margin decline. The supplied product data instead shows gross margin falling from **30.00% to 26.53%**, a **346.94 basis point decline**.
+The [synthetic worked example](examples/README.md) reports a 300 basis point decline. Its data instead shows margin falling from **30.00% to 26.53%**, a **346.94 basis point decline**.
 
-The report reconciles the movement to lower realized prices, a shift toward the higher-cost product, and a shared price/mix effect. Unit costs are unchanged. It explains what changed without inventing why prices fell: the data contains no discount records or contract evidence.
-
-Browse the [example explanation and input data](https://github.com/Schadenfreunde/Pricing-plugin/blob/c46965c769edb82084fd43843d01e6f433f19ff2/examples/README.md), or download the [HTML margin report](https://github.com/Schadenfreunde/Pricing-plugin/blob/c46965c769edb82084fd43843d01e6f433f19ff2/examples/margin-analysis.html) and open it in your browser. GitHub's file view displays HTML source rather than a hosted report. This is a synthetic illustration, not a customer result or a performance benchmark.
+The [HTML report](examples/margin-analysis.html) reconciles realized-price, product-mix and shared effects with unchanged unit costs. It identifies accounting changes without inventing why prices fell. Download/open the HTML in a browser; GitHub displays source. This illustration establishes neither customer results nor installed-host performance.
 
 ## Pricing skills and example questions
 
-| Skill name | Description | Example use |
+| Skill | Result | Example |
 | --- | --- | --- |
-| [pricing-intake](skills/pricing-intake/SKILL.md) | Establish or update reusable company context: metric definitions, commercial policies, and scoped exceptions. Save only facts you validate, preserving existing context. | “Review these pricing policies and propose what to retain as company context.” |
-| [pricing-analyze](skills/pricing-analyze/SKILL.md) | Analyze pricing and margin performance. Verify reported movements, reconcile supported price/cost/mix effects, and distinguish calculations from unproven business causes. | “Why did gross margin fall?” or “Compare price realization across these periods.” |
-| [pricing-scan](skills/pricing-scan/SKILL.md) | Explore commercial data for data issues, unusual pricing, structural differences, exceptions, and opportunities. Rank opportunities by evidence confidence before considering their monetary scale. | “Find pricing opportunities in this transaction export.” |
-| [pricing-recommend](skills/pricing-recommend/SKILL.md) | Choose and prioritize actions from pricing evidence. Assess how value could be captured, with profitability, feasibility, and customer risk shown separately. | “Which of these opportunities should we act on first, and why?” |
-| [pricing-design](skills/pricing-design/SKILL.md) | Develop a strategy for a new offer or redesign existing pricing. Compare alternatives for segmentation, price structure, list/discount logic, and governance, with a practical validation or transition path. | “Design pricing for our new pump” or “Redesign our regional lists and discounts.” |
-| [pricing-execute](skills/pricing-execute/SKILL.md) | Draft a high-level implementation plan covering eligibility, contract timing, channel constraints, responsibilities, sales readiness, communication, exceptions, and realized-price monitoring. | “Plan the rollout of our agreed price increase.” |
-| [pricing-triage](skills/pricing-triage/SKILL.md) | Frame an unclear or mixed request and select the smallest useful workflow. Keep small factual questions concise and ask only material clarifying questions. | “We have lower margins and a possible price increase; where should we start?” |
+| [pricing-intake](skills/pricing-intake/SKILL.md) | Validated reusable company context | “Review these policies and propose what to retain.” |
+| [pricing-analyze](skills/pricing-analyze/SKILL.md) | Verified calculations and performance explanations | “Why did gross margin fall?” |
+| [pricing-scan](skills/pricing-scan/SKILL.md) | Data fitness → classified findings → evidence-ranked leads | “Find opportunities in this export.” |
+| [pricing-recommend](skills/pricing-recommend/SKILL.md) | Action choice with capture mechanism and tradeoffs | “Which leads should we act on?” |
+| [pricing-design](skills/pricing-design/SKILL.md) | Chosen strategy or pricing structure | “Design pump pricing” or “Redesign our discounts.” |
+| [pricing-execute](skills/pricing-execute/SKILL.md) | High-level rollout, dependencies and readiness | “Plan our agreed price increase.” |
+| [pricing-triage](skills/pricing-triage/SKILL.md) | Focused clarification, routing or brief definitions | “Where should we start?” |
 
-## Pricing methods and knowledge base
+Explicit tasks enter directly. Combine workflows when useful, carrying existing evidence and decision status forward.
 
-The skills select relevant references through the [bundled pricing knowledge index](skills/knowledge/index.md).
+## Shared pricing methods
 
-| Reference | What it supports |
+All pricing knowledge lives in [skills/knowledge](skills/knowledge/index.md); reporting and handoffs use shared workflow references.
+
+| Reference | Supports |
 | --- | --- |
-| [Metric verification](skills/knowledge/metric-verification.md) | Check metric definitions, comparable populations, periods, and calculations before explaining a reported change. |
-| [Margin drivers](skills/knowledge/margin-drivers.md) | Quantify and reconcile supported price, cost, and mix effects; separate shared effects, residuals, and commercial causes. |
-| [Price waterfall](skills/knowledge/price-waterfall.md) | Interpret defined list, invoice, net, and pocket price steps and the policies or exceptions governing adjustments. |
-| [Value estimation](skills/knowledge/methods/value-estimation.md) | Assess differentiated customer value against a credible alternative, with uncertainty, negative effects, and overlapping benefits made explicit. |
-| [Segmentation](skills/knowledge/methods/segmentation.md) | Identify economically meaningful customer/product differences and workable, enforceable pricing boundaries. |
-| [Peer comparisons](skills/knowledge/methods/peer-comparisons.md) | Assess comparable price differences without treating an observed peer gap as an attainable target or guaranteed opportunity. |
-| [Price realization](skills/knowledge/methods/price-realization.md) | Measure comparable realized-price changes while controlling the basket mix and distinguishing list changes from net or pocket outcomes. |
-| [Discount governance](skills/knowledge/methods/discount-governance.md) | Apply scoped guidance, approval rules, and exceptions; assess deviations without assuming that every discount is leakage. |
-| [Price-change economics](skills/knowledge/methods/price-change-economics.md) | Calculate conditional revenue and contribution scenarios, separate cost effects, and state the limits of unknown demand response. |
+| [Metric verification](skills/knowledge/metric-verification.md) | Definitions, comparable populations and verified calculations |
+| [Margin drivers](skills/knowledge/margin-drivers.md) | Reconciled price/cost/mix attribution and causation limits |
+| [Price waterfall](skills/knowledge/price-waterfall.md) | Defined list, invoice, net and pocket levels |
+| [Value estimation](skills/knowledge/methods/value-estimation.md) | Differentiated value against credible buyer alternatives |
+| [Segmentation](skills/knowledge/methods/segmentation.md) | Economically meaningful, enforceable differentiation |
+| [Peer comparisons](skills/knowledge/methods/peer-comparisons.md) | Comparable price dispersion and its limits |
+| [Price realization](skills/knowledge/methods/price-realization.md) | Historical fixed-basket realized-price measurement |
+| [Discount governance](skills/knowledge/methods/discount-governance.md) | Applicable rules, approval and scoped exceptions |
+| [Price-change economics](skills/knowledge/methods/price-change-economics.md) | Conditional revenue/contribution and breakeven scenarios |
+| [Evidence ranking](skills/knowledge/methods/evidence-ranking.md) | Observation/action confidence and separate commercial overlays |
 
 ## Frequently asked questions
 
-### What is Pricing Plugin?
+### What data supports gross margin analysis?
 
-Pricing Plugin is an instruction-based AI plugin for industrial and spare-parts pricing work. It bundles skills and reference notes for analysis, opportunity assessment, strategy, and execution planning. It uses the host's available calculation and artifact tools; it has no bundled calculation engine or MCP server.
+Comparable periods, sales, COGS and the margin definition establish the movement. Matched item quantities, realized prices and unit costs support driver analysis. Aggregate totals alone usually cannot identify price/cost/mix effects.
 
-### Who is it for?
+### How are price measurement and price scenarios different?
 
-It is intended for pricing professionals working with B2B industrial products and spare parts. The examples address product/customer comparisons, list and realized prices, discounts, commercial policies, and margin performance.
+Historical realization compares observed prices using the same prior-period item quantities, regardless of known demand response. This controls basket mix. For proposed prices with unknown future response, those quantities create a conditional fixed-volume scenario. It is not a demand forecast or guaranteed benefit; contribution also needs relevant costs.
 
-### What data do I need for gross margin analysis?
+### Does the plugin update prices or approve discounts?
 
-Start with comparable periods, sales, and cost of goods sold, together with your margin definition. Product-level quantities, realized prices, and unit costs support a more detailed price/cost/mix analysis. Aggregate totals can establish a margin movement but may not explain its drivers. The plugin should state that limit rather than invent a breakdown.
+The skills draft analyses, recommendations and plans. System changes and communications need explicit authorization and suitable tools. Detailed account/product targets and negotiation support remain outside this version.
 
-### How does it measure price realization?
+### Does company data stay local?
 
-It compares defined realized prices on a comparable basis. Under the project's fixed-basket convention, prior-period item quantities are held constant on both sides so that changes in volume and product mix do not masquerade as price changes. See the [price-realization method](skills/knowledge/methods/price-realization.md) for formulas, coverage rules, and limitations.
-
-### Can it predict the revenue benefit of a price increase?
-
-When demand response is unknown, it can calculate a conditional fixed-volume scenario using prior-period item quantities and explicit proposed-price assumptions. That scenario is not a demand forecast or a guaranteed benefit. Contribution analysis also requires supported costs; see [price-change economics](skills/knowledge/methods/price-change-economics.md).
-
-### Does it automatically update prices or approve discounts?
-
-The included skills analyze evidence and draft recommendations or implementation plans. The package does not include an integration that changes ERP prices, approves exceptions, or executes a rollout. Detailed account/product targets and negotiation support are outside the current scope.
-
-### Does it keep company data local?
-
-The plugin stores validated context in your working project's `.pricing/context.md`; it does not bundle a separate data service. How supplied files and prompts are processed depends on your AI host, connected tools, account settings, and provider terms. Local context storage alone does not establish local-only processing.
+Validated context is saved in the working project's `.pricing/context.md`. Processing of prompts/files depends on the AI host, connected tools, settings and provider terms; local context storage does not establish local-only processing. The plugin has no separate data service, calculation engine or MCP server.
 
 ## Validation and limitations
 
-The [synthetic evaluation fixtures](https://github.com/Schadenfreunde/Pricing-plugin/blob/c46965c769edb82084fd43843d01e6f433f19ff2/evals/README.md) cover margin analysis, company context, evidence ranking, fixed-volume economics, strategy, rollout, and routing. They define expected behavior; their presence alone does not show that an installed plugin passes them.
-
-For development validation, use a full repository checkout and run:
+From a full checkout, run:
 
 ```sh
-python3 evals/check_package.py
+python3 -B evals/check_package.py
+python3 -B evals/test_skill_packaging.py
 ```
 
-The checker and evaluation fixtures are not included in the runtime ZIP. This checks metadata, file presence, and runtime reference closure. It does not test model behavior. Evaluation inputs are in `evals/cases/`; independent evaluator keys are in `evals/expected/` and must stay out of an evaluated assistant's workspace. Keep trial outputs and context separate between runs.
+These development checks validate metadata, the shared inventory, references and documentation links. Behavioral and installed-host acceptance remain pending. The [legacy synthetic fixtures](evals/README.md) retain historical/arithmetic context; a new end-to-end suite with fresh data and cases is planned. Keep evaluator keys and earlier outputs out of evaluated workspaces.
 
-The sample HTML report illustrates presentation and arithmetic for one synthetic case. PDF export and page-by-page PDF inspection remain unverified. Numerical outputs and business recommendations depend on the evidence supplied and require review before commercial action.
+The HTML sample's actual PDF export remains unverified. Review numerical outputs and commercial recommendations against supplied evidence before action.
 
-## License
+## License and feedback
 
-This project is licensed under the [MIT License](LICENSE). Include the copyright and license notice when redistributing copies or substantial portions of the plugin.
+[MIT License](LICENSE), copyright `2026 Schadenfreunde`. Retain its notice when redistributing the plugin.
 
-## Project and feedback
-
-Source and project updates: [Schadenfreunde/Pricing-plugin](https://github.com/Schadenfreunde/Pricing-plugin). For a reproducible issue, describe the skill, host/version, expected behavior, and a synthetic or redacted input rather than confidential customer data.
+Source: [Schadenfreunde/Pricing-plugin](https://github.com/Schadenfreunde/Pricing-plugin). For issues, supply host/version, expected behavior and synthetic/redacted inputs.

@@ -1,11 +1,19 @@
 # Explain a margin movement with supported drivers
 
-Once the margin endpoint is verified, compare the available, consistent detail. Realized unit price, unit cost, and product/customer/geographic composition can change a group margin rate. Volume alone need not change a rate when prices, costs and composition stay fixed; volume can matter through composition, tiers or cost behavior when the evidence supports those mechanisms. Check whether costs are per unit or allocated before calling a change “unit-cost inflation.”
+After verifying endpoints, examine consistent realized prices, unit costs and product/customer/geographic composition. Uniform volume changes need not change a margin rate; composition, tiers or cost behavior can. Distinguish unit costs from allocations and greater total COGS from unit-cost inflation.
 
-A variance diagram can organize price, volume, mix and cost, but it does not determine a unique gross-margin-rate decomposition. A revenue variance and a gross-margin-rate variance are different measures. Choose a reproducible counterfactual or bridge suited to the data, state its order and denominator, and reconcile the displayed contributions to the verified margin movement before rounding. Do not present calculation order as the real-world order of events.
+Declare a reproducible bridge's counterfactuals, order and denominator. Revenue variance differs from margin-rate variance; calculation order does not establish event order. Reconcile contributions to the verified movement before rounding.
 
-**Project convention for a two-factor case with unchanged unit costs:** let `G(p,q) = 1 − Σ(qᵢcᵢ) / Σ(qᵢpᵢ)`, where `p` is realized unit price, `q` is product quantity, and `c` is the verified unchanged unit cost. With periods 0 and 1, calculate price alone as `G(p₁,q₀) − G(p₀,q₀)` and mix/quantity alone as `G(p₀,q₁) − G(p₀,q₀)`. Show their **shared effect** separately: `G(p₁,q₁) − G(p₁,q₀) − G(p₀,q₁) + G(p₀,q₀)`. The three terms sum to the endpoint movement. This is our selected presentation for that narrow case, **not** a universal multi-driver method. For changing costs or more factors, use a declared method that covers them and reconciles; do not silently apply the two-factor expression.
+**Project convention for two factors with verified unchanged unit costs:** let `G(p,q) = 1 − Σ(qᵢcᵢ) / Σ(qᵢpᵢ)`, with realized prices `p`, quantities `q`, unchanged unit costs `c`, and periods 0/1:
 
-An interaction is a known arithmetic overlap between factors. An **unexplained residual** is a remaining gap between the observed movement and all modeled terms after using the declared convention; it may signal missing factors, data issues, or calculation errors. Never relabel a computed interaction as unidentified commercial loss. Show a genuine residual and its limits when it remains.
+```text
+Price = G(p₁,q₀) − G(p₀,q₀)
+Mix/quantity = G(p₀,q₁) − G(p₀,q₀)
+Shared effect = G(p₁,q₁) − G(p₁,q₀) − G(p₀,q₁) + G(p₀,q₀)
+```
 
-Accounting attribution answers what changed in the observed numbers. Commercial causation asks why. A lower realized price does not by itself establish discounting; a higher total COGS may result from selling more of a higher-cost product while each unit cost stays fixed. Use contracts, transaction adjustments, policy, customer behavior or other evidence before naming a business cause. If that evidence is absent, say so briefly and offer relevant investigation choices.
+These terms sum to the endpoint movement. Changing costs or additional factors require a declared method covering them; this narrow expression is not universal.
+
+An interaction/shared effect is calculated overlap. An unexplained residual is a remaining reconciliation gap, potentially from missing factors, data or calculation errors; show it separately.
+
+Accounting attribution establishes what changed. Commercial causation requires supporting contracts, adjustments, policy or behavior. Lower realized price alone does not establish increased discounting. If causes remain unsupported, state the limit and relevant next investigations.

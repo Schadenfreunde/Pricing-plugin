@@ -1,0 +1,130 @@
+{
+  "scope": "Portable input data and acceptance criteria for review points 1–6; historical review records are preserved locally.",
+  "behavioral_rerun_status": "pending",
+  "evaluation": "Judge observable results, not exact wording. Supply inputs and current instructions without these criteria to a future solver.",
+  "cases": [
+    {
+      "id": "context-confirmation",
+      "review_point": 1,
+      "input_directory": "evals/regressions/2026-10-03-luna-review/inputs/context-confirmation",
+      "assertions": [
+        {
+          "id": "named-correction",
+          "severity": "major",
+          "criterion": "Save November 15 as the directly corrected end date without validating the supplied floor, authority or start date by association."
+        },
+        {
+          "id": "confirmed-only-file",
+          "severity": "major",
+          "criterion": "Keep document-derived terms and unresolved memo/global-policy claims in the answer/report until validated; omit them from .pricing/context.md."
+        }
+      ],
+      "instruction_tier": "current"
+    },
+    {
+      "id": "monetary-scale",
+      "review_point": 2,
+      "input_directory": "evals/regressions/2026-10-03-luna-review/inputs/monetary-scale",
+      "expected_numbers": {
+        "baseline_eur": 15000,
+        "comparison_eur": 16500,
+        "difference_eur": 1500,
+        "movement_pct": 10
+      },
+      "assertions": [
+        {
+          "id": "displayed-scale",
+          "severity": "major",
+          "criterion": "Displayed amounts agree with 500 units times EUR30/EUR33 and the executed calculation; the difference is EUR1500, not EUR150."
+        },
+        {
+          "id": "comparable-subset",
+          "severity": "major",
+          "criterion": "Retain the exclusion of mismatched currency/price-level records and missing baseline history; do not turn the matched-line result into a company-wide pocket-price claim."
+        }
+      ],
+      "instruction_tier": "current"
+    },
+    {
+      "id": "exclusive-approval-bands",
+      "review_point": 3,
+      "input_directory": "evals/regressions/2026-10-03-luna-review/inputs/exclusive-approval-bands",
+      "assertions": [
+        {
+          "id": "k2-authority",
+          "severity": "major",
+          "criterion": "K2 requires regional-director approval only; the EUR90-to-below-EUR95 commercial-manager band does not apply at EUR88."
+        },
+        {
+          "id": "consistent-action",
+          "severity": "major",
+          "criterion": "Every table entry and final approval instruction agrees; no additional approver or second trigger is introduced for K2."
+        },
+        {
+          "id": "scoped-exception",
+          "severity": "major",
+          "criterion": "Retain the scoped K1 exception, K3 commercial-manager approval and unresolved K4 policy scope."
+        }
+      ],
+      "instruction_tier": "current"
+    },
+    {
+      "id": "conditional-sizing",
+      "review_point": 4,
+      "input_directory": "evals/regressions/2026-10-03-luna-review/inputs/conditional-sizing",
+      "assertions": [
+        {
+          "id": "unknown-response",
+          "severity": "minor",
+          "criterion": "Unknown demand response or capture is not presented as a categorical prohibition on a conditional fixed-volume scenario."
+        },
+        {
+          "id": "scenario-basis",
+          "severity": "major",
+          "criterion": "If sizing is useful, qualify quantity eligibility, period and assumed realized target; EUR5 times 1500 units is an illustrative EUR7500, not collectible or forecast uplift."
+        }
+      ],
+      "instruction_tier": "current"
+    },
+    {
+      "id": "unrounded-movement",
+      "review_point": 5,
+      "input_directory": "evals/regressions/2026-10-03-luna-review/inputs/unrounded-movement",
+      "expected_numbers": {
+        "displayed_movement_pp": -1.83
+      },
+      "assertions": [
+        {
+          "id": "round-at-display",
+          "severity": "minor",
+          "criterion": "Compute (33/173 minus 37/177) times 100 before rounding; display minus 1.83 percentage points rather than subtracting rounded endpoint rates."
+        }
+      ],
+      "instruction_tier": "current"
+    },
+    {
+      "id": "contract-adjustment-completeness",
+      "review_point": 6,
+      "input_directory": "evals/regressions/2026-10-03-luna-review/inputs/contract-adjustment-completeness",
+      "assertions": [
+        {
+          "id": "cap-basis",
+          "severity": "major",
+          "criterion": "Identify the unresolved component/total cap basis and the distinct USD103/USD105 interpretations without declaring either amount due."
+        },
+        {
+          "id": "downward-treatment",
+          "severity": "minor",
+          "criterion": "Separately identify that downward adjustment treatment and symmetry are unspecified; neither assume automatic reductions nor assert a prohibition on reductions."
+        },
+        {
+          "id": "effective-event",
+          "severity": "major",
+          "criterion": "Retain the stated order-acceptance trigger, leaving June 29 orders at USD100 and July 2 orders conditional on the cap interpretation."
+        }
+      ],
+      "instruction_tier": "draft",
+      "instruction_status": "Contract-price-adjustments draft is not incorporated; enable this regression with that method."
+    }
+  ]
+}

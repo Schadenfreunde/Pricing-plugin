@@ -29,7 +29,7 @@ Using the project's declared two-factor convention with unchanged unit costs, th
 | Shared price/mix effect | −4.08 basis points |
 | Total | −346.94 basis points |
 
-The unrounded contributions reconcile to the full movement. The shared effect is an arithmetic overlap between factors, not unexplained commercial loss. See the [margin-driver reference](../knowledge/margin-drivers.md) for the formula and its scope; this two-factor method is not a universal decomposition for changing costs.
+The unrounded contributions reconcile to the full movement. The shared effect is an arithmetic overlap between factors, not unexplained commercial loss. See the [margin-driver reference](../skills/knowledge/margin-drivers.md) for the formula and its scope; this two-factor method is not a universal decomposition for changing costs.
 
 ## What remains unknown
 
@@ -41,6 +41,6 @@ Download [the HTML margin analysis](margin-analysis.html) and open it in a brows
 
 The landscape print layout reflects review of the HTML sample. An actual PDF export and inspection of every PDF page have not been confirmed.
 
-To run your own isolated trial, follow the [evaluation instructions](../evals/README.md) using selected model-visible inputs. Keep independent evaluator keys and prior answers out of the evaluated assistant's workspace.
+The [legacy inputs](../evals/README.md) remain for arithmetic and historical reference. Fresh end-to-end acceptance with new data and cases is planned.
 
 [Return to Pricing Plugin](../README.md)
