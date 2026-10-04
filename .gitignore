@@ -8,6 +8,8 @@
 /.superpowers/
 
 # Local evaluation evidence and design history
+/pricing-real-life-test-*/
+/evals/regressions/2026-10-04-real-life-fixes/
 /evals/runs/
 /evals/reports/
 /evals/examples/

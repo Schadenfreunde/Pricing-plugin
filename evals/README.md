@@ -17,6 +17,15 @@ These are structural checks. Installed discovery/reference loading and model beh
 
 [`regressions/2026-10-03-luna-review/criteria.json`](regressions/2026-10-03-luna-review/criteria.json) records review points 1–6 with portable synthetic inputs. Keep criteria separate from solver inputs. Behavioral reruns are pending; the contract-adjustment case requires its unincorporated draft method. Local review outputs are not part of the package.
 
+## Real-Life Fix Regressions
+
+Local-only focused evaluations cover field mapping, ambiguous and evidenced
+numeric formats, comparison-basis clarification, joint proposed-price/cost
+economics, accounting links and dated authority. Their inputs, evaluator criteria
+and model evidence are excluded from Git. Fixture arithmetic checks do not
+establish agent compliance, and focused checks do not replace a fresh full
+Online Retail II rerun.
+
 ## Legacy fixtures
 
 `cases/` and `expected/` contain historical synthetic inputs and independent keys. They are deprecated as the current acceptance suite; retain them for arithmetic and historical reference. A fresh end-to-end suite with data and cases is planned. No additional variants or token benchmarks are being added to the legacy cases.

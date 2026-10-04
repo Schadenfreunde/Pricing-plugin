@@ -29,7 +29,7 @@ Use pricing-intake to review our company pricing context. Propose relevant facts
 
 In a new directory, you can supply a `context.md` from another project. Intake checks its company/scope and applicability, reuses previously validated facts and clarifies changes. Otherwise share a brief overview and relevant definitions or policies; no complete intake interview is required.
 
-Context can retain validated price/metric definitions, calendar, units/currencies, reusable data mappings, policies and scoped exceptions. Each new dataset still needs coverage and comparison checks. Analysis findings and proposals stay with the answer/report; a separate handoff brief is saved only when requested.
+Context can retain validated price/metric definitions, calendar, units/currencies, reusable data mappings, policies and scoped exceptions. For data-backed intake, confirm which revenue, COGS and other fields serve the requested analysis, with their accounting, currency and unit basis. Each new dataset still needs numeric-consistency, coverage and like-for-like comparison checks. A material unresolved basis choice pauses the affected calculation for clarification while independently valid work continues. Analysis findings and proposals stay with the answer/report; a separate handoff brief is saved only when requested.
 
 Attach data and ask the relevant skill, for example:
 

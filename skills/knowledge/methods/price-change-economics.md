@@ -1,6 +1,6 @@
 # Economics of a proposed price change
 
-Establish eligibility, period, comparable realized-price basis and relevant costs. Proposed prices are assumptions; a precise scenario does not prove capture. List-to-net/pocket proposals need supported discount/rebate mappings. Missing quantities or realization evidence limit revenue sizing; missing relevant costs limit contribution/profit sizing.
+Apply [metric verification](../metric-verification.md) to establish eligibility, period, comparable realized-price basis and relevant costs. Proposed prices are assumptions; a precise scenario does not prove capture. List-to-net/pocket proposals need supported discount/rebate mappings. Missing quantities or realization evidence limit revenue sizing; missing relevant costs limit contribution/profit sizing.
 
 ## Fixed-volume base
 
@@ -24,9 +24,11 @@ Proposed contribution = Σ q0_i × (p_prop_i − c_prop_i)
 Contribution difference = price-only difference − Σ q0_i × (c_prop_i − c_base_i)
 ```
 
+When proposed costs are supplied, the principal planning case must include comparable current and proposed costs, with their coverage and effective periods. Fixed quantities do not imply unchanged unit costs; fixed-price items can still incur cost changes. Resolve unclear cost meanings/applicability with the user before the affected case. A frozen-cost price-only counterfactual may be useful alongside the joint price/cost case, not as its replacement.
+
 Explicitly unchanged costs make revenue and contribution differences equal before incremental action costs. Otherwise separate price/cost effects. Subtract supported implementation costs for a defined profit measure; recompute margin rates from scenario totals.
 
-Keep quantity-response sensitivities separate and explicit. Historical price/volume association does not identify elasticity; distributor shipments do not establish end-user demand.
+Keep quantity-response sensitivities separate and explicit. Use the same eligible basket, currency and cost basis for baseline, proposal, downside and breakeven; a subset gain cannot silently be divided by a company-wide baseline. State how relevant variable/fixed costs and adjustments respond. Historical price/volume association does not identify elasticity; distributor shipments do not establish end-user demand.
 
 For one product, unchanged incremental fixed costs, `CM0 = p0 − c0` and absolute unit-price/cost changes `Δp, Δc`:
 
