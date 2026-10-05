@@ -10,14 +10,74 @@ The skills share curated pricing knowledge, check comparison assumptions and ret
 
 ## Install the plugin
 
-Install the complete plugin so all seven skills and shared references are available together. Tell your coding agent:
+Install the complete plugin so all seven skills and their shared files are available together.
+
+### Install in Claude (web, desktop or Cowork)
+
+1. Open [Pricing Plugin by Danial Kodvavi](https://github.com/Schadenfreunde/Pricing-plugin) and click **Code → Download ZIP**, or use a complete plugin ZIP supplied by the project owner. Keep the file as a ZIP for upload. Sign in to GitHub if repository access requires it.
+2. In Claude, open **Customize → Plugins**. In Cowork, open the **Cowork** tab first, then **Customize → Plugins**.
+3. Choose the custom plugin upload option and select the ZIP. Enable `pricing-plugin` if prompted. [Claude's plugin installation guide](https://support.claude.com/en/articles/13837440-use-plugins-in-claude).
+4. For Claude chat, enable **Code execution and file creation** in **Settings → Capabilities**. On a managed account, your organization must allow skills and code execution. [Claude's skill prerequisites](https://support.claude.com/en/articles/12512180-use-skills-in-claude).
+5. Start a new conversation and [confirm installation](#confirm-installation). Type `/` or use **+** to find the plugin's skills, or ask “Use pricing-analyze to explain our gross margin movement.”
+
+The repository includes Claude's plugin metadata and the complete shared-file layout. You do not need Git, terminal commands or an assistant to convert the package. Upload it through **Plugins**; uploading individual skill folders through **Skills** omits shared knowledge and reporting files.
+
+For reusable company context in Cowork, select the folder where you do your pricing work. In Claude chat, attach your previously confirmed `context.md` when you want to reuse it. Calculation and report creation use Claude's available tools; this plugin needs no separate MCP server, API key or data connector.
+
+To update a ZIP installation, download the newer package and upload it again. Preserve your working project's company context.
+
+### Install in Claude Code
+
+In a Claude Code session, add this repository's plugin catalog and install the plugin:
+
+```text
+/plugin marketplace add Schadenfreunde/Pricing-plugin
+/plugin install pricing-plugin@danial-kodvavi-pricing
+```
+
+For a local installation, use the extracted repository folder's path instead of `Schadenfreunde/Pricing-plugin` in the first command. A relative path must start with `./` or `../`. Repository-based installation needs Git and repository access; a local-folder source uses the downloaded files. [Claude Code installation guide](https://code.claude.com/docs/en/discover-plugins).
+
+Start a new session. You can invoke a skill directly, for example `/pricing-plugin:pricing-analyze`, or describe your pricing task.
+
+### Install in Codex desktop
+
+1. Download and extract the repository ZIP, then add the extracted folder as a local project. Start a chat using **Local**.
+2. Paste this message. Codex can prepare the local plugin catalog described in [OpenAI's local installation guide](https://developers.openai.com/plugins/build/plugins#install-a-local-plugin-manually):
+
+   ```text
+   Read INSTALL.md in this folder. Set up the complete Pricing Plugin from
+   these downloaded files without using Git. Add it to my personal local
+   plugin catalog, keeping my existing plugins and settings. Preserve all
+   seven skills, their shared knowledge and references, and the MIT license.
+   Tell me where to find it and click Install. Report any unsupported step.
+   ```
+
+3. Restart the desktop app. Open the **Plugins Directory**, choose the local source the assistant created, and install `pricing-plugin`.
+4. Start a new chat and [confirm installation](#confirm-installation).
+
+### Confirm installation
+
+In a new chat, send:
+
+```text
+Confirm that all seven Pricing Plugin skills are available: pricing-intake,
+pricing-analyze, pricing-scan, pricing-recommend, pricing-design,
+pricing-execute and pricing-triage. Check that you can read their shared
+knowledge and reporting references. Tell me about any missing files.
+```
+
+If the plugin or upload controls are unavailable, check your app version and your organization's plugin permissions. Package validation does not establish installed discovery, reference loading or pricing behavior in Claude chat or Cowork; those acceptance checks remain pending.
+
+### Other coding agents
+
+Tell an agent with a Git-based plugin installer:
 
 ```text
 Fetch and follow the installation instructions from:
 https://raw.githubusercontent.com/Schadenfreunde/Pricing-plugin/refs/heads/main/INSTALL.md
 ```
 
-Or use your agent's Git-based plugin installer for [Pricing Plugin by Danial Kodvavi](https://github.com/Schadenfreunde/Pricing-plugin). Start a fresh session if required. Skills load only the instructions and methods needed for the task.
+Start a fresh session if required. Skills load only the instructions and methods needed for the task.
 
 ## Recommended first step: company context
 

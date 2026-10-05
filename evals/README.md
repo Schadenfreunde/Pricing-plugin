@@ -9,7 +9,9 @@ python3 -B evals/check_package.py
 python3 -B evals/test_skill_packaging.py
 ```
 
-The standard-library checks validate the complete plugin as shipped: skill metadata, root MIT license, one shared knowledge tree, explicit runtime inventory, reference closure and local documentation file/heading links. Counts are derived from the inventory. Tests copy original sources without repairing them and reject incomplete installs, missing/undeclared resources, symlinks and duplicate knowledge. Canonical edits need no synchronization.
+The standard-library checks validate skill metadata, matching portable/Claude manifests, root MIT license, one shared knowledge tree, explicit runtime inventory, reference closure and local documentation file/heading links. Counts are derived from the inventory. Tests copy original sources without repairing them and reject incomplete installs, missing/undeclared resources, symlinks, manifest version drift and duplicate knowledge. The ZIP regression verifies all seven skills and shared references survive packaging while local context and evaluation fixtures stay excluded.
+
+To build a Claude upload ZIP, run `python3 -B scripts/build_plugin_zip.py`. If Claude Code is installed, also run `claude plugin validate --strict .claude-plugin/plugin.json` and `claude plugin validate --strict .claude-plugin/marketplace.json`. These validate metadata and the catalog; they do not establish live Claude chat/Cowork behavior.
 
 These are structural checks. Installed discovery/reference loading and model behavior require separate acceptance.
 

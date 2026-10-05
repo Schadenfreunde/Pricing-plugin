@@ -1,14 +1,19 @@
 """Validate the complete plugin and its shared resources as shipped."""
 
+import json
 import shutil
+import sys
 import tempfile
 import unittest
+import zipfile
 from pathlib import Path
 
-from check_package import SKILLS, check_package, check_skill
+from check_package import SKILLS, check_package, check_runtime_links, check_skill
 
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
+from build_plugin_zip import build_plugin_zip
 
 
 class SkillPackagingTests(unittest.TestCase):
@@ -17,7 +22,9 @@ class SkillPackagingTests(unittest.TestCase):
         shutil.copytree(ROOT / "examples", root / "examples")
         shutil.copytree(ROOT / "evals/cases", root / "evals/cases")
         shutil.copyfile(ROOT / "evals/README.md", root / "evals/README.md")
-        for name in ("plugin.json", "README.md", "INSTALL.md", "LICENSE"):
+        for name in ("plugin.json", "README.md", "INSTALL.md", "LICENSE",
+                     ".claude-plugin/plugin.json", ".claude-plugin/marketplace.json"):
+            (root / name).parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(ROOT / name, root / name)
         return root
 
@@ -35,6 +42,40 @@ class SkillPackagingTests(unittest.TestCase):
     def test_knowledge_has_one_location(self):
         copies = list((ROOT / "skills").glob("pricing-*/references/knowledge"))
         self.assertEqual(copies, [], "Pricing knowledge belongs only in skills/knowledge")
+
+    def test_claude_manifest_version_drift_is_rejected(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = self.checkout(Path(temp))
+            path = root / ".claude-plugin/plugin.json"
+            manifest = json.loads(path.read_text())
+            manifest["version"] = "99.0.0"
+            path.write_text(json.dumps(manifest))
+            with self.assertRaisesRegex(ValueError, "Claude manifest.*version"):
+                check_package(root)
+
+    def test_claude_zip_keeps_shared_resources_and_excludes_local_data(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = self.checkout(Path(temp) / "source")
+            (root / ".pricing").mkdir()
+            (root / ".pricing/context.md").write_text("Private company context")
+            archive = Path(temp) / "pricing-plugin.zip"
+            build_plugin_zip(root, archive)
+            installed = Path(temp) / "installed"
+            with zipfile.ZipFile(archive) as bundle:
+                bundle.extractall(installed)
+            plugin = (installed / "pricing-plugin").resolve()
+            self.assertTrue((plugin / ".claude-plugin/plugin.json").is_file())
+            self.assertTrue((plugin / "LICENSE").is_file())
+            self.assertFalse((plugin / ".pricing").exists())
+            self.assertFalse((plugin / "evals").exists())
+            self.assertEqual({p.parent.name for p in (plugin / "skills").glob("*/SKILL.md")},
+                             set(SKILLS))
+            for source in (root / "skills").rglob("*"):
+                if source.is_file():
+                    self.assertEqual(source.read_bytes(),
+                                     (plugin / source.relative_to(root)).read_bytes())
+            files = {p for p in plugin.rglob("*") if p.is_file()}
+            self.assertGreater(check_runtime_links(plugin, files), 0)
 
     def test_individual_skill_is_not_a_complete_installation(self):
         for name in SKILLS:

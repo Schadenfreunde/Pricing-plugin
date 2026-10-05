@@ -1,0 +1,11 @@
+{
+  "name": "danial-kodvavi-pricing",
+  "description": "B2B pricing skills by Danial Kodvavi.",
+  "owner": { "name": "Danial Kodvavi" },
+  "plugins": [
+    {
+      "name": "pricing-plugin",
+      "source": "./"
+    }
+  ]
+}

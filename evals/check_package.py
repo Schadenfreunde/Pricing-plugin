@@ -21,6 +21,7 @@ KNOWLEDGE_PATHS = (
 )
 RUNTIME_PATHS = (
     "plugin.json", "README.md", "INSTALL.md", "LICENSE",
+    ".claude-plugin/plugin.json", ".claude-plugin/marketplace.json",
     *(f"skills/{name}/SKILL.md" for name in SKILLS),
     *(f"skills/knowledge/{path}" for path in KNOWLEDGE_PATHS),
     "skills/pricing-intake/references/context-outline.md",
@@ -144,6 +145,10 @@ def check_package(root):
         raise ValueError("Manifest must name pricing-plugin with a semantic version")
     if manifest.get("license") != "MIT":
         raise ValueError("Manifest must declare the MIT license")
+    claude_manifest = json.loads((root / ".claude-plugin/plugin.json").read_text())
+    for field in ("name", "version", "description", "author", "repository", "keywords", "license"):
+        if claude_manifest.get(field) != manifest.get(field):
+            raise ValueError(f"Claude manifest must match portable manifest: {field}")
     for name in SKILLS:
         source = (root / "skills" / name / "SKILL.md").read_text()
         frontmatter = re.match(r"\A---\n(.*?)\n---(?:\n|$)", source, re.DOTALL)
