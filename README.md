@@ -6,7 +6,9 @@ The skills share curated pricing knowledge, check comparison assumptions and ret
 
 **Version:** `0.2.0`
 
-[Install](#install-the-plugin) · [Company context](#recommended-first-step-company-context) · [Skills](#pricing-skills-and-example-questions) · [Worked example](#gross-margin-analysis-example) · [FAQ](#frequently-asked-questions)
+[Install](#install-the-plugin) · [System structure](PRICING_SYSTEM.md) · [Company context](#recommended-first-step-company-context) · [Skills](#pricing-skills-and-example-questions) · [Worked example](#gross-margin-analysis-example) · [FAQ](#frequently-asked-questions)
+
+See the [system structure diagram](PRICING_SYSTEM.md) for how the seven skills, shared pricing knowledge, company context and reporting tools work together.
 
 ## Install the plugin
 

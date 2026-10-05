@@ -22,7 +22,7 @@ class SkillPackagingTests(unittest.TestCase):
         shutil.copytree(ROOT / "examples", root / "examples")
         shutil.copytree(ROOT / "evals/cases", root / "evals/cases")
         shutil.copyfile(ROOT / "evals/README.md", root / "evals/README.md")
-        for name in ("plugin.json", "README.md", "INSTALL.md", "LICENSE",
+        for name in ("plugin.json", "README.md", "INSTALL.md", "PRICING_SYSTEM.md", "LICENSE",
                      ".claude-plugin/plugin.json", ".claude-plugin/marketplace.json"):
             (root / name).parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(ROOT / name, root / name)
