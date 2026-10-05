@@ -17,7 +17,7 @@ Fetch and follow the installation instructions from:
 https://raw.githubusercontent.com/Schadenfreunde/Pricing-plugin/refs/heads/main/INSTALL.md
 ```
 
-Or use your agent's Git-based plugin installer for [Schadenfreunde/Pricing-plugin](https://github.com/Schadenfreunde/Pricing-plugin). Start a fresh session if required. Skills load only the instructions and methods needed for the task.
+Or use your agent's Git-based plugin installer for [Pricing Plugin by Danial Kodvavi](https://github.com/Schadenfreunde/Pricing-plugin). Start a fresh session if required. Skills load only the instructions and methods needed for the task.
 
 ## Recommended first step: company context
 
@@ -105,6 +105,6 @@ The HTML sample's actual PDF export remains unverified. Review numerical outputs
 
 ## License and feedback
 
-[MIT License](LICENSE), copyright `2026 Schadenfreunde`. Retain its notice when redistributing the plugin.
+[MIT License](LICENSE), copyright `2026 Danial Kodvavi`. Retain its notice when redistributing the plugin.
 
-Source: [Schadenfreunde/Pricing-plugin](https://github.com/Schadenfreunde/Pricing-plugin). For issues, supply host/version, expected behavior and synthetic/redacted inputs.
+Source: [Pricing Plugin by Danial Kodvavi](https://github.com/Schadenfreunde/Pricing-plugin). For issues, supply host/version, expected behavior and synthetic/redacted inputs.
