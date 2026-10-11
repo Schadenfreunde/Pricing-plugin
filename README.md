@@ -143,15 +143,14 @@ Validated context is saved in the working project's `.pricing/context.md`. Proce
 From a full checkout, run:
 
 ```sh
-python3 -B evals/check_package.py
-python3 -B evals/test_skill_packaging.py
+python3 -B scripts/check_package.py
 ```
 
-These development checks validate metadata, the shared inventory, references and documentation links. They do not test model behavior.
+This development check validates the manifests, skill metadata, references, unlinked package files and documentation links. They do not test model behavior.
 
 **What V2 behavior testing covered (2026-10-11).** Twenty case families gave 22 cases, because one family was split into two and a supplemental scan-and-recommend case was added. Each case was run once as a Claude Sonnet 5.5 (high effort) subagent inside Claude Code, reading a file copy of the plugin. The families: ecommerce returns and fees, manufacturer promotion, higher sales with lower contribution, pack and stock change, SaaS recurring metrics and retention, cancellation recipes, usage tiers, usage cutoffs, seat/package/FX bridge, app trial, offer design, renewal readiness, installed-equipment and physical-subscription economics, source coverage, plus the original industrial control and context handling. Outputs were graded against independently calculated keys. Twenty cases passed first time. Two first gave a headline figure on an assumed basis; one sentence was tightened and those two plus five regression cases passed on rerun. The other cases were not rerun after that sentence. Follow-ups covering a corrected fact, a changed metric policy, an unsupported cost and an expired approval behaved as intended.
 
-**What it did not cover.** Plugin discovery was observed once in Claude Code with a session-only load. There is no installed-plugin test, no Claude web, Cowork or Codex run, no other model, no connected-source parity and no repeat runs. File reads in the traces are self-reported. One generated HTML report and its PDF were inspected by hand. Treat results as evidence about these cases, not a performance guarantee. The [legacy synthetic fixtures](evals/README.md) remain historical. Keep evaluator keys and earlier outputs out of evaluated workspaces.
+**What it did not cover.** Plugin discovery was observed once in Claude Code with a session-only load. There is no installed-plugin test, no Claude web, Cowork or Codex run, no other model, no connected-source parity and no repeat runs. File reads in the traces are self-reported. One generated HTML report and its PDF were inspected by hand. Treat results as evidence about these cases, not a performance guarantee.
 
 The HTML sample's actual PDF export remains unverified. Review numerical outputs and commercial recommendations against supplied evidence before action.
 

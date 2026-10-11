@@ -1,14 +1,10 @@
-"""Build a complete Claude upload bundle without local data or evaluation files."""
+"""Build the Claude upload ZIP: the manifests, license and skills/ in one pricing-plugin/ folder."""
 
 import argparse
-import sys
 import zipfile
 from pathlib import Path
 
-
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "evals"))
-from check_package import RUNTIME_PATHS, check_package
+from check_package import ROOT, check_package, package_files
 
 
 def build_plugin_zip(root, destination):
@@ -17,10 +13,8 @@ def build_plugin_zip(root, destination):
     check_package(root)
     destination.parent.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(destination, "w", compression=zipfile.ZIP_DEFLATED) as archive:
-        for relative in RUNTIME_PATHS:
-            # Installation docs link to development fixtures; keep them in the repository.
-            if relative not in ("README.md", "INSTALL.md"):
-                archive.write(root / relative, f"pricing-plugin/{relative}")
+        for path in package_files(root):
+            archive.write(path, f"pricing-plugin/{path.relative_to(root).as_posix()}")
     return destination
 
 
