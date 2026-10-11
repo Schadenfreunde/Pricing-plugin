@@ -1,10 +1,10 @@
-# Pricing Plugin: AI-assisted pricing analysis for industrial products
+# Pricing Plugin: AI-assisted pricing analysis for B2B, consumer and subscription businesses
 
-Pricing Plugin provides seven connected AI skills for B2B industrial-products and spare-parts pricing: analyze margins and realized prices, discover opportunities, choose actions, design structures and plan rollouts.
+Pricing Plugin provides seven connected AI skills for pricing analysis, opportunity assessment, offer and charging-model design and rollout planning. It covers industrial products and spare parts, ecommerce, consumer apps, B2B SaaS, physical subscriptions and installed-equipment hybrids.
 
 The skills share curated pricing knowledge, check comparison assumptions and retain company facts only after validation. Calculation and artifacts use the tools available in your AI host.
 
-**Version:** `0.2.0`
+**Version:** `0.3.0`
 
 [Install](#install-the-plugin) · [System structure](PRICING_SYSTEM.md) · [Company context](#recommended-first-step-company-context) · [Skills](#pricing-skills-and-example-questions) · [Worked example](#gross-margin-analysis-example) · [FAQ](#frequently-asked-questions)
 
@@ -101,7 +101,7 @@ Attach data and ask the relevant skill, for example:
 
 The [synthetic worked example](examples/README.md) reports a 300 basis point decline. Its data instead shows margin falling from **30.00% to 26.53%**, a **346.94 basis point decline**.
 
-The [HTML report](examples/margin-analysis.html) reconciles realized-price, product-mix and shared effects with unchanged unit costs. It identifies accounting changes without inventing why prices fell. Download/open the HTML in a browser; GitHub displays source. This illustration establishes neither customer results nor installed-host performance.
+The [HTML report](examples/margin-analysis.html) reconciles realized-price, product-mix and shared effects with unchanged unit costs. It identifies accounting changes without inventing why prices fell. Download/open the HTML in a browser; GitHub displays source. This illustration establishes neither customer results nor installed-host performance. A second [synthetic illustration](examples/recurring-and-retail.md) covers a promotion and recurring-revenue metrics with their recipes stated.
 
 ## Pricing skills and example questions
 
@@ -116,6 +116,13 @@ The [HTML report](examples/margin-analysis.html) reconciles realized-price, prod
 | [pricing-triage](skills/pricing-triage/SKILL.md) | Focused clarification, routing or brief definitions | “Where should we start?” |
 
 Explicit tasks enter directly. Combine workflows when useful, carrying existing evidence and decision status forward.
+
+Business type and charging model are independent: a business or consumer offer can be one-time, recurring, usage-based or hybrid. Only the methods a request needs are loaded. Examples beyond industrial B2B:
+
+- Ecommerce: “Did the promotion raise contribution or only sales?”
+- SaaS renewal: “What are NRR and GRR for this renewal cohort?”
+- App trial: “Did the paywall test change paid conversion?”
+- Installed equipment: “How many installed assets are eligible for the attached software?”
 
 ## Shared pricing methods
 
@@ -133,6 +140,13 @@ All pricing knowledge lives in [skills/knowledge](skills/knowledge/index.md); re
 | [Discount governance](skills/knowledge/methods/discount-governance.md) | Applicable rules, approval and scoped exceptions |
 | [Price-change economics](skills/knowledge/methods/price-change-economics.md) | Conditional revenue/contribution and breakeven scenarios |
 | [Evidence ranking](skills/knowledge/methods/evidence-ranking.md) | Observation/action confidence and separate commercial overlays |
+| [Retail economics](skills/knowledge/retail-economics.md) | Actor-specific order, channel and contribution views |
+| [Recurring metrics](skills/knowledge/recurring-metrics.md) | MRR, ARR, retention and lifecycle recipes |
+| [Recurring scenarios](skills/knowledge/methods/recurring-scenarios.md) | Tariffs, commitments and recurring bridges |
+| [Experiments and promotions](skills/knowledge/methods/experiments-and-promotions.md) | Causal evidence, promotion economics and outcome maturity |
+| [Offer architecture](skills/knowledge/methods/offer-architecture.md) | Value unit, package, cadence and charging structure |
+| [Renewals and migration](skills/knowledge/methods/renewals-and-migration.md) | Protected, eligible and unresolved existing customers |
+| [Hybrid offers](skills/knowledge/methods/hybrid-offers.md) | Assets, fulfillment and recurring services together |
 
 ## Frequently asked questions
 
@@ -143,6 +157,10 @@ Comparable periods, sales, COGS and the margin definition establish the movement
 ### How are price measurement and price scenarios different?
 
 Historical realization compares observed prices using the same prior-period item quantities, regardless of known demand response. This controls basket mix. For proposed prices with unknown future response, those quantities create a conditional fixed-volume scenario. It is not a demand forecast or guaranteed benefit; contribution also needs relevant costs.
+
+### What data sources work?
+
+CSV or spreadsheet exports, several related files, or a governed source your host already provides. The plugin installs no Stripe, Shopify, PostHog or warehouse connector: it checks which tools exist and asks for an export when needed. A current-state snapshot cannot rebuild earlier cohorts, and your confirmed MRR, churn or retention recipe, not a provider's label, defines the metric.
 
 ### Does the plugin update prices or approve discounts?
 
@@ -161,7 +179,11 @@ python3 -B evals/check_package.py
 python3 -B evals/test_skill_packaging.py
 ```
 
-These development checks validate metadata, the shared inventory, references and documentation links. Behavioral and installed-host acceptance remain pending. The [legacy synthetic fixtures](evals/README.md) retain historical/arithmetic context; a new end-to-end suite with fresh data and cases is planned. Keep evaluator keys and earlier outputs out of evaluated workspaces.
+These development checks validate metadata, the shared inventory, references and documentation links. They do not test model behavior.
+
+**What V2 behavior testing covered (2026-10-11).** Twenty fresh case families were run once each as Claude Sonnet 5.5 (high effort) subagents inside Claude Code, reading a file copy of the plugin: ecommerce returns and fees, manufacturer promotion, higher sales with lower contribution, pack and stock change, SaaS recurring metrics and retention, cancellation recipes, usage tiers, usage cutoffs, seat/package/FX bridge, app trial, offer design, renewal readiness, installed-equipment and physical-subscription economics, source coverage, plus the original industrial control and context handling. Outputs were graded against independently calculated keys. Two families first gave a headline figure on an assumed basis; one sentence was tightened and those two plus five regression families passed on rerun. The other families were not rerun after that sentence. Follow-ups covering a corrected fact, a changed metric policy, an unsupported cost and an expired approval behaved as intended.
+
+**What it did not cover.** Plugin discovery was observed once in Claude Code with a session-only load. There is no installed-plugin test, no Claude web, Cowork or Codex run, no other model, no connected-source parity and no repeat runs. File reads in the traces are self-reported. One generated HTML report and its PDF were inspected by hand. Treat results as evidence about these cases, not a performance guarantee. The [legacy synthetic fixtures](evals/README.md) remain historical. Keep evaluator keys and earlier outputs out of evaluated workspaces.
 
 The HTML sample's actual PDF export remains unverified. Review numerical outputs and commercial recommendations against supplied evidence before action.
 

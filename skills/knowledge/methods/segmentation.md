@@ -4,9 +4,9 @@ Segment around economically meaningful differences, not clustering or historical
 
 Distinguish observed differences, provisional explanations and confirmed rules. Compare defined realized prices before interpreting different historical/regional list discounts. Use [peers](peer-comparisons.md) when assessing dispersion; they do not establish optimal segments or targets.
 
-Choose observable, understandable dimensions usable in quoting. Weigh differentiation against administration, enforcement, sales adoption and systems. Avoid reproducing historical concessions as invented policy.
+Choose observable, understandable dimensions usable in quoting, purchase, contract or entitlement. Weigh differentiation against administration, enforcement, sales adoption and systems. Avoid reproducing historical concessions as invented policy.
 
-A pricing fence makes a difference identifiable/enforceable through product/service scope, commitments, volume, flexibility or other eligibility. Explain its economic basis and practical application.
+A pricing fence makes a difference identifiable/enforceable through product/service scope, package or included usage, commitments, volume, flexibility or other eligibility. Explain its economic basis and practical application.
 
 Consider arbitrage, cannibalization, customer understanding, fairness, exceptions and system capability. Existing contracts/confirmed exceptions constrain migration; proposed floors, targets and authority remain design choices.
 

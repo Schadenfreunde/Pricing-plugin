@@ -1,7 +1,7 @@
 # Workflow handoff
 
 When work continues, carry a compact brief in the existing answer/report:
-- Scope/basis: population, periods, metric/price/cost definitions, units/currency.
+- Scope/basis: population, periods, metric/price/cost definitions, units/currency; where relevant recipe/version, cohort/horizon and status policy.
 - Evidence: source identifiers/locations, declared method and verified figures.
 - Findings: observations, observation/action confidence and proposed choices.
 - Open items: exclusions, unresolved assumptions/definitions and validation.

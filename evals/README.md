@@ -30,6 +30,36 @@ Online Retail II rerun.
 
 ## Legacy fixtures
 
-`cases/` and `expected/` contain historical synthetic inputs and independent keys. They are deprecated as the current acceptance suite; retain them for arithmetic and historical reference. A fresh end-to-end suite with data and cases is planned. No additional variants or token benchmarks are being added to the legacy cases.
+`cases/` and `expected/` contain historical synthetic inputs and independent keys. They are deprecated as the current acceptance suite; retain them for arithmetic and historical reference. The V2 suite below replaced them for acceptance. No additional variants or token benchmarks are being added to the legacy cases.
 
 For future evaluated runs, isolate inputs and confirmed context from keys, previous outputs and reviewer reports. Keep actual numerical correctness, evidence use, context persistence and artifact quality distinct from static validation.
+
+## V2 fresh acceptance suite
+
+Inputs are under ignored `evals/runs/v2/inputs/`; evaluator keys and independent
+arithmetic are under ignored `evals/reports/v2/keys/` and `evals/reports/v2/oracles.py`;
+`evals/reports/v2/coverage.md` maps the 20 case families and requirements R01–R18 to
+assertions. Results and limits are in `evals/reports/v2/acceptance.md`; the frozen
+candidate is `evals/reports/v2/candidate.json`.
+
+For a run:
+
+```sh
+python3 -B evals/reports/v2/orchestrator/acceptance.py freeze
+python3 -B evals/reports/v2/orchestrator/acceptance.py prepare CASE DEST_ROOT
+python3 -B evals/reports/v2/orchestrator/acceptance.py audit CASE DEST_ROOT
+```
+
+`prepare` builds a workspace holding only the 33 shipped runtime files and that case's
+`task.md`; `audit` confirms the runtime hashes are unchanged and lists any other files
+the solver wrote. Follow-ups are delivered as separate messages after the original
+answer is retained. Keys, earlier outputs, reviews and public illustrations never enter
+a workspace. This is separation by the operator, not OS-enforced security. Record the
+candidate hash, model, effort, host and tools per run, and keep an original answer, its
+follow-up and any rerun separate. A changed evaluator key can rescore a retained answer;
+a changed runtime file requires a new attributed run and a new candidate.
+
+The V2 acceptance run used Claude Sonnet 5.5 at high effort, three cases at a time, in
+Claude Code. The earlier saved preference (Luna at maximum) was not available there, so
+results are not comparable with Luna runs. Native host loading, other hosts and connected
+sources were not exercised.
