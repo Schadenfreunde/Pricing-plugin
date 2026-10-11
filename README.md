@@ -6,80 +6,17 @@ The skills share curated pricing knowledge, check comparison assumptions and ret
 
 **Version:** `0.3.0`
 
-[Install](#install-the-plugin) · [System structure](PRICING_SYSTEM.md) · [Company context](#recommended-first-step-company-context) · [Skills](#pricing-skills-and-example-questions) · [Worked example](#gross-margin-analysis-example) · [FAQ](#frequently-asked-questions)
+[Install](#install-the-plugin) · [System structure](PRICING_SYSTEM.md) · [Company context](#recommended-first-step-company-context) · [Skills](#pricing-skills-and-example-questions) · [FAQ](#frequently-asked-questions)
 
 See the [system structure diagram](PRICING_SYSTEM.md) for how the seven skills, shared pricing knowledge, company context and reporting tools work together.
 
 ## Install the plugin
 
-Install the complete plugin so all seven skills and their shared files are available together.
-
-### Install in Claude (web, desktop or Cowork)
-
-1. Open [Pricing Plugin by Danial Kodvavi](https://github.com/Schadenfreunde/Pricing-plugin) and click **Code → Download ZIP**, or use a complete plugin ZIP supplied by the project owner. Keep the file as a ZIP for upload. Sign in to GitHub if repository access requires it.
-2. In Claude, open **Customize → Plugins**. In Cowork, open the **Cowork** tab first, then **Customize → Plugins**.
-3. Choose the custom plugin upload option and select the ZIP. Enable `pricing-plugin` if prompted. [Claude's plugin installation guide](https://support.claude.com/en/articles/13837440-use-plugins-in-claude).
-4. For Claude chat, enable **Code execution and file creation** in **Settings → Capabilities**. On a managed account, your organization must allow skills and code execution. [Claude's skill prerequisites](https://support.claude.com/en/articles/12512180-use-skills-in-claude).
-5. Start a new conversation and [confirm installation](#confirm-installation). Type `/` or use **+** to find the plugin's skills, or ask “Use pricing-analyze to explain our gross margin movement.”
-
-The repository includes Claude's plugin metadata and the complete shared-file layout. You do not need Git, terminal commands or an assistant to convert the package. Upload it through **Plugins**; uploading individual skill folders through **Skills** omits shared knowledge and reporting files.
-
-For reusable company context in Cowork, select the folder where you do your pricing work. In Claude chat, attach your previously confirmed `context.md` when you want to reuse it. Calculation and report creation use Claude's available tools; this plugin needs no separate MCP server, API key or data connector.
-
-To update a ZIP installation, download the newer package and upload it again. Preserve your working project's company context.
-
-### Install in Claude Code
-
-In a Claude Code session, add this repository's plugin catalog and install the plugin:
+Paste this into your AI agent:
 
 ```text
-/plugin marketplace add Schadenfreunde/Pricing-plugin
-/plugin install pricing-plugin@danial-kodvavi-pricing
+Install the Pricing Plugin by fetching and following the instructions at https://raw.githubusercontent.com/Schadenfreunde/Pricing-plugin/refs/heads/main/INSTALL.md
 ```
-
-For a local installation, use the extracted repository folder's path instead of `Schadenfreunde/Pricing-plugin` in the first command. A relative path must start with `./` or `../`. Repository-based installation needs Git and repository access; a local-folder source uses the downloaded files. [Claude Code installation guide](https://code.claude.com/docs/en/discover-plugins).
-
-Start a new session. You can invoke a skill directly, for example `/pricing-plugin:pricing-analyze`, or describe your pricing task.
-
-### Install in Codex desktop
-
-1. Download and extract the repository ZIP, then add the extracted folder as a local project. Start a chat using **Local**.
-2. Paste this message. Codex can prepare the local plugin catalog described in [OpenAI's local installation guide](https://developers.openai.com/plugins/build/plugins#install-a-local-plugin-manually):
-
-   ```text
-   Read INSTALL.md in this folder. Set up the complete Pricing Plugin from
-   these downloaded files without using Git. Add it to my personal local
-   plugin catalog, keeping my existing plugins and settings. Preserve all
-   seven skills, their shared knowledge and references, and the MIT license.
-   Tell me where to find it and click Install. Report any unsupported step.
-   ```
-
-3. Restart the desktop app. Open the **Plugins Directory**, choose the local source the assistant created, and install `pricing-plugin`.
-4. Start a new chat and [confirm installation](#confirm-installation).
-
-### Confirm installation
-
-In a new chat, send:
-
-```text
-Confirm that all seven Pricing Plugin skills are available: pricing-intake,
-pricing-analyze, pricing-scan, pricing-recommend, pricing-design,
-pricing-execute and pricing-triage. Check that you can read their shared
-knowledge and reporting references. Tell me about any missing files.
-```
-
-If the plugin or upload controls are unavailable, check your app version and your organization's plugin permissions. Package validation does not establish installed discovery, reference loading or pricing behavior in Claude chat or Cowork; those acceptance checks remain pending.
-
-### Other coding agents
-
-Tell an agent with a Git-based plugin installer:
-
-```text
-Fetch and follow the installation instructions from:
-https://raw.githubusercontent.com/Schadenfreunde/Pricing-plugin/refs/heads/main/INSTALL.md
-```
-
-Start a fresh session if required. Skills load only the instructions and methods needed for the task.
 
 ## Recommended first step: company context
 
@@ -97,12 +34,6 @@ Attach data and ask the relevant skill, for example:
 
 > Use pricing-analyze to explain the gross margin movement. Verify the change, reconcile supported drivers and state what remains unknown.
 
-## Gross margin analysis example
-
-The [synthetic worked example](examples/README.md) reports a 300 basis point decline. Its data instead shows margin falling from **30.00% to 26.53%**, a **346.94 basis point decline**.
-
-The [HTML report](examples/margin-analysis.html) reconciles realized-price, product-mix and shared effects with unchanged unit costs. It identifies accounting changes without inventing why prices fell. Download/open the HTML in a browser; GitHub displays source. This illustration establishes neither customer results nor installed-host performance. A second [synthetic illustration](examples/recurring-and-retail.md) covers a promotion and recurring-revenue metrics with their recipes stated.
-
 ## Pricing skills and example questions
 
 | Skill | Result | Example |
@@ -117,12 +48,49 @@ The [HTML report](examples/margin-analysis.html) reconciles realized-price, prod
 
 Explicit tasks enter directly. Combine workflows when useful, carrying existing evidence and decision status forward.
 
-Business type and charging model are independent: a business or consumer offer can be one-time, recurring, usage-based or hybrid. Only the methods a request needs are loaded. Examples beyond industrial B2B:
+Business type and charging model are independent: a business or consumer offer can be one-time, recurring, usage-based or hybrid. Only the methods a request needs are loaded.
 
-- Ecommerce: “Did the promotion raise contribution or only sales?”
-- SaaS renewal: “What are NRR and GRR for this renewal cohort?”
-- App trial: “Did the paywall test change paid conversion?”
-- Installed equipment: “How many installed assets are eligible for the attached software?”
+### Example questions by business
+
+Each question names the skill that handles it. Attach the relevant export or supply the figures.
+
+**Industrial manufacturers and spare parts**
+
+- “Gross margin fell this quarter. Verify the movement and split it into price, mix and cost effects.” (`pricing-analyze`)
+- “Did our January list-price increase actually realize, measured on the same basket of parts we sold in the prior period?” (`pricing-analyze`)
+- “Scan this customer-by-part export for price outliers and rank the leads by evidence.” (`pricing-scan`)
+- “We have three leads: spare-part list prices, aged quotes and one distributor's discounts. Which should we pursue first?” (`pricing-recommend`)
+- “Design a spare-parts price structure: list prices, volume discounts and exception rules.” (`pricing-design`)
+- “We agreed a 4% increase. Which contracts and open quotes are protected, and what notice is needed?” (`pricing-execute`)
+
+**Distributors and wholesalers**
+
+- “Which accounts receive discounts above policy, and which of those have an approved, unexpired exception?” (`pricing-scan`)
+- “Compare what our distributors actually paid for comparable items in the same region. Which differences are meaningful?” (`pricing-analyze`)
+- “Redesign our distributor discount structure so volume is rewarded without eroding list price.” (`pricing-design`)
+- “Plan a price increase through distributors who already hold stock bought at the old price.” (`pricing-execute`)
+
+**B2B software and services**
+
+- “What are NRR and GRR for the Q3 renewal cohort, at account level and at item level?” (`pricing-analyze`)
+- “Bridge MRR from last quarter into seat, price, package and currency effects.” (`pricing-analyze`)
+- “Did the annual-prepay discount raise contribution, or only bookings?” (`pricing-analyze`)
+- “Should our API usage pricing use graduated or volume tiers, and where does a commitment fit?” (`pricing-design`)
+- “Which renewals can take an uplift on 1 January once notice windows and grandfathering are applied?” (`pricing-execute`)
+
+**Installed equipment and hybrid offers**
+
+- “How many installed machines are eligible for the attached software, and what is the attach rate?” (`pricing-analyze`)
+- “What are first-year and renewal contribution for a monitoring contract with setup, hardware and annual service?” (`pricing-analyze`)
+- “How should we split setup and recurring charges for an offer of sensors, a gateway, installation and annual service?” (`pricing-design`)
+
+**Ecommerce and consumer apps**
+
+- “Did the promotion raise contribution or only sales?” (`pricing-analyze`)
+- “After returns and marketplace fees, what do we keep per order, and does it reconcile to the payout?” (`pricing-analyze`)
+- “Did the paywall test change paid conversion?” (`pricing-analyze`)
+
+A [synthetic illustration](examples/recurring-and-retail.md) covers a promotion and recurring-revenue metrics with their recipes stated.
 
 ## Shared pricing methods
 

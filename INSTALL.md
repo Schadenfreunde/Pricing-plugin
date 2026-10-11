@@ -1,6 +1,6 @@
 # Install Pricing Plugin
 
-Install the complete plugin through the host's supported mechanism. The [README](README.md#install-the-plugin) provides Claude upload instructions, Claude Code catalog commands and a Codex local-setup prompt.
+Install the complete plugin through the host's supported mechanism. The [README](README.md#install-the-plugin) gives users a one-line prompt that points an agent at this file.
 
 Repository:
 
@@ -18,4 +18,4 @@ Company context belongs in the working project's `.pricing/context.md`. Intake s
 
 ## Build a Claude upload ZIP
 
-Maintainers can run `python3 -B scripts/build_plugin_zip.py` from the full repository. It validates the source and writes `output/pricing-plugin-claude.zip`, containing the manifests, license and complete skills/shared files in one `pricing-plugin/` folder. Local company context, evaluation fixtures and installation documentation are excluded. The repository README remains the installation guide. Use `--output PATH` for another output location.
+Maintainers can run `python3 -B scripts/build_plugin_zip.py` from the full repository. It validates the source and writes `output/pricing-plugin-claude.zip`, containing the manifests, license and complete skills/shared files in one `pricing-plugin/` folder. Local company context, evaluation fixtures and installation documentation are excluded. This file remains the installation guide. Use `--output PATH` for another output location.
