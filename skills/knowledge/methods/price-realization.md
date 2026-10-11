@@ -4,7 +4,7 @@ Use observed prices at a defined level. A list increase may differ from net/pock
 
 Verify matched scope, periods, grain, units/currency, sales/quantity mappings and adjustments. Customer/product matching may be needed for differing terms. Changed list/accounting bases can invalidate discount comparisons. Average selling price can move solely because the basket changes; aggregate sales without comparable quantities/detail cannot identify pure price movement.
 
-**Historical fixed-basket convention:** hold prior-period item quantities `q0_i` fixed when comparing observed baseline prices `p0_i` and later prices `p1_i`. This measurement applies regardless of known demand response.
+**Historical fixed-basket convention:** hold prior-period item quantities `q0_i` fixed when comparing observed baseline prices `p0_i` and later prices `p1_i`. This measurement applies regardless of known demand response, but only where price, quantity and service/entitlement are comparable; use [recurring scenarios](recurring-scenarios.md) for nonlinear schedules or lifecycle/package movements.
 
 ```text
 Baseline basket revenue = Σ q0_i × p0_i

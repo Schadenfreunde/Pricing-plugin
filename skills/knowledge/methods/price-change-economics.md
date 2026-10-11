@@ -1,6 +1,6 @@
 # Economics of a proposed price change
 
-Apply [metric verification](../metric-verification.md) to establish eligibility, period, comparable realized-price basis and relevant costs. Proposed prices are assumptions; a precise scenario does not prove capture. List-to-net/pocket proposals need supported discount/rebate mappings. Missing quantities or realization evidence limit revenue sizing; missing relevant costs limit contribution/profit sizing.
+Apply [metric verification](../metric-verification.md) to establish eligibility, period, comparable realized-price basis and relevant costs. Proposed prices are assumptions; a precise scenario does not prove capture. List-to-net/pocket proposals need supported discount/rebate mappings. Missing quantities or realization evidence limit revenue sizing; missing relevant costs limit contribution/profit sizing. These linear formulas need comparable mappings; use [recurring scenarios](recurring-scenarios.md) for tiers, commitments, renewal horizons or package changes.
 
 ## Fixed-volume base
 

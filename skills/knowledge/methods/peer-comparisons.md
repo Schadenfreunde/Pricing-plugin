@@ -2,7 +2,7 @@
 
 Price dispersion, low prices and statistical residuals identify leads, not leakage, willingness to pay or attainable increases.
 
-Define price level and grain; verify comparable product/specification, period, unit/currency and relevant geography, channel, service, contracts, order size and customer economics. Different products' absolute prices are rarely direct peers. Different list bases can invalidate discount comparisons even where net prices are comparable. Disclose missing controls.
+Define price level and grain; verify comparable product/specification or package/features, included units, cadence/service term, commitments, period, unit/currency and relevant geography, channel, service, contracts, order size and customer economics. Equal normalized monthly amounts do not make unlike cancellation, service or risk terms comparable. Different products' absolute prices are rarely direct peers. Different list bases can invalidate discount comparisons even where net prices are comparable. Disclose missing controls.
 
 Start with understandable groups/distributions and show actual coverage. Thin or heterogeneous peers weaken evidence; avoid invented percentiles or precision. Regression needs sufficient data and defensible factors; fitted historical prices are comparators, not optimal targets. No universal fit/outlier cutoff proves pricing discipline.
 

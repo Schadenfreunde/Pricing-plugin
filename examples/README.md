@@ -41,6 +41,8 @@ Download [the HTML margin analysis](margin-analysis.html) and open it in a brows
 
 The landscape print layout reflects review of the HTML sample. An actual PDF export and inspection of every PDF page have not been confirmed.
 
-The [legacy inputs](../evals/README.md) remain for arithmetic and historical reference. Fresh end-to-end acceptance with new data and cases is planned.
+A second [synthetic illustration](recurring-and-retail.md) covers a promotion and recurring-revenue metrics with their recipes stated.
+
+The [legacy inputs](../evals/README.md) remain for arithmetic and historical reference; the README's validation section states what V2 behavior testing covered.
 
 [Return to Pricing Plugin](../README.md)

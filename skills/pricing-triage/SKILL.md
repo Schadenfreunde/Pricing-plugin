@@ -15,4 +15,4 @@ Route by result:
 - [Design](../pricing-design/SKILL.md): strategy or pricing structure.
 - [Execute](../pricing-execute/SKILL.md): rollout plan.
 
-For brief definitions, answer from the working project's confirmed `.pricing/context.md`. Clarify a missing/disputed company definition; qualify general explanations. Use [waterfall](../knowledge/price-waterfall.md) for general price levels and intake for context changes. Keep factual answers short. Combine only workflows required by the request, reuse completed work and route silently.
+For brief definitions, answer from the working project's confirmed `.pricing/context.md`. Clarify a missing/disputed company definition; qualify general explanations. Use [waterfall](../knowledge/price-waterfall.md) for general price levels, the [index](../knowledge/index.md) for recurring, retail or hybrid definitions and intake for context changes. Keep factual answers short. Combine only workflows required by the request, reuse completed work and route silently.

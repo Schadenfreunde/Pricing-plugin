@@ -8,10 +8,18 @@ import unittest
 import zipfile
 from pathlib import Path
 
-from check_package import SKILLS, check_package, check_runtime_links, check_skill
+from check_package import (
+    KNOWLEDGE_PATHS, RUNTIME_PATHS, SKILLS, check_package, check_runtime_links, check_skill,
+)
 
 
 ROOT = Path(__file__).resolve().parents[1]
+NEW_KNOWLEDGE_PATHS = {
+    "retail-economics.md", "recurring-metrics.md",
+    "methods/offer-architecture.md", "methods/experiments-and-promotions.md",
+    "methods/recurring-scenarios.md", "methods/renewals-and-migration.md",
+    "methods/hybrid-offers.md",
+}
 sys.path.insert(0, str(ROOT / "scripts"))
 from build_plugin_zip import build_plugin_zip
 
@@ -31,13 +39,43 @@ class SkillPackagingTests(unittest.TestCase):
     def test_complete_plugin_loads_unmodified_sources(self):
         with tempfile.TemporaryDirectory() as temp:
             root = self.checkout(Path(temp))
-            self.assertTrue(check_package(root).startswith("PASS:"))
+            result = check_package(root)
+            self.assertTrue(result.startswith("PASS:"))
+            for source in (ROOT / "skills").rglob("*"):
+                if source.is_file():
+                    installed = root / source.relative_to(ROOT)
+                    self.assertEqual(source.read_bytes(), installed.read_bytes())
             for name in SKILLS:
                 with self.subTest(skill=name):
                     installed = root / "skills" / name
                     self.assertEqual((installed / "SKILL.md").read_bytes(),
                                      (ROOT / "skills" / name / "SKILL.md").read_bytes())
                     self.assertGreater(check_skill(installed), 0)
+
+    def test_complete_plugin_includes_initial_v2_knowledge_cards(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = self.checkout(Path(temp))
+            result = check_package(root)
+            self.assertIn("35 runtime files", result)
+            self.assertIn("29 runtime Markdown files", result)
+
+    def test_each_new_knowledge_card_is_required(self):
+        self.assertTrue(NEW_KNOWLEDGE_PATHS.issubset(set(KNOWLEDGE_PATHS)))
+        for relative in sorted(NEW_KNOWLEDGE_PATHS):
+            with self.subTest(card=relative), tempfile.TemporaryDirectory() as temp:
+                root = self.checkout(Path(temp))
+                (root / "skills/knowledge" / relative).unlink()
+                with self.assertRaisesRegex(ValueError, "Missing complete-plugin resource"):
+                    check_package(root)
+
+    def test_undeclared_knowledge_copy_is_rejected(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = self.checkout(Path(temp))
+            duplicate = root / "skills/pricing-analyze/references/knowledge/retail-economics.md"
+            duplicate.parent.mkdir(parents=True)
+            shutil.copyfile(root / "skills/knowledge/retail-economics.md", duplicate)
+            with self.assertRaisesRegex(ValueError, "Skill inventory mismatch"):
+                check_package(root)
 
     def test_knowledge_has_one_location(self):
         copies = list((ROOT / "skills").glob("pricing-*/references/knowledge"))
@@ -58,22 +96,41 @@ class SkillPackagingTests(unittest.TestCase):
             root = self.checkout(Path(temp) / "source")
             (root / ".pricing").mkdir()
             (root / ".pricing/context.md").write_text("Private company context")
+            (root / "docs/specs/pricing-v2").mkdir(parents=True)
+            (root / "docs/specs/pricing-v2/LLD.md").write_text("Local specification")
+            (root / "evals/reports/v2/keys").mkdir(parents=True)
+            (root / "evals/reports/v2/keys/key.md").write_text("Private evaluator key")
             archive = Path(temp) / "pricing-plugin.zip"
             build_plugin_zip(root, archive)
             installed = Path(temp) / "installed"
             with zipfile.ZipFile(archive) as bundle:
+                expected_members = {
+                    f"pricing-plugin/{path}" for path in RUNTIME_PATHS
+                    if path not in ("README.md", "INSTALL.md")
+                }
+                members = set(bundle.namelist())
+                expected_new_members = {
+                    f"pricing-plugin/skills/knowledge/{path}"
+                    for path in NEW_KNOWLEDGE_PATHS
+                }
+                self.assertTrue(expected_new_members.issubset(members),
+                                f"ZIP is missing new knowledge cards: {sorted(expected_new_members - members)}")
+                self.assertEqual(members, expected_members)
+                self.assertEqual(len(expected_members), 33)
                 bundle.extractall(installed)
             plugin = (installed / "pricing-plugin").resolve()
             self.assertTrue((plugin / ".claude-plugin/plugin.json").is_file())
             self.assertTrue((plugin / "LICENSE").is_file())
             self.assertFalse((plugin / ".pricing").exists())
             self.assertFalse((plugin / "evals").exists())
+            self.assertFalse((plugin / "docs").exists())
             self.assertEqual({p.parent.name for p in (plugin / "skills").glob("*/SKILL.md")},
                              set(SKILLS))
-            for source in (root / "skills").rglob("*"):
-                if source.is_file():
+            for relative in RUNTIME_PATHS:
+                if relative not in ("README.md", "INSTALL.md"):
+                    source = root / relative
                     self.assertEqual(source.read_bytes(),
-                                     (plugin / source.relative_to(root)).read_bytes())
+                                     (plugin / relative).read_bytes())
             files = {p for p in plugin.rglob("*") if p.is_file()}
             self.assertGreater(check_runtime_links(plugin, files), 0)
 

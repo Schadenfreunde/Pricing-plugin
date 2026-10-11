@@ -17,7 +17,10 @@ KNOWLEDGE_PATHS = (
     *(f"methods/{name}.md" for name in (
         "value-estimation", "segmentation", "peer-comparisons", "price-realization",
         "discount-governance", "price-change-economics", "evidence-ranking",
+        "offer-architecture", "experiments-and-promotions", "recurring-scenarios",
+        "renewals-and-migration", "hybrid-offers",
     )),
+    "retail-economics.md", "recurring-metrics.md",
 )
 RUNTIME_PATHS = (
     "plugin.json", "README.md", "INSTALL.md", "LICENSE",

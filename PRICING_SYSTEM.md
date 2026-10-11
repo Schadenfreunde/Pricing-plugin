@@ -18,8 +18,9 @@ flowchart TD
     subgraph Knowledge["Shared pricing knowledge — skills/knowledge"]
         Foundations["Measurement foundations<br/>Metric verification, margin drivers, price waterfall"]
         Comparisons["Observed performance<br/>Peer comparisons, price realization"]
-        Decisions["Action assessment<br/>Evidence ranking, price-change economics, discount governance"]
-        Architecture["Pricing architecture<br/>Value estimation, segmentation"]
+        Decisions["Action assessment<br/>Evidence ranking, price-change economics, discount governance, experiments and promotions"]
+        Architecture["Pricing architecture<br/>Value estimation, segmentation, offer architecture, renewals and migration"]
+        Models["Business models<br/>Retail economics, recurring metrics, recurring scenarios, hybrid offers"]
     end
 
     subgraph Workflows["Task-specific pricing work — enter where needed"]
@@ -50,7 +51,7 @@ flowchart TD
     Intake --> Confirm
     Confirm -->|Merge only confirmed facts| Context
     Context -.->|Definitions, mappings, policies and exceptions| Workflows
-    Knowledge -.->|Read only relevant method cards| Workflows
+    Knowledge -.->|Index selects relevant cards by customer, offer, charging and selling context| Workflows
     Host -.->|Execute calculations and checks| Workflows
     Workflows --> Outputs
     References -.->|Preserve evidence and decision status| Outputs
@@ -80,7 +81,7 @@ Intake is useful onboarding, but it is not required before every task. A new pri
 
 ## How the knowledge base supports the skills
 
-The [knowledge index](skills/knowledge/index.md) selects cards by question. This shared library keeps methods consistent without loading every card for every request.
+The [knowledge index](skills/knowledge/index.md) selects cards by question and by four independent dimensions: customer, offer, charging and selling context. This shared library keeps methods consistent without loading every card for every request.
 
 | Knowledge card | Method supplied | Main uses |
 | --- | --- | --- |
@@ -94,6 +95,13 @@ The [knowledge index](skills/knowledge/index.md) selects cards by question. This
 | [Price-change economics](skills/knowledge/methods/price-change-economics.md) | Size conditional revenue/contribution scenarios, cost changes and response sensitivities | Analyze, scan, recommend and requested rollout impacts |
 | [Value estimation](skills/knowledge/methods/value-estimation.md) | Assess differentiated value against credible buyer alternatives | New strategy in design |
 | [Segmentation](skills/knowledge/methods/segmentation.md) | Identify economically meaningful, enforceable pricing differences | New strategy and redesign in design |
+| [Retail economics](skills/knowledge/retail-economics.md) | Build actor-specific order, channel and contribution views | Analyze, scan and experiments |
+| [Recurring metrics](skills/knowledge/recurring-metrics.md) | Define MRR, ARR, retention and cohort economics | Analyze, scan and triage definitions |
+| [Recurring scenarios](skills/knowledge/methods/recurring-scenarios.md) | Rate tariffs and bridge recurring movements | Analyze, scan, recommend and design |
+| [Experiments and promotions](skills/knowledge/methods/experiments-and-promotions.md) | Separate causal evidence from description; qualify by outcome maturity | Analyze, scan and recommend |
+| [Offer architecture](skills/knowledge/methods/offer-architecture.md) | Compare value unit, package, cadence and charging structure | Design |
+| [Renewals and migration](skills/knowledge/methods/renewals-and-migration.md) | Partition existing customers and plan transitions | Execute, scan and recommend |
+| [Hybrid offers](skills/knowledge/methods/hybrid-offers.md) | Reconcile assets, fulfillment and recurring services | Design and execute |
 
 ## What makes the cycle coherent
 
@@ -105,4 +113,4 @@ The [knowledge index](skills/knowledge/index.md) selects cards by question. This
 
 **A feedback loop grounded in observed results.** Rollout measurement supplies new evidence for analysis and scanning. Historical realization measures what happened; proposed-change economics describes conditional scenarios. Neither a scenario nor a recommendation establishes guaranteed benefit or approval to act.
 
-Together these components support a comprehensive pricing decision system for B2B industrial products and spare parts. The current plugin has no separate calculation engine or data service; detailed account/product targets and negotiation scripts remain outside this version.
+Together these components support a comprehensive pricing decision system for B2B, consumer, subscription and hybrid offers. The current plugin has no separate calculation engine or data service; detailed account/product targets and negotiation scripts remain outside this version.
