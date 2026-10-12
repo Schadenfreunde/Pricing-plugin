@@ -43,6 +43,4 @@ The landscape print layout reflects review of the HTML sample. An actual PDF exp
 
 A second [synthetic illustration](recurring-and-retail.md) covers a promotion and recurring-revenue metrics with their recipes stated.
 
-The README's validation section states what V2 behavior testing covered.
-
 [Return to Pricing Plugin](../README.md)
