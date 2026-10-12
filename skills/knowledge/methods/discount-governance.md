@@ -1,11 +1,43 @@
 # Discount governance and scoped exceptions
 
-For price-level ambiguity, use the [waterfall](../price-waterfall.md); list-to-invoice differences may include several adjustments.
+- For price-level ambiguity, use the [waterfall](../price-waterfall.md). List-to-invoice differences may include several adjustments.
 
-Establish the validated policy's customer/product/region/channel scope, effective period, price basis, package/unit basis, recurring duration or expiry, billing/service term and authority. Derive current applicability from the actual effective interval and decision timing, then cross-check status labels and linked approval evidence; an ACTIVE label cannot extend an expired interval. Clarify contradictory scope/evidence before treating a record as authority. Date validity alone is not full approval. Floors are constraints, targets are guidance and approval thresholds govern departure; they are not interchangeable or universal prices.
+## Establish the policy
 
-Apply each rule's complete conditions, including ranges and scoped exceptions. For numeric comparisons use [metric verification](../metric-verification.md); compare the same price/currency/unit basis and apply exact unrounded boundaries. Promotions pass only when stacking, funding, channel and time conditions all hold; one-off and perpetual recurring concessions need distinct controlled treatment. Combine approvers only when the policy requires; final directions must match classifications. Missing stored exceptions do not prove absence in the business; one account's contract does not excuse another. Clarify material gaps in timing, authority or terms and genuine policy conflicts before declaring compliance or leakage.
+- Establish the validated policy's:
+  - customer, product, region and channel scope
+  - effective period
+  - price basis and package or unit basis
+  - recurring duration or expiry, and billing or service term
+  - authority
+- Derive current applicability from the actual effective interval and decision timing.
+- Then cross-check status labels and linked approval evidence. An ACTIVE label cannot extend an expired interval.
+- Clarify contradictory scope or evidence before treating a record as authority.
+- Date validity alone is not full approval.
+- Floors are constraints, targets are guidance and approval thresholds govern departures. They are not interchangeable or universal prices.
 
-Reconcile adjustments at the controlled level, including relevant rebates, freight/services and eligibility. Monitor comparable realization: discounts can offset a list increase. Classify apparent gaps as data problems, structural differences, exceptions or leads. Out-of-guidance pricing warrants review; obtainable profit or immediate repricing requires further evidence. Use [evidence ranking](evidence-ranking.md) for leads and [price-change economics](price-change-economics.md) when sizing an action.
+## Apply the rules
 
-For design, connect corridors/discretion to objectives, segments, economics, operating effort and approved authority. Historical prices alone do not define sound guidance. Consider line-item and total-deal economics where relevant; unresolved authority remains a decision, not an invented mandate.
+- Apply each rule's complete conditions, including ranges and scoped exceptions.
+- For numeric comparisons, use [metric verification](../metric-verification.md). Compare on the same price, currency and unit basis, with exact unrounded boundaries.
+- A promotion passes only when its stacking, funding, channel and time conditions all hold.
+- One-off and perpetual recurring concessions need distinct, controlled treatment.
+- Combine approvers only when the policy requires it. Final directions must match classifications.
+- Missing stored exceptions do not prove they are absent in the business.
+- One account's contract does not excuse another.
+- Clarify material gaps in timing, authority or terms, and genuine policy conflicts, before declaring compliance or leakage.
+
+## Monitor and classify
+
+- Reconcile adjustments at the controlled level, including relevant rebates, freight, services and eligibility.
+- Monitor comparable realization. Discounts can offset a list increase.
+- Classify each apparent gap as a data problem, structural difference, exception or lead.
+- Out-of-guidance pricing warrants review. Obtainable profit or immediate repricing needs further evidence.
+- Use [evidence ranking](evidence-ranking.md) for leads and [price-change economics](price-change-economics.md) when sizing an action.
+
+## Design guidance
+
+- Connect corridors and discretion to objectives, segments, economics, operating effort and approved authority.
+- Historical prices alone do not define sound guidance.
+- Consider line-item and total-deal economics where relevant.
+- Unresolved authority remains a decision, not an invented mandate.

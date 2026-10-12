@@ -1,7 +1,22 @@
 # Rank opportunities by evidence
 
-Judge the comparison basis, reconciliation, peer controls, applicable policy/exception scope and capture mechanism. Distinguish confidence in the measured gap, a justified change and feasible realization. State qualitative confidence with a brief reason; invent neither probabilities nor a blended score.
+## Judge the evidence
 
-Order leads by relevant evidence first. Show profitability, effort and customer risk separately; use them to compare similar-confidence options. Material risk may change the chosen action without changing the evidence order. Large speculative amounts do not outrank stronger support.
+- Judge the comparison basis, reconciliation, peer controls, applicable policy and exception scope, and capture mechanism.
+- Keep three confidences apart:
+  - the measured gap is real
+  - a change is justified
+  - realization is feasible
+- State qualitative confidence with a brief reason. Invent neither probabilities nor a blended score.
 
-Keep data corrections, unresolved structural differences and confirmed exceptions outside collectible-upside totals. Weak evidence can justify validation, a limited trial or no change.
+## Order the leads
+
+- Order leads by relevant evidence first.
+- Show profitability, effort and customer risk separately. Use them to compare options of similar confidence.
+- Material risk may change the chosen action without changing the evidence order.
+- Large speculative amounts do not outrank stronger support.
+
+## Keep totals honest
+
+- Keep data corrections, unresolved structural differences and confirmed exceptions out of collectible-upside totals.
+- Weak evidence can justify validation, a limited trial or no change.

@@ -1,6 +1,19 @@
 # Pricing knowledge index
 
-Read only cards needed for the requested result and follow a link only for a dependency the task needs; use validated company definitions and policies. Customer (business/consumer/mixed), offer (physical/digital/service/bundle), charging (one-time/recurring/usage/outcome/hybrid) and selling context (direct/negotiated/channel, plus commercial actor) are independent; clarify a missing distinction only when it changes the result. Choose by measure and preconditions, not business label: comparable linear realization and gross-margin bridges keep their convention for recurring items; tariffs, lifecycle movements, MRR/ARR and retention use the recurring cards; causal effect needs an experiment, not reconciliation.
+## How to use the cards
+
+- Read only the cards the requested result needs. Follow a link only for a dependency the task needs.
+- Treat these distinctions as independent. Clarify a missing one only when it changes the result:
+  - customer: business, consumer or mixed
+  - offer: physical, digital, service or bundle
+  - charging: one-time, recurring, usage, outcome or hybrid
+  - selling context: direct, negotiated or channel, plus the commercial actor
+- Choose a card by measure and preconditions, not by business label:
+  - Comparable linear realization and gross-margin bridges keep their convention for recurring items too.
+  - Tariffs, lifecycle movements, MRR/ARR and retention use the recurring cards.
+  - Causal effect needs an experiment, not a reconciliation.
+
+## Pick a card
 
 | Question | Card |
 | --- | --- |
