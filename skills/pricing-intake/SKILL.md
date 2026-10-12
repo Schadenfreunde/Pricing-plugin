@@ -5,7 +5,50 @@ description: Use when establishing, importing, or updating reusable company pric
 
 # Pricing intake
 
-1. Read the task and the working project's `.pricing/context.md`; treat existing facts as confirmed unless disputed. If absent, offer to reuse a context file from another project. Establish its company/scope, prior validation and continued applicability; reuse applicable confirmed facts without reconfirming every entry. Create context only when confirmed facts are available.
-2. Extract task-relevant reusable facts. For data-backed onboarding, identify candidate fields and ask the user to confirm which represent the relevant measures, including revenue/COGS, price level, accounting treatment, currency and units. Scope mappings to their source/schema and analysis purpose; several revenue or cost fields may serve different purposes. Reuse applicable confirmed mappings. Consult the [optional outline](references/context-outline.md) for other gaps. For retail, recurring, or hybrid work, consult the [knowledge index](../knowledge/index.md) for task-relevant model, metric, and lifecycle guidance; use only what affects the requested facts or decision. Propose specific additions/corrections with their scope. Obtain validation before saving; a direct correction confirms only the named fact. A request to create/import context authorizes the task, not confirmation of attachment-derived facts or mappings. Silence, supplied documents and approval of another proposal do not confirm other facts. Clarify conflicts only when scope or replacement remains ambiguous.
-3. Use unvalidated claims provisionally with material dependencies caveated beside findings. For unresolved measure meanings or comparison bases, apply [metric verification](../knowledge/metric-verification.md): ask before calculating the affected financial result; a caveat does not resolve that choice. Keep pending claims, hypotheses, proposals and disputes in the answer/report, outside `.pricing/context.md`; continue independently supported work while resolving gaps.
-4. After validation, reread and merge only confirmed facts into `.pricing/context.md`. Preserve unrelated confirmed facts and scoped exceptions; an exception needs its rule and applicable customers/products. Import only applicable confirmed entries. Keep readable Markdown without a required schema or empty outline. Report what was saved and what remains unconfirmed.
+**Before step 1, read the [shared rules](../references/shared-rules.md).** Intake is the only skill that writes `.pricing/context.md`.
+
+## 1. Load existing context
+
+- Read the task and the working project's `.pricing/context.md`.
+- Treat its facts as confirmed unless the user disputes them.
+- If the file is missing, offer to reuse a context file from another project. Before reusing it:
+  - check its company and scope, and when its facts were confirmed
+  - confirm with the user that it still applies to this project
+  - reuse applicable confirmed facts without reconfirming every entry
+- Create the file only once there are confirmed facts to save.
+
+## 2. Propose facts
+
+- Extract reusable facts relevant to the task.
+- For data-backed onboarding:
+  - Identify candidate fields. Ask the user which field represents each relevant measure, including revenue, COGS, price level, accounting treatment, currency and units.
+  - Scope each mapping to its source or schema and its analysis purpose. Several revenue or cost fields may serve different purposes.
+  - Reuse applicable confirmed mappings.
+- For other gaps, consult the [optional outline](references/context-outline.md).
+- For retail, recurring or hybrid work, consult the [knowledge index](../knowledge/index.md) for model, metric and lifecycle guidance. Use only what affects the requested facts or decision.
+- Propose specific additions or corrections, each with its scope.
+
+## 3. Get confirmation
+
+- Save nothing until the user confirms it.
+- A direct correction from the user confirms only the fact it names.
+- These confirm nothing:
+  - a request to create or import context, which authorizes the task but not facts or mappings taken from attachments
+  - silence
+  - supplied documents
+  - the user's approval of a different proposal
+- Ask about a conflict only when its scope or the replacement is still ambiguous.
+- Meanwhile, continue the user's task under the shared rules. Unconfirmed claims are provisional, and an unresolved basis holds the affected result.
+
+## 4. Save
+
+- Reread `.pricing/context.md` right before writing it. Follow the [context format](references/context-format.md).
+- If the file has no header yet, add one. Write `not stated` for anything you have not been told, and ask the user to fill it in.
+- Merge by fact:
+  - add new confirmed facts
+  - replace a fact only when the user confirmed the replacement
+  - never delete or reword a confirmed fact silently
+  - keep unrelated confirmed facts and scoped exceptions. An exception needs its rule and the customers or products it covers.
+- When importing from another project, save only entries that are confirmed and apply here.
+- Append a line to the change log.
+- Report what was saved and what remains unconfirmed.

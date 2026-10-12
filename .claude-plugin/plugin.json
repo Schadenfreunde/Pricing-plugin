@@ -1,6 +1,6 @@
 {
   "name": "pricing-plugin",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "author": { "name": "Danial Kodvavi" },
   "description": "AI-assisted pricing analysis, opportunity assessment, offer and charging-model design, and rollout planning for B2B, consumer, subscription and hybrid businesses.",
   "repository": "https://github.com/Schadenfreunde/Pricing-plugin",

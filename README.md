@@ -4,7 +4,7 @@ Pricing Plugin provides seven connected AI skills for pricing analysis, opportun
 
 The skills share curated pricing knowledge, check comparison assumptions and retain company facts only after validation. Calculation and artifacts use the tools available in your AI host.
 
-**Version:** `0.3.0`
+**Version:** `0.4.0`
 
 [Install](#install-the-plugin) · [System structure](PRICING_SYSTEM.md) · [Company context](#recommended-first-step-company-context) · [Skills](#pricing-skills-and-example-questions) · [FAQ](#frequently-asked-questions)
 
@@ -143,15 +143,16 @@ Validated context is saved in the working project's `.pricing/context.md`. Proce
 From a full checkout, run:
 
 ```sh
-python3 -B evals/check_package.py
-python3 -B evals/test_skill_packaging.py
+python3 -B scripts/check_package.py
 ```
 
-These development checks validate metadata, the shared inventory, references and documentation links. They do not test model behavior.
+This development check validates the manifests, skill metadata, references, unlinked package files and documentation links. It does not test model behavior.
 
-**What V2 behavior testing covered (2026-10-11).** Twenty case families gave 22 cases, because one family was split into two and a supplemental scan-and-recommend case was added. Each case was run once as a Claude Sonnet 5.5 (high effort) subagent inside Claude Code, reading a file copy of the plugin. The families: ecommerce returns and fees, manufacturer promotion, higher sales with lower contribution, pack and stock change, SaaS recurring metrics and retention, cancellation recipes, usage tiers, usage cutoffs, seat/package/FX bridge, app trial, offer design, renewal readiness, installed-equipment and physical-subscription economics, source coverage, plus the original industrial control and context handling. Outputs were graded against independently calculated keys. Twenty cases passed first time. Two first gave a headline figure on an assumed basis; one sentence was tightened and those two plus five regression cases passed on rerun. The other cases were not rerun after that sentence. Follow-ups covering a corrected fact, a changed metric policy, an unsupported cost and an expired approval behaved as intended.
+**What V2 behavior testing covered (0.3.0, 2026-10-11).** Twenty case families gave 22 cases, because one family was split into two and a supplemental scan-and-recommend case was added. Each case was run once as a Claude Sonnet 5.5 (high effort) subagent inside Claude Code, reading a file copy of the plugin. The families: ecommerce returns and fees, manufacturer promotion, higher sales with lower contribution, pack and stock change, SaaS recurring metrics and retention, cancellation recipes, usage tiers, usage cutoffs, seat/package/FX bridge, app trial, offer design, renewal readiness, installed-equipment and physical-subscription economics, source coverage, plus the original industrial control and context handling. Outputs were graded against independently calculated keys. Twenty cases passed first time. Two first gave a headline figure on an assumed basis; one sentence was tightened and those two plus five regression cases passed on rerun. The other cases were not rerun after that sentence. Follow-ups covering a corrected fact, a changed metric policy, an unsupported cost and an expired approval behaved as intended.
 
-**What it did not cover.** Plugin discovery was observed once in Claude Code with a session-only load. There is no installed-plugin test, no Claude web, Cowork or Codex run, no other model, no connected-source parity and no repeat runs. File reads in the traces are self-reported. One generated HTML report and its PDF were inspected by hand. Treat results as evidence about these cases, not a performance guarantee. The [legacy synthetic fixtures](evals/README.md) remain historical. Keep evaluator keys and earlier outputs out of evaluated workspaces.
+**What 0.4.0 testing covered (2026-10-12).** The shared-rules rewrite was checked with the same method on four families: pack and stock change, context handling, malformed record and renewal readiness, with their follow-ups. The first run held a figure that needed only a caveat and would not save a confirmed fact without a company name. Both rules were narrowed and the affected families rerun; all four met their keys, renewal readiness on the first run. One further 11-turn conversation, written in deliberately broken English, covered margin analysis, data corrections, a price-rise plan and report, and context saves. Its figures matched an independent key, and it neither acted on systems or customers nor saved unconfirmed claims. The other 0.3.0 families were not rerun on 0.4.0.
+
+**What it did not cover.** Plugin discovery was observed once in Claude Code with a session-only load. There is no installed-plugin test, no Claude web, Cowork or Codex run, no other model, no connected-source parity and no repeat runs. File reads in the traces are self-reported. One generated HTML report and its PDF were inspected by hand. Treat results as evidence about these cases, not a performance guarantee.
 
 The HTML sample's actual PDF export remains unverified. Review numerical outputs and commercial recommendations against supplied evidence before action.
 

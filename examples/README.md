@@ -4,7 +4,7 @@ This example shows how Pricing Plugin checks a reported gross margin change and 
 
 ## Question and inputs
 
-The question reports a 300 basis point decline in product-group margin. The [input CSV](../evals/cases/001-margin-price-mix/data.csv) and [supplied facts](../evals/cases/001-margin-price-mix/supplied-facts.md) describe two products across two quarters. Total quantity stays at 100 units, prices fall from €100 to €98 for both products, and sales shift toward product B. Unit costs stay at €60 for A and €80 for B.
+The question reports a 300 basis point decline in product-group margin. The [input CSV](margin-price-mix/data.csv) and [supplied facts](margin-price-mix/supplied-facts.md) describe two products across two quarters. Total quantity stays at 100 units, prices fall from €100 to €98 for both products, and sales shift toward product B. Unit costs stay at €60 for A and €80 for B.
 
 ## Verified answer
 
@@ -43,6 +43,6 @@ The landscape print layout reflects review of the HTML sample. An actual PDF exp
 
 A second [synthetic illustration](recurring-and-retail.md) covers a promotion and recurring-revenue metrics with their recipes stated.
 
-The [legacy inputs](../evals/README.md) remain for arithmetic and historical reference; the README's validation section states what V2 behavior testing covered.
+The README's validation section states what V2 behavior testing covered.
 
 [Return to Pricing Plugin](../README.md)

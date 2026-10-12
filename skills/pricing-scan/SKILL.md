@@ -5,9 +5,36 @@ description: Use when exploring commercial data for pricing anomalies and opport
 
 # Pricing scan
 
-Read confirmed `.pricing/context.md` in the working project. Caveat material reliance on unvalidated claims; use [intake](../pricing-intake/SKILL.md) for context changes.
+**Before step 1, read the [shared rules](../references/shared-rules.md).**
 
-1. **Data fitness:** apply [metric verification](../knowledge/metric-verification.md) to establish measure mappings, numeric consistency, grain, comparable basis, dated coverage, adjustments and matching. Ask the user to resolve material basis choices before affected calculations; isolate known invalid records and continue independently supported work.
-2. **Classify findings:** distinguish data issues, billing, collections and entitlement defects, unresolved structural differences, confirmed exceptions and commercial leads. Select applicable cards through the [index](../knowledge/index.md); explore promotion, recurring-discount, renewal and usage-margin leads as relevant. Explore broadly for an open opportunity request; focus checks for a narrow question. Use [peers](../knowledge/methods/peer-comparisons.md) and [governance](../knowledge/methods/discount-governance.md) as relevant. Consider meaningful combinations such as low revenue/low margin or generous terms without commitments. Treat low price or rarity as a lead requiring validation.
-3. **Rank leads:** apply [evidence ranking](../knowledge/methods/evidence-ranking.md). State each lead's observation, scope, observation/action confidence and next validation; show scale, feasibility and risk separately. Size useful [conditional scenarios](../knowledge/methods/price-change-economics.md) even with unknown response/capture; the method determines required inputs.
-4. Return a concise shortlist and validation choices. Use [analyze](../pricing-analyze/SKILL.md) for requested deeper explanation and [recommend](../pricing-recommend/SKILL.md) for action selection. Use [HTML guidance](../references/html-reporting.md) when an artifact helps and a [handoff](../references/handoff.md) for continued work.
+## 1. Check data fitness
+
+- Apply [metric verification](../knowledge/metric-verification.md). Establish measure mappings, numeric consistency, grain, comparable basis, dated coverage, adjustments and matching.
+- Isolate known invalid records.
+- An unresolved basis holds only the affected calculations (shared rules, section 3).
+
+## 2. Classify findings
+
+- Sort each finding into one class:
+  - data issue
+  - billing, collections or entitlement defect
+  - unresolved structural difference
+  - confirmed exception
+  - commercial lead
+- Match the breadth to the request. Explore broadly for an open opportunity request; run focused checks for a narrow question.
+- Pick the cards that apply from the [knowledge index](../knowledge/index.md). Where relevant, explore promotion, recurring-discount, renewal and usage-margin leads.
+- Use [peer comparisons](../knowledge/methods/peer-comparisons.md) and [discount governance](../knowledge/methods/discount-governance.md) where relevant.
+- Look for meaningful combinations, such as low revenue with low margin, or generous terms without commitments.
+- Treat a low price or a rare pattern as a lead that needs validation.
+
+## 3. Rank leads
+
+- Apply [evidence ranking](../knowledge/methods/evidence-ranking.md).
+- For each lead, state its observation, scope, observation confidence, action confidence and next validation step.
+- Show scale, feasibility and risk separately from confidence.
+- Size useful [conditional scenarios](../knowledge/methods/price-change-economics.md) even when response or capture is unknown. The method sets which inputs are required.
+
+## 4. Return
+
+- Return a concise shortlist of leads and the validation choices.
+- For a requested deeper explanation, continue in [analyze](../pricing-analyze/SKILL.md). For choosing an action, continue in [recommend](../pricing-recommend/SKILL.md).
