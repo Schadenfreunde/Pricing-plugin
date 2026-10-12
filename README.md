@@ -138,24 +138,6 @@ The skills draft analyses, recommendations and plans. System changes and communi
 
 Validated context is saved in the working project's `.pricing/context.md`. Processing of prompts/files depends on the AI host, connected tools, settings and provider terms; local context storage does not establish local-only processing. The plugin has no separate data service, calculation engine or MCP server.
 
-## Validation and limitations
-
-From a full checkout, run:
-
-```sh
-python3 -B scripts/check_package.py
-```
-
-This development check validates the manifests, skill metadata, references, unlinked package files and documentation links. It does not test model behavior.
-
-**What V2 behavior testing covered (0.3.0, 2026-10-11).** Twenty case families gave 22 cases, because one family was split into two and a supplemental scan-and-recommend case was added. Each case was run once as a Claude Sonnet 5.5 (high effort) subagent inside Claude Code, reading a file copy of the plugin. The families: ecommerce returns and fees, manufacturer promotion, higher sales with lower contribution, pack and stock change, SaaS recurring metrics and retention, cancellation recipes, usage tiers, usage cutoffs, seat/package/FX bridge, app trial, offer design, renewal readiness, installed-equipment and physical-subscription economics, source coverage, plus the original industrial control and context handling. Outputs were graded against independently calculated keys. Twenty cases passed first time. Two first gave a headline figure on an assumed basis; one sentence was tightened and those two plus five regression cases passed on rerun. The other cases were not rerun after that sentence. Follow-ups covering a corrected fact, a changed metric policy, an unsupported cost and an expired approval behaved as intended.
-
-**What 0.4.0 testing covered (2026-10-12).** The shared-rules rewrite was checked with the same method on four families: pack and stock change, context handling, malformed record and renewal readiness, with their follow-ups. The first run held a figure that needed only a caveat and would not save a confirmed fact without a company name. Both rules were narrowed and the affected families rerun; all four met their keys, renewal readiness on the first run. One further 11-turn conversation, written in deliberately broken English, covered margin analysis, data corrections, a price-rise plan and report, and context saves. Its figures matched an independent key, and it neither acted on systems or customers nor saved unconfirmed claims. The other 0.3.0 families were not rerun on 0.4.0.
-
-**What it did not cover.** Plugin discovery was observed once in Claude Code with a session-only load. There is no installed-plugin test, no Claude web, Cowork or Codex run, no other model, no connected-source parity and no repeat runs. File reads in the traces are self-reported. One generated HTML report and its PDF were inspected by hand. Treat results as evidence about these cases, not a performance guarantee.
-
-The HTML sample's actual PDF export remains unverified. Review numerical outputs and commercial recommendations against supplied evidence before action.
-
 ## License and feedback
 
 [MIT License](LICENSE), copyright `2026 Danial Kodvavi`. Retain its notice when redistributing the plugin.
