@@ -18,6 +18,7 @@ ROOT_FILES = (
 # Public documentation: link-checked but not shipped.
 DOCS = ("README.md", "INSTALL.md", "PRICING_SYSTEM.md")
 DOC_DIRS = ("examples",)
+SHARED_RULES = "../references/shared-rules.md"  # as linked from skills/<name>/SKILL.md
 MANIFEST_FIELDS = ("name", "version", "description", "author", "repository", "keywords", "license")
 SEMVER = r"\d+\.\d+\.\d+(?:-[\w.-]+)?(?:\+[\w.-]+)?"
 
@@ -127,6 +128,10 @@ def check_skills(root):
             raise ValueError(f"Frontmatter name does not match folder: {folder.name}")
         if not fields.get("description", "").strip().strip("\'\""):
             raise ValueError(f"Missing description: {folder.name}")
+        # The shared rules must be linked before the skill's first step.
+        intro = re.split(r"^(?:## |1\. )", prose(source[frontmatter.end():]), maxsplit=1, flags=re.M)[0]
+        if SHARED_RULES not in set(link_targets(intro)):
+            raise ValueError(f"{folder.name} must link the shared rules before its first step")
     return len(folders)
 
 

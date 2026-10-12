@@ -4,7 +4,7 @@ Pricing Plugin provides seven connected AI skills for pricing analysis, opportun
 
 The skills share curated pricing knowledge, check comparison assumptions and retain company facts only after validation. Calculation and artifacts use the tools available in your AI host.
 
-**Version:** `0.3.0`
+**Version:** `0.4.0`
 
 [Install](#install-the-plugin) · [System structure](PRICING_SYSTEM.md) · [Company context](#recommended-first-step-company-context) · [Skills](#pricing-skills-and-example-questions) · [FAQ](#frequently-asked-questions)
 

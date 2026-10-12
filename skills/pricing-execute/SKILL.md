@@ -5,13 +5,51 @@ description: Use when planning rollout of a chosen pricing action or structure.
 
 # Pricing execution planning
 
-Read confirmed `.pricing/context.md` in the working project. Caveat material reliance on unvalidated claims; use [intake](../pricing-intake/SKILL.md) for context changes. Action approval does not validate the whole brief.
+**Before step 1, read the [shared rules](../references/shared-rules.md).**
 
-Reuse the chosen action/design; establish its outcome and approval status. Clarify only material gaps. Plan the relevant dependencies:
-- **Eligibility/timing:** separate protected contracts from eligible products/customers/channels. Check price-change rights, notice, renewal and open quotes/orders; expiry alone does not establish repricing rights. Sequence by eligibility/readiness.
-- **Channels:** address inventory, sell-through and agreements; assume neither retroactive stock repricing nor pass-through.
-- **Responsibilities:** identify roles to assign for approval, contract review, systems, sales, communication, exceptions and measurement. Mark unknown authority/ownership as decisions.
-- **Readiness:** preparation, review and launch stages cover system/quote consistency, sales rationale, communication audiences/timing and scoped exception approval/expiry. Apply [governance](../knowledge/methods/discount-governance.md) when checking supplied rules/approvals/exceptions; labels and technical tests do not establish current commercial authority. Hold an affected tranche's launch until commercial approval, applicable contract/notice review and operational readiness are resolved.
-- **Measurement:** propose baseline, population, cadence and review responsibility. Monitor comparable net/pocket realization, discounts/rebates, exceptions, volumes and customer/competitor reactions. Use [price realization](../knowledge/methods/price-realization.md) to control basket mix and distinguish observations from causation.
+## 1. Start from the chosen action
 
-For recurring or hybrid transitions, use [renewals and migration](../knowledge/methods/renewals-and-migration.md) for cohort dates, protected terms, package/rating/entitlement consistency and mature retention/refund measurement; select other methods through the [index](../knowledge/index.md). Use [price-change economics](../knowledge/methods/price-change-economics.md) for requested impacts; missing inputs can leave the plan unquantified. Lead with the plan, dependencies and open decisions. Keep this first draft high-level; detailed account/product targets and negotiation scripts are deferred. Planning authorizes neither system changes nor sent communications. Use [report guidance](../references/html-reporting.md) when helpful and a [handoff](../references/handoff.md) for continued work.
+- Reuse the chosen action or design. Establish its intended outcome and its approval status.
+- Approval of the action does not validate everything else in the brief.
+- Ask only about gaps that materially change the plan.
+
+## 2. Plan the dependencies that apply
+
+**Eligibility and timing**
+
+- Separate protected contracts from eligible products, customers and channels.
+- Check price-change rights, notice periods, renewal dates, and open quotes and orders. Contract expiry alone does not establish the right to reprice.
+- Sequence tranches by eligibility and readiness.
+
+**Channels**
+
+- Address channel inventory, sell-through and agreements.
+- Do not assume that stock already held is repriced retroactively, or that partners pass the change through.
+
+**Responsibilities**
+
+- Identify the roles to assign for approval, contract review, systems, sales, communication, exceptions and measurement.
+- Where authority or ownership is unknown, list it as an open decision.
+
+**Readiness**
+
+- Plan preparation, review and launch stages. Cover consistency across systems and quotes, the sales rationale, communication audiences and timing, and approval and expiry of scoped exceptions.
+- When checking supplied rules, approvals or exceptions, apply [discount governance](../knowledge/methods/discount-governance.md). Labels and technical tests do not establish current commercial authority.
+- Hold each affected tranche's launch until commercial approval, the applicable contract and notice review, and operational readiness are all resolved.
+
+**Measurement**
+
+- Propose the baseline, population, cadence and who reviews results.
+- Monitor comparable net or pocket realization, discounts and rebates, exceptions, volumes, and customer and competitor reactions.
+- Use [price realization](../knowledge/methods/price-realization.md) to control for basket mix. Keep observations separate from claims about causes.
+
+## 3. Recurring and hybrid transitions
+
+- Use [renewals and migration](../knowledge/methods/renewals-and-migration.md) for cohort dates, protected terms, consistency of package, rating and entitlements, and retention and refund measurement on mature outcomes.
+- Pick any other method from the [knowledge index](../knowledge/index.md).
+
+## 4. Deliver the plan
+
+- For requested impacts, use [price-change economics](../knowledge/methods/price-change-economics.md). Missing inputs can leave the plan unquantified.
+- Lead with the plan, its dependencies and open decisions.
+- Keep this first draft high-level. Detailed account or product targets and negotiation scripts are out of scope.

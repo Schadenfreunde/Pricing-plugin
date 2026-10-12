@@ -5,14 +5,25 @@ description: Use when pricing goals are unclear or mixed, or for brief pricing d
 
 # Pricing triage
 
-Explicit tasks enter their skill directly. For unclear requests, ask one focused decision/priority question and continue independent supported work.
+**Before step 1, read the [shared rules](../references/shared-rules.md).**
 
-Route by result:
-- [Intake](../pricing-intake/SKILL.md): reusable company facts.
-- [Analyze](../pricing-analyze/SKILL.md): verified calculations or performance explanations.
-- [Scan](../pricing-scan/SKILL.md): opportunity leads.
-- [Recommend](../pricing-recommend/SKILL.md): action choice.
-- [Design](../pricing-design/SKILL.md): strategy or pricing structure.
-- [Execute](../pricing-execute/SKILL.md): rollout plan.
+## 1. Route
 
-For brief definitions, answer from the working project's confirmed `.pricing/context.md`. Clarify a missing/disputed company definition; qualify general explanations. Use [waterfall](../knowledge/price-waterfall.md) for general price levels, the [index](../knowledge/index.md) for recurring, retail or hybrid definitions and intake for context changes. Keep factual answers short. Combine only workflows required by the request, reuse completed work and route silently.
+- Send explicit tasks straight to their skill.
+- For an unclear request, ask one focused question about the decision or priority. Continue any independent work meanwhile.
+- Route by the result the user needs:
+  - reusable company facts: [intake](../pricing-intake/SKILL.md)
+  - verified calculations or performance explanations: [analyze](../pricing-analyze/SKILL.md)
+  - opportunity leads: [scan](../pricing-scan/SKILL.md)
+  - an action choice: [recommend](../pricing-recommend/SKILL.md)
+  - a strategy or pricing structure: [design](../pricing-design/SKILL.md)
+  - a rollout plan: [execute](../pricing-execute/SKILL.md)
+- Combine only the workflows the request needs, and reuse completed work.
+- Route silently, without narrating the routing.
+
+## 2. Brief definitions
+
+- Answer from confirmed facts in `.pricing/context.md`.
+- If the company's definition is missing or disputed, ask for it. Label general explanations as general.
+- For general price levels, use the [price waterfall](../knowledge/price-waterfall.md). For recurring, retail or hybrid definitions, use the [knowledge index](../knowledge/index.md).
+- Keep factual answers short.

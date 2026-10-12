@@ -5,9 +5,38 @@ description: Use when calculating or explaining pricing and margin performance, 
 
 # Pricing analysis
 
-Read confirmed `.pricing/context.md` in the working project. Caveat material reliance on unvalidated claims; use [intake](../pricing-intake/SKILL.md) for context additions, corrections or disputes.
+**Before step 1, read the [shared rules](../references/shared-rules.md).**
 
-1. Establish the decision, population, metric and comparison; support multiple requested comparisons. Apply [metric verification](../knowledge/metric-verification.md) before financial calculations: confirm measure mappings, execute data-consistency/eligibility checks and resolve material comparison-basis choices with the user. Each requested measure ends in a verified result on an established basis or a targeted clarification with that result held; continue independently supported work. Execute reported amounts, rates and movements with calculation tools; cross-check the actual rating/adjustment mapping, totals and displayed values; quantity × unit price/cost applies only to supported linear mappings. Derive movements from unrounded figures; round only for display.
-2. For reported margin movements, verify period rates before explaining them. Use [margin drivers](../knowledge/margin-drivers.md) for a supported bridge: reconcile and separate shared effects, residuals and unproven commercial causes.
-3. For historical price measurement, use [price realization](../knowledge/methods/price-realization.md); for proposed impacts, use [price-change economics](../knowledge/methods/price-change-economics.md). Use [peers](../knowledge/methods/peer-comparisons.md) for comparable price differences. Select retail, recurring, cohort, rating or experiment methods through the [index](../knowledge/index.md) when relevant.
-4. Lead with findings, material limits and targeted next choices. Prefer margin percentages and movements in percentage points/basis points; place a brief method note after findings. Stop at the requested scope. For substantial analysis where visuals help, default to [HTML](../references/html-reporting.md), respecting requested formats; small answers stay in chat. Carry a [handoff](../references/handoff.md) when work continues.
+## 1. Frame the question
+
+- Establish the decision the analysis supports.
+- Establish the population, metric and comparison. Handle each requested comparison separately.
+
+## 2. Verify before calculating
+
+- Apply [metric verification](../knowledge/metric-verification.md) before any financial calculation.
+- Confirm which field represents each measure.
+- Run the data-consistency and eligibility checks on the actual data.
+- End each requested measure in one of two states:
+  - a verified result on an established basis
+  - a held result with one targeted question (shared rules, section 3)
+
+## 3. Calculate
+
+- Compute reported amounts, rates and movements with calculation tools.
+- Cross-check totals and displayed values against the actual rating or adjustment mapping.
+- Use quantity × unit price or quantity × unit cost only where that mapping is linear and supported.
+- Derive movements from unrounded figures. Round only for display.
+
+## 4. Explain
+
+- **Margin movement:** verify both period rates first. Then use [margin drivers](../knowledge/margin-drivers.md) for a reconciled bridge. Keep shared effects, residuals and unproven commercial causes separate.
+- **Historical price change:** use [price realization](../knowledge/methods/price-realization.md).
+- **Proposed price change:** use [price-change economics](../knowledge/methods/price-change-economics.md).
+- **Differences between comparable customers or items:** use [peer comparisons](../knowledge/methods/peer-comparisons.md).
+- **Retail, recurring, cohort, rating or experiment questions:** pick the card from the [knowledge index](../knowledge/index.md).
+
+## 5. Report
+
+- Show margins as percentages and margin movements in percentage points or basis points.
+- Follow the output rules in the shared rules, section 5.
