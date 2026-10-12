@@ -105,7 +105,7 @@ The [knowledge index](skills/knowledge/index.md) selects cards by question and b
 
 ## What makes the cycle coherent
 
-**One set of rules for every skill.** Each skill reads the [shared rules](skills/references/shared-rules.md) before its own steps. They define how company context is used, when to stop and ask, what counts as authorization and how results are presented, so behavior does not depend on which skill was invoked.
+**One set of rules for every skill.** Each skill reads the [shared rules](skills/references/shared-rules.md) before its own steps. They define how company context is used, when to stop and ask, what counts as authorization, how results are presented and how missing values and scenarios are treated, so behavior does not depend on which skill was invoked.
 
 **A common business basis.** `.pricing/context.md` follows a light [format](skills/pricing-intake/references/context-format.md): a company and scope header, and a scope, confirmation date and source for each fact. It retains only confirmed reusable facts. New exports still require actual data checks. A material unresolved measure or comparison choice holds the affected calculation while independently valid work continues. Findings, hypotheses and proposals remain in the answer/report until specific reusable facts are validated through intake.
 

@@ -9,6 +9,8 @@ Every pricing skill reads this file before its own steps. If a skill step seems 
 - A file without a header predates the [context format](../pricing-intake/references/context-format.md). Treat its facts as confirmed for this project.
 - Apply a confirmed fact only within its stated scope.
 - Treat everything else as unconfirmed: user statements, attachments, column names and your own findings.
+- Confirmed company definitions, recipes and policies override knowledge-card defaults. A column or provider label never settles a definition.
+- A confirmation must cover the current analysis, not only future defaults. Reuse applicable confirmed choices without reopening intake.
 
 ## 2. Unconfirmed claims
 
@@ -32,6 +34,8 @@ When you do stop:
 - Show the conflicting evidence and ask one focused question. Name the competing options and why the choice changes the result.
 - Hold the affected result. Do not silently choose a basis, convert, drop the affected population, or headline a figure on an assumed basis, however it is caveated.
 - A caveat does not resolve the choice. Neither do deadline pressure or general permission to pick the obvious field.
+- Keep the affected records in scope. Unrequested alternatives or dropped records do not resolve the choice.
+- Calculate each option as a labelled scenario only when the user explicitly asks. The single governed result stays held.
 - Continue all work that does not depend on the answer. Resume the held result once the basis is resolved.
 - [Metric verification](../knowledge/metric-verification.md) lists the specific checks that reveal these choices.
 
@@ -47,3 +51,11 @@ When you do stop:
 - Stop at the requested scope.
 - Keep small answers in chat. For substantial analysis where visuals help, follow [HTML reporting](html-reporting.md) unless the user asked for another format.
 - When work will continue in another skill, include a [handoff](handoff.md).
+
+## 6. Evidence and results
+
+- Missing, blank, unmatched, unobserved, errored or truncated values are unknown, not zero. Never coerce them to zero, drop them silently, or fill them with current or invented values. A recorded zero is a real value.
+- Scenarios and sizing are conditional on their stated assumptions. Never present them as forecasts, realized results, guaranteed uplift or collectible upside.
+- Keep assumed outcomes, such as adoption, response or retention, separate from observed results.
+- Do not annualize or compound short-period results automatically. Flag unrepresentative history.
+- Thin or incomplete evidence still supports qualitative direction, a conditional range or a validation step. Say which.
